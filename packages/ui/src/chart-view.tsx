@@ -41,8 +41,14 @@ export const chartKinds = [
   "composed",
 ] as const;
 export type ChartKind = (typeof chartKinds)[number];
-export type ChartDatum = { [key: string]: string | number };
-export type ChartSeries = { key: string; label: string; color?: string };
+export type ChartDatum = { [key: string]: string | number | null };
+export type ChartSeries = {
+  key: string;
+  label: string;
+  color?: string;
+  /** Cartesian series may use a separate scale for a different unit. */
+  axis?: "left" | "right";
+};
 export type ChartViewProps = {
   kind: ChartKind;
   data: ChartDatum[];
@@ -56,6 +62,12 @@ export type ChartViewProps = {
   className?: string;
   xAxisLabel?: string;
   yAxisLabel?: string;
+  allowDecimals?: boolean;
+  secondaryAxis?: {
+    label?: string;
+    tickFormatter?: (value: string | number) => string;
+    allowDecimals?: boolean;
+  };
   tickFormatter?: (value: string | number) => string;
   valueFormatter?: (value: string | number) => string;
   tooltipContent?: ReactElement;
@@ -83,6 +95,8 @@ export function ChartView({
   className,
   xAxisLabel,
   yAxisLabel,
+  allowDecimals = true,
+  secondaryAxis,
   tickFormatter,
   valueFormatter = String,
   tooltipContent,
@@ -102,6 +116,9 @@ export function ChartView({
   );
   const horizontal = kind === "horizontal-bar";
   const circular = ["pie", "donut", "radial"].includes(kind);
+  const dualAxis = !horizontal && series.some((s) => s.axis === "right");
+  const formatValue = (value: string | number | null | undefined) =>
+    value == null ? "미수집" : valueFormatter(value);
   const margin = {
     top: 12,
     right: 16,
@@ -143,14 +160,37 @@ export function ChartView({
         tickFormatter={horizontal ? tickFormatter : undefined}
       />
       <YAxis
+        yAxisId="left"
         dataKey={horizontal ? categoryKey : undefined}
         type={horizontal ? "category" : "number"}
-        width={horizontal ? 88 : 64}
+        width={horizontal ? 88 : dualAxis ? 48 : 64}
+        allowDecimals={allowDecimals}
         label={yLabel}
         tickFormatter={horizontal ? undefined : tickFormatter}
         tickLine={false}
         axisLine={false}
       />
+      {dualAxis && (
+        <YAxis
+          yAxisId="right"
+          orientation="right"
+          width={48}
+          tickLine={false}
+          axisLine={false}
+          allowDecimals={secondaryAxis?.allowDecimals}
+          tickFormatter={secondaryAxis?.tickFormatter}
+          label={
+            secondaryAxis?.label
+              ? {
+                  value: secondaryAxis.label,
+                  position: "insideRight",
+                  angle: 90,
+                  fill: "var(--n-muted)",
+                }
+              : undefined
+          }
+        />
+      )}
     </>
   );
   const tooltip = (
@@ -166,11 +206,17 @@ export function ChartView({
       }
       content={tooltipContent}
       contentStyle={{ color: "var(--n-text)" }}
+      formatter={(value) =>
+        typeof value === "string" || typeof value === "number"
+          ? formatValue(value)
+          : value
+      }
     />
   );
   const line = (s: ChartSeries, i: number) => (
     <Line
       key={s.key}
+      yAxisId={s.axis ?? "left"}
       dataKey={s.key}
       name={s.label}
       stroke={colors[i]}
@@ -184,6 +230,7 @@ export function ChartView({
   const bar = (s: ChartSeries, i: number) => (
     <Bar
       key={s.key}
+      yAxisId={s.axis ?? "left"}
       dataKey={s.key}
       name={s.label}
       fill={colors[i]}
@@ -203,6 +250,7 @@ export function ChartView({
   const area = (s: ChartSeries, i: number) => (
     <Area
       key={s.key}
+      yAxisId={s.axis ?? "left"}
       dataKey={s.key}
       name={s.label}
       stroke={colors[i]}
@@ -410,7 +458,7 @@ export function ChartView({
                     <th scope="row">{d[categoryKey]}</th>
                     {kind === "scatter" && <td>{d[xKey]}</td>}
                     {series.map((s) => (
-                      <td key={s.key}>{valueFormatter(d[s.key])}</td>
+                      <td key={s.key}>{formatValue(d[s.key])}</td>
                     ))}
                   </tr>
                 ))}

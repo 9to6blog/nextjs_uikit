@@ -78,7 +78,7 @@ export function SidebarContent({
 }: ComponentProps<"div">) {
   return (
     <div {...props} className={cn("n-sidebar-content", className)}>
-      <MovingHighlight selector=".n-sidebar-menu-button" />
+      <MovingHighlight selector=".n-sidebar-menu-button:not([inert] *)" />
       {children}
     </div>
   );
@@ -98,9 +98,10 @@ export function SidebarGroupLabel({
 export function SidebarMenuButton({
   className,
   icon,
+  endIcon,
   children,
   ...props
-}: ComponentProps<"button"> & { icon?: ReactNode }) {
+}: ComponentProps<"button"> & { icon?: ReactNode; endIcon?: ReactNode }) {
   return (
     <button
       type="button"
@@ -113,6 +114,11 @@ export function SidebarMenuButton({
         </span>
       )}
       <span className="n-sidebar-menu-label">{children}</span>
+      {endIcon && (
+        <span className="n-sidebar-menu-end-icon" aria-hidden="true">
+          {endIcon}
+        </span>
+      )}
     </button>
   );
 }

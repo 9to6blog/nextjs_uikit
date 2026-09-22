@@ -2,6 +2,26 @@ import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { blocks } from "../apps/docs/src/lib/blocks";
 import { gotoReady, settleAnimations } from "./helpers";
+test("composed charts keep independent units and missing samples", async ({
+  page,
+}) => {
+  await gotoReady(page, "/charts/");
+  await page
+    .locator(".chart-kind-grid button")
+    .filter({
+      has: page.locator("small", { hasText: /^composed$/ }),
+    })
+    .click();
+  await settleAnimations(page);
+  const chart = page.locator('.n-chart-view[data-kind="composed"]');
+  await expect(chart.locator(".recharts-yAxis")).toHaveCount(2);
+  await expect(chart.locator(".recharts-line-curve")).toBeVisible();
+  await chart.locator("summary").click();
+  const missing = chart.locator("tbody tr").nth(2);
+  await expect(missing).toContainText("145");
+  await expect(missing).toContainText("미수집");
+  await expect(chart.locator("thead")).toContainText("응답시간 (ms)");
+});
 for (const block of blocks)
   test(`${block.name} block renders original content and accessible controls`, async ({
     page,
