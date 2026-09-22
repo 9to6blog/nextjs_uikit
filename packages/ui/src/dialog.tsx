@@ -11,10 +11,14 @@ export function DialogContent({
   children,
   closeLabel = "닫기",
   overlayClassName,
+  variant = "default",
+  showCloseButton = true,
   ...props
 }: ComponentProps<typeof Primitive.Content> & {
   closeLabel?: string;
   overlayClassName?: string;
+  variant?: "default" | "command";
+  showCloseButton?: boolean;
 }) {
   const attributes = useUIAttributes();
   return (
@@ -26,24 +30,43 @@ export function DialogContent({
       <Primitive.Content
         {...attributes}
         {...props}
+        data-variant={variant}
         className={cn("n-dialog-content", className)}
       >
         {children}
-        <Primitive.Close className="n-dialog-close" aria-label={closeLabel}>
-          <svg
-            aria-hidden="true"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-          >
-            <path d="m6 6 12 12M18 6 6 18" />
-          </svg>
-        </Primitive.Close>
+        {showCloseButton && (
+          <Primitive.Close className="n-dialog-close" aria-label={closeLabel}>
+            <svg
+              aria-hidden="true"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+            >
+              <path d="m6 6 12 12M18 6 6 18" />
+            </svg>
+          </Primitive.Close>
+        )}
       </Primitive.Content>
     </Primitive.Portal>
+  );
+}
+export function DialogHeader({ className, ...props }: ComponentProps<"div">) {
+  return <div {...props} className={cn("n-dialog-header", className)} />;
+}
+export function DialogFooter({
+  className,
+  layout = "confirmation",
+  ...props
+}: ComponentProps<"div"> & { layout?: "confirmation" | "tools" }) {
+  return (
+    <div
+      {...props}
+      data-layout={layout}
+      className={cn("n-dialog-footer", className)}
+    />
   );
 }
 export function DialogTitle({

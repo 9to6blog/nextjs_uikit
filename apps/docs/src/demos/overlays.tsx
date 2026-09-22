@@ -1,5 +1,10 @@
 "use client";
 import { Icon } from "@9to6/ui/icons";
+import {
+  MenuItemIcon,
+  MenuItemLabel,
+  MenuItemShortcut,
+} from "@9to6/ui/menu-item";
 import { useDemoReady } from "@/lib/use-demo-ready";
 import { useState } from "react";
 import { Button } from "@9to6/ui/button";
@@ -77,6 +82,8 @@ import {
 import {
   Command,
   CommandInput,
+  CommandInputRow,
+  CommandInputIcon,
   CommandList,
   CommandGroup,
   CommandItem,
@@ -267,9 +274,14 @@ export function OverlaysDemo({ name }: { name: string }) {
             <DropdownMenuContent align="start">
               <DropdownMenuLabel>Project</DropdownMenuLabel>
               <DropdownMenuItem
+                aria-label="편집"
                 onSelect={() => setSelection("편집을 선택했습니다.")}
               >
-                편집
+                <MenuItemIcon>
+                  <Icon name="document" />
+                </MenuItemIcon>
+                <MenuItemLabel>편집</MenuItemLabel>
+                <MenuItemShortcut aria-hidden="true">⌘E</MenuItemShortcut>
               </DropdownMenuItem>
               <DropdownMenuItem
                 onSelect={() => setSelection("복제를 선택했습니다.")}
@@ -365,10 +377,15 @@ export function OverlaysDemo({ name }: { name: string }) {
       return (
         <div className="demo-stack">
           <Command label="빠른 명령">
-            <CommandInput
-              placeholder="명령을 검색하세요…"
-              aria-label="명령 검색"
-            />
+            <CommandInputRow>
+              <CommandInputIcon>
+                <Icon name="search" />
+              </CommandInputIcon>
+              <CommandInput
+                placeholder="명령을 검색하세요…"
+                aria-label="명령 검색"
+              />
+            </CommandInputRow>
             <CommandList>
               <CommandEmpty>검색 결과가 없습니다.</CommandEmpty>
               <CommandGroup heading="Workspace">

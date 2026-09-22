@@ -18,17 +18,25 @@ export function MovingHighlight({
     let active: HTMLElement | null = null;
     let hovered: HTMLElement | null = null;
     let focused: HTMLElement | null = null;
+    const available = (item: HTMLElement | null): item is HTMLElement =>
+      !!item &&
+      root.contains(item) &&
+      item.getClientRects().length > 0 &&
+      item.offsetWidth > 0 &&
+      item.offsetHeight > 0 &&
+      !item.matches(
+        ':disabled, [data-disabled]:not([data-disabled="false"]), [aria-disabled="true"]',
+      );
     const selected = () =>
-      Array.from(root.querySelectorAll<HTMLElement>(selector)).find((item) =>
-        item.matches(
-          '[aria-current="page"], [aria-pressed="true"], [aria-selected="true"], [data-active="true"], [data-state="active"]',
-        ),
+      Array.from(root.querySelectorAll<HTMLElement>(selector)).find(
+        (item) =>
+          available(item) &&
+          item.matches(
+            '[aria-current="page"], [aria-pressed="true"], [aria-selected="true"], [data-active="true"], [data-state="active"]',
+          ),
       ) ?? null;
     const measure = () => {
-      active =
-        [hovered, focused, selected()].find(
-          (item) => item && root.contains(item),
-        ) ?? null;
+      active = [hovered, focused, selected()].find(available) ?? null;
       if (!active) {
         indicator.style.opacity = "0";
         return;
@@ -52,14 +60,12 @@ export function MovingHighlight({
         event.target instanceof Element
           ? event.target.closest<HTMLElement>(selector)
           : null;
-      if (
-        target &&
-        root.contains(target) &&
-        !target.hasAttribute("data-disabled") &&
-        target.getAttribute("aria-disabled") !== "true"
-      ) {
+      if (available(target)) {
         if (event.type === "focusin") focused = target;
         else hovered = target;
+        measure();
+      } else if (event.type === "pointermove" && hovered) {
+        hovered = null;
         measure();
       }
     };
@@ -81,6 +87,8 @@ export function MovingHighlight({
         "aria-selected",
         "data-active",
         "data-state",
+        "hidden",
+        "aria-expanded",
       ],
     });
     measure();

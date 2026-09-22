@@ -16,6 +16,24 @@ export function CommandInput({
     <Primitive.Input {...props} className={cn("n-command-input", className)} />
   );
 }
+export function CommandInputRow({
+  className,
+  ...props
+}: ComponentProps<"div">) {
+  return <div {...props} className={cn("n-command-input-row", className)} />;
+}
+export function CommandInputIcon({
+  className,
+  ...props
+}: ComponentProps<"span">) {
+  return (
+    <span
+      aria-hidden="true"
+      {...props}
+      className={cn("n-command-input-icon", className)}
+    />
+  );
+}
 export function CommandList({
   className,
   ...props

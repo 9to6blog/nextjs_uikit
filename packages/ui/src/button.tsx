@@ -2,7 +2,14 @@ import type { ComponentProps } from "react";
 import { cn } from "./utils.js";
 
 export type ButtonProps = ComponentProps<"button"> & {
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "danger";
+  variant?:
+    | "primary"
+    | "secondary"
+    | "outline"
+    | "ghost"
+    | "danger"
+    | "success"
+    | "link";
   size?: "sm" | "md" | "lg" | "icon";
   loading?: boolean;
   loadingLabel?: string;

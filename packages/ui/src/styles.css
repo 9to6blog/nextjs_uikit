@@ -461,6 +461,22 @@
   background: var(--n-danger);
   color: var(--n-surface);
 }
+.n-button[data-variant="success"] {
+  background: var(--n-success);
+  color: var(--n-on-accent);
+}
+.n-button[data-variant="success"]:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--n-success) 88%, var(--n-text));
+}
+.n-button[data-variant="link"] {
+  background: transparent;
+  color: var(--n-text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.n-button[data-variant="link"]:hover:not(:disabled) {
+  background: var(--n-hover);
+}
 .n-button[data-size="sm"] {
   min-height: 32px;
   padding: 0 12px;
@@ -551,6 +567,21 @@
   background: var(--n-warning-soft);
   color: var(--n-warning);
 }
+.n-badge[data-tone="danger"] {
+  background: var(--n-danger-soft);
+  color: var(--n-danger);
+}
+.n-badge[data-variant="outline"] {
+  background: transparent;
+  border: 1px solid var(--n-border);
+}
+.n-badge[data-variant="ghost"] {
+  background: transparent;
+}
+.n-badge svg {
+  width: 12px;
+  height: 12px;
+}
 .n-status-dot {
   width: 5px;
   height: 5px;
@@ -622,6 +653,15 @@
   border: 0;
   background: transparent;
   padding-inline: 0;
+  box-shadow: none;
+  min-width: 0;
+}
+.n-input-group:focus-within {
+  border-color: var(--n-border-strong);
+  box-shadow: var(--n-focus);
+}
+.n-input-group .n-input:focus-visible {
+  box-shadow: none;
 }
 .n-input-addon,
 .n-input-group-text {
@@ -812,6 +852,8 @@
   animation: n-fade-out var(--n-duration-fast) var(--n-ease-exit);
 }
 .n-dialog-content {
+  display: grid;
+  gap: 16px;
   position: fixed;
   z-index: 101;
   top: 50%;
@@ -829,6 +871,36 @@
 }
 .n-dialog-content[data-state="closed"] {
   animation: n-dialog-out var(--n-duration-fast) var(--n-ease-exit);
+}
+.n-dialog-content[data-variant="command"] {
+  padding: 0;
+  gap: 0;
+  width: min(640px, calc(100vw - 32px));
+  border-radius: var(--n-radius-lg);
+  overflow: hidden;
+}
+.n-dialog-content[data-variant="command"] > .n-command {
+  border: 0;
+  border-radius: inherit;
+}
+.n-dialog-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.n-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
+}
+@media (max-width: 639px) {
+  .n-dialog-footer[data-layout="confirmation"] {
+    flex-direction: column-reverse;
+  }
+  .n-dialog-footer[data-layout="confirmation"] .n-button {
+    width: 100%;
+  }
 }
 .n-dialog-title,
 .n-alert-dialog-title {
@@ -925,7 +997,7 @@
 .n-select-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 12px;
   padding: 6px 8px;
   border-radius: 4px;
@@ -933,6 +1005,73 @@
   cursor: default;
   user-select: none;
   outline: none;
+}
+:is(
+    .n-dropdown-menu-item,
+    .n-dropdown-menu-sub-trigger,
+    .n-context-menu-item,
+    .n-context-menu-sub-trigger,
+    .n-menubar-item,
+    .n-menubar-sub-trigger,
+    .n-command-item
+  )
+  > svg,
+.n-menu-icon > svg,
+.n-command-input-icon > svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.n-menu-icon,
+.n-command-input-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  color: var(--n-muted);
+}
+.n-menu-item-label {
+  flex: 1;
+  min-width: 0;
+}
+.n-menu-shortcut,
+:is(
+    .n-dropdown-menu-item,
+    .n-context-menu-item,
+    .n-menubar-item,
+    .n-command-item
+  )
+  > :is(kbd, .n-kbd),
+:is(
+    .n-dropdown-menu-sub-trigger,
+    .n-context-menu-sub-trigger,
+    .n-menubar-sub-trigger
+  )
+  > svg:last-child,
+.n-select-item > span:last-child:not(:first-child) {
+  margin-inline-start: auto;
+  flex: none;
+}
+.n-menu-shortcut {
+  color: var(--n-muted);
+  font-size: 12px;
+}
+.n-dropdown-menu-item[data-variant="destructive"],
+.n-context-menu-item[data-variant="destructive"] {
+  color: var(--n-danger);
+}
+[data-inset="true"]:is(
+  .n-dropdown-menu-item,
+  .n-dropdown-menu-label,
+  .n-dropdown-menu-sub-trigger,
+  .n-context-menu-item,
+  .n-context-menu-label,
+  .n-context-menu-sub-trigger
+) {
+  padding-inline-start: 28px;
+}
+.n-select-trigger[aria-invalid="true"] {
+  border-color: var(--n-danger);
 }
 :is(
     .n-dropdown-menu-content,
@@ -1516,6 +1655,38 @@
   border-radius: 12px;
   overflow: hidden;
   background: var(--n-surface);
+  transition:
+    border-color var(--n-duration-fast),
+    box-shadow var(--n-duration-fast);
+}
+.n-command:focus-within {
+  border-color: var(--n-border-strong);
+  box-shadow: var(--n-focus);
+}
+.n-command-input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-inline: 16px;
+  border-bottom: 1px solid var(--n-border);
+  flex: none;
+}
+.n-command-input-row > .n-command-input {
+  flex: 1;
+  border-bottom: 0;
+  padding-inline: 0;
+}
+.n-command-input-row > .n-button {
+  flex: none;
+}
+.n-command-input:focus-visible {
+  outline: none;
+}
+@media (forced-colors: active) {
+  .n-command:focus-within {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
 }
 .n-command-input {
   width: 100%;
@@ -1525,6 +1696,8 @@
   background: transparent;
   padding: 16px;
   font-size: 14px;
+  line-height: 1.5;
+  min-width: 0;
 }
 .n-command-list {
   max-height: 290px;
@@ -1534,7 +1707,7 @@
 .n-command-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 12px;
   padding: 10px 12px;
   border-radius: 7px;
@@ -2831,7 +3004,11 @@
   visibility: hidden;
   white-space: nowrap;
 }
-.n-sidebar-menu-button[aria-pressed="true"] {
+.n-sidebar-menu-button:is(
+  [aria-pressed="true"],
+  [aria-current="page"],
+  [data-active="true"]
+) {
   background: var(--n-accent-soft);
   color: var(--n-accent-ink);
 }
@@ -2981,7 +3158,12 @@
 
 /* A single moving surface owns both active and hover presentation. */
 .n-sidebar-content[data-n-highlight-root]
-  .n-sidebar-menu-button:is(:hover, [aria-pressed="true"]),
+  .n-sidebar-menu-button:is(
+    :hover,
+    [aria-pressed="true"],
+    [aria-current="page"],
+    [data-active="true"]
+  ),
 .n-tree[data-n-highlight-root]
   [role="treeitem"]:is(:hover, [aria-selected="true"]) {
   background: transparent;

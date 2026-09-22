@@ -36,6 +36,7 @@ export * from "./kbd.js";
 export * from "./label.js";
 export * from "./marker.js";
 export * from "./menubar.js";
+export * from "./menu-item.js";
 export * from "./message.js";
 export * from "./message-scroller.js";
 export * from "./native-select.js";

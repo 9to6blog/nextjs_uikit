@@ -10,6 +10,10 @@ const paths = {
   "arrow-up-down": "M8 20V4m-4 4 4-4 4 4m4-4v16m-4-4 4 4 4-4",
   "arrow-up-right": "M7 17 17 7M7 7h10v10",
   check: "m5 12 4 4L19 6",
+  search: "M21 21l-5.2-5.2M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0",
+  error: "M12 8v5m0 3h.01M22 12A10 10 0 1 1 2 12a10 10 0 0 1 20 0",
+  sparkles:
+    "m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4ZM20 2v4m-2-2h4",
   close: "m6 6 12 12M6 18 18 6",
   minus: "M5 12h14",
   grip: "M9 5h.01M15 5h.01M9 12h.01M15 12h.01M9 19h.01M15 19h.01",

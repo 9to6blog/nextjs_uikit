@@ -51,7 +51,7 @@ export const catalog: ComponentEntry[] = [
     name: "Badge",
     description: "의미 있는 색상과 작은 상태 표시.",
     group: "core",
-    api: "tone, dot",
+    api: "tone (neutral/accent/success/warning/danger), variant (soft/outline/ghost), dot",
     usage: '<Badge tone="success" dot>게시됨</Badge>',
     source: "badge",
   },
