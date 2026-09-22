@@ -17,6 +17,13 @@ The catalog contains 79 documented components spanning primitives, forms, naviga
 - Questionnaire text/email/textarea/select/radio fields, native validation, async pending and error handling.
 - Dialog/menu/tooltip/popover/scroll/layout primitives with their exposed upstream props.
 
+## Compositions
+
+- 24 independently imported blocks: Editorial Hero, Article Grid, Featured Story, Reading List, Author Profile, Article Outline; Analytics Overview, Activity Feed, Project Board, Task Panel, Team Directory, Command Workspace; Sign In, Newsletter, Contact, Profile Settings, Notification Settings, Upload Panel; Pricing, FAQ, Testimonials, Feature Grid, Stats Band, Release Notes. Each has a typed API, its own preview route and a self-contained example. Import `@9to6/ui/blocks.css` after the base styles.
+- `ChartView` supports line, area, bar, horizontal-bar, stacked-bar, stacked-area, pie, donut, radar, radial, scatter and composed. Circular views use the first series. Scatter uses `xKey` for numeric X values; the other views use `categoryKey` for categories. It includes a legend and optional data table; app data must contain valid numeric series values. The lower-level chart primitives remain available for custom layouts.
+- Carousel supports horizontal/vertical axes, responsive slide widths (full width at 640px and below), dots, thumbnails, scroll-snap index callbacks and optional autoplay. Focus, drag and manual navigation pause rotation until explicit resume. Hover and document visibility temporarily pause it; reduced motion disables autoplay. Empty/one-slide views disable navigation. Multi-card views use Embla's visible-slide list for focus exclusion.
+- Blocks expose callbacks; authentication, persistence, billing and uploads belong to the consuming app. Native field validation is a UI convenience. Project Board uses a keyboard-accessible status selector, not cross-column drag-and-drop. Article Outline receives progress/current section from the caller. Carousel thumbnail buttons refer to scroll snaps; when using multiple slides and edge containment, there may be fewer snaps than slides.
+
 ## Explicit limits
 
 - Components expose NINE UI's own composition APIs, variants, tokens and motion settings.

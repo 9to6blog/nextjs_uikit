@@ -6,6 +6,22 @@ React와 Next.js를 위한 독립 UI 라이브러리. 조합 가능한 컴포넌
 
 **[라이브 문서와 데모](https://9to6blog.github.io/nextjs_uikit/)** · [배포 방법](docs/PUBLISHING.md)
 
+## 블록·차트·캐러셀
+
+- [블록 24종](https://9to6blog.github.io/nextjs_uikit/blocks/): 콘텐츠 6종, 대시보드 6종, 폼과 설정 6종, 마케팅 6종. 검색·분류·북마크·작업 상태·폼 제출 콜백을 실제 조작할 수 있으며 각 페이지에 독립 실행 예제와 소스를 제공합니다.
+- [차트 구성 12종](https://9to6blog.github.io/nextjs_uikit/charts/): 선, 영역, 막대, 가로 막대, 누적 막대, 누적 영역, 파이, 도넛, 레이더, 방사형, 산점도, 혼합. 범례와 데이터 표, 모션 감소를 함께 지원합니다.
+- [캐러셀 예제 6종](https://9to6blog.github.io/nextjs_uikit/carousels/): 에디토리얼, 후기, 썸네일, 다중 카드, 세로 이동, 자동 재생. 터치·키보드·점 탐색·현재 위치 콜백을 제공합니다.
+
+```tsx
+import "@9to6/ui/styles.css";
+import "@9to6/ui/blocks.css"; // 블록을 사용할 때만 추가
+import { TaskPanel } from "@9to6/ui/blocks/task-panel";
+import { ChartView } from "@9to6/ui/chart-view";
+import { Carousel } from "@9to6/ui/carousel";
+```
+
+블록은 인증·결제·DB·파일 저장을 포함하지 않습니다. 앱의 비동기 함수를 콜백에 연결하며, 성공과 실패는 그 함수의 결과에 따라 표시합니다. 갤러리의 데이터와 후기는 자체 작성한 예시입니다. 칸반 보드는 상태 선택기로 이동하며 드래그 이동 API는 포함하지 않습니다.
+
 ## 실행
 
 Node.js 22 이상, npm 10 이상이 필요합니다. 현재 개발 및 검증 버전은 lockfile과 `docs/VALIDATION.md`를 확인하세요.

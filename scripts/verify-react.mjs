@@ -81,9 +81,14 @@ await writeFile(
   join(fixture, "src/main.tsx"),
   `import {useState} from "react";
 import {createRoot} from "react-dom/client";
+import {TaskPanel,type TaskItem} from "@9to6/ui/blocks/task-panel";
+import {ChartView} from "@9to6/ui/chart-view";
+import {Carousel} from "@9to6/ui/carousel";
 import {UIProvider,Button,Checkbox,Combobox,NavLink,Dialog,DialogTrigger,DialogContent,DialogTitle,DialogDescription} from "@9to6/ui/react";
 import "@9to6/ui/styles.css";
-function App(){const [checked,setChecked]=useState(false);const [value,setValue]=useState("react");return <UIProvider><main style={{padding:32}}><h1>Standalone React</h1><NavLink href="#main" active>Current route</NavLink><label><Checkbox checked={checked} onCheckedChange={v=>setChecked(v===true)}/> Enable notifications</label><p role="status">{checked?"Enabled":"Disabled"}</p><Combobox label="Framework" value={value} onValueChange={setValue} style={{width:140}} contentMinWidth={240} options={[{value:"react",label:"React"},{value:"vite",label:"Vite"}]}/><Dialog><DialogTrigger asChild><Button>Open React dialog</Button></DialogTrigger><DialogContent><DialogTitle>React dialog</DialogTitle><DialogDescription>No Next.js dependency installed.</DialogDescription></DialogContent></Dialog></main></UIProvider>};createRoot(document.getElementById("root")!).render(<App/>);`,
+import "@9to6/ui/blocks.css";
+function Expansion(){const [tasks,setTasks]=useState<TaskItem[]>([{id:"review",title:"Review draft",done:false}]);return <div style={{maxWidth:640,marginTop:40}}><TaskPanel title="React tasks" tasks={tasks} onTasksChange={setTasks}/><ChartView kind="bar" label="React chart" data={[{name:"A",count:12},{name:"B",count:24}]} series={[{key:"count",label:"Count"}]}/><Carousel label="React carousel" dots slides={[<p key="1">First</p>,<p key="2">Second</p>]}/></div>}
+function App(){const [checked,setChecked]=useState(false);const [value,setValue]=useState("react");return <UIProvider><main style={{padding:32}}><h1>Standalone React</h1><NavLink href="#main" active>Current route</NavLink><label><Checkbox checked={checked} onCheckedChange={v=>setChecked(v===true)}/> Enable notifications</label><p role="status">{checked?"Enabled":"Disabled"}</p><Combobox label="Framework" value={value} onValueChange={setValue} style={{width:140}} contentMinWidth={240} options={[{value:"react",label:"React"},{value:"vite",label:"Vite"}]}/><Dialog><DialogTrigger asChild><Button>Open React dialog</Button></DialogTrigger><DialogContent><DialogTitle>React dialog</DialogTitle><DialogDescription>No Next.js dependency installed.</DialogDescription></DialogContent></Dialog></main><Expansion/></UIProvider>};createRoot(document.getElementById("root")!).render(<App/>);`,
 );
 console.log("Installing a React + Vite consumer outside the workspace...");
 await run(
@@ -139,8 +144,10 @@ try {
   await expect(
     page.getByRole("link", { name: "Current route" }),
   ).toHaveAttribute("aria-current", "page");
-  await page.getByRole("checkbox").click();
-  await expect(page.getByRole("status")).toHaveText("Enabled");
+  await page.getByRole("checkbox", { name: "Enable notifications" }).click();
+  await expect(
+    page.getByRole("status").filter({ hasText: "Enabled" }),
+  ).toHaveText("Enabled");
   await page.getByRole("button", { name: "Framework", exact: true }).click();
   await page.evaluate(async () => {
     await new Promise(requestAnimationFrame);
@@ -168,6 +175,17 @@ try {
     page.getByRole("button", { name: "Open React dialog" }),
   ).toBeFocused();
   assert.deepEqual(errors, []);
+  await page.getByRole("checkbox", { name: "Review draft" }).click();
+  await expect(
+    page.getByRole("checkbox", { name: "Review draft" }),
+  ).toBeChecked();
+  await expect(page.locator(".n-block")).toHaveCSS("border-radius", "16px");
+  await expect(page.locator(".recharts-bar-rectangle")).toHaveCount(2);
+  await page.getByRole("button", { name: "2번 슬라이드 보기" }).click();
+  await expect(page.locator(".n-carousel-controls span[aria-live]")).toHaveText(
+    "2 / 2",
+  );
+  assert.deepEqual(errors, []);
   const evidence = {
     date: new Date().toISOString(),
     fixture,
@@ -181,6 +199,9 @@ try {
     combobox: true,
     dialog: true,
     activeLink: true,
+    block: true,
+    chart: true,
+    carousel: true,
     browserErrors: errors,
   };
   await writeFile(

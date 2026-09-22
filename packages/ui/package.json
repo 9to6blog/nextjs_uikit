@@ -20,6 +20,7 @@
       "import": "./dist/index.js"
     },
     "./styles.css": "./dist/styles.css",
+    "./blocks.css": "./dist/blocks.css",
     "./*": {
       "types": "./dist/*.d.ts",
       "import": "./dist/*.js"

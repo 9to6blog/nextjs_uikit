@@ -40,6 +40,7 @@ import {
 } from "@9to6/ui/command";
 import { Toaster } from "@9to6/ui/toast";
 import { catalog, groupLabels, groupOrder } from "@/lib/catalog";
+import { blocks, blockGroups } from "@/lib/blocks";
 
 type Settings = Required<UISettings>;
 const initial: Settings = {
@@ -115,6 +116,9 @@ function ComponentNavigation({ onNavigate }: { onNavigate?: () => void }) {
           ["/foundations/", "디자인 토큰"],
           ["/motion/", "모션 스튜디오"],
           ["/quality/", "지원 범위와 검증"],
+          ["/blocks/", "블록 갤러리 · 24"],
+          ["/charts/", "차트 갤러리 · 12"],
+          ["/carousels/", "캐러셀 갤러리 · 6"],
         ].map(([href, label]) => (
           <Link
             key={href}
@@ -130,34 +134,61 @@ function ComponentNavigation({ onNavigate }: { onNavigate?: () => void }) {
           </Link>
         ))}
       </div>
-      {groupOrder.map((group) => (
-        <div className="nav-group" key={group}>
-          <span className="nav-group-title">
-            {groupLabels[group]}
-            <span>{catalog.filter((item) => item.group === group).length}</span>
-          </span>
-          {catalog
-            .filter((item) => item.group === group)
-            .map((item) => (
-              <Link
-                key={item.slug}
-                href={`/components/${item.slug}/`}
-                onClick={onNavigate}
-                aria-current={
-                  pathname.includes(`/components/${item.slug}`) &&
-                  pathname.replace(/\/$/, "").endsWith(item.slug)
-                    ? "page"
-                    : undefined
-                }
-              >
-                {item.name}
-                {["tabs", "dialog", "switch"].includes(item.slug) && (
-                  <span className="nav-dot" />
-                )}
-              </Link>
-            ))}
-        </div>
-      ))}
+      {pathname.startsWith("/blocks")
+        ? Object.entries(blockGroups).map(([group, label]) => (
+            <div className="nav-group" key={group}>
+              <span className="nav-group-title">
+                {label}
+                <span>6</span>
+              </span>
+              {blocks
+                .filter((b) => b.group === group)
+                .map((b) => (
+                  <Link
+                    key={b.slug}
+                    href={`/blocks/${b.slug}/`}
+                    onClick={onNavigate}
+                    aria-current={
+                      pathname.replace(/\/$/, "").endsWith(`/${b.slug}`)
+                        ? "page"
+                        : undefined
+                    }
+                  >
+                    {b.name}
+                  </Link>
+                ))}
+            </div>
+          ))
+        : groupOrder.map((group) => (
+            <div className="nav-group" key={group}>
+              <span className="nav-group-title">
+                {groupLabels[group]}
+                <span>
+                  {catalog.filter((item) => item.group === group).length}
+                </span>
+              </span>
+              {catalog
+                .filter((item) => item.group === group)
+                .map((item) => (
+                  <Link
+                    key={item.slug}
+                    href={`/components/${item.slug}/`}
+                    onClick={onNavigate}
+                    aria-current={
+                      pathname.includes(`/components/${item.slug}`) &&
+                      pathname.replace(/\/$/, "").endsWith(item.slug)
+                        ? "page"
+                        : undefined
+                    }
+                  >
+                    {item.name}
+                    {["tabs", "dialog", "switch"].includes(item.slug) && (
+                      <span className="nav-dot" />
+                    )}
+                  </Link>
+                ))}
+            </div>
+          ))}
     </nav>
   );
 }
@@ -214,6 +245,24 @@ export function AppShell({ children }: { children: ReactNode }) {
                 data-active={pathname.startsWith("/foundations")}
               >
                 Foundations
+              </Link>
+              <Link
+                href="/blocks/"
+                data-active={pathname.startsWith("/blocks")}
+              >
+                Blocks
+              </Link>
+              <Link
+                href="/charts/"
+                data-active={pathname.startsWith("/charts")}
+              >
+                Charts
+              </Link>
+              <Link
+                href="/carousels/"
+                data-active={pathname.startsWith("/carousels")}
+              >
+                Carousels
               </Link>
               <Link
                 href="/motion/"
@@ -305,6 +354,40 @@ export function AppShell({ children }: { children: ReactNode }) {
               />
               <CommandList>
                 <CommandEmpty>검색 결과가 없습니다.</CommandEmpty>
+                <CommandGroup heading="Blocks & galleries">
+                  <CommandItem
+                    value="차트 Charts"
+                    onSelect={() => {
+                      setSearch(false);
+                      router.push("/charts/");
+                    }}
+                  >
+                    차트 갤러리
+                  </CommandItem>
+                  <CommandItem
+                    value="캐러셀 Carousels"
+                    onSelect={() => {
+                      setSearch(false);
+                      router.push("/carousels/");
+                    }}
+                  >
+                    캐러셀 갤러리
+                  </CommandItem>
+                  {blocks.map((b) => (
+                    <CommandItem
+                      key={b.slug}
+                      value={`Block ${b.name}`}
+                      keywords={[b.description]}
+                      onSelect={() => {
+                        setSearch(false);
+                        router.push(`/blocks/${b.slug}/`);
+                      }}
+                    >
+                      <span>{b.name}</span>
+                      <ChevronRight size={13} />
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
                 {groupOrder.map((group) => (
                   <CommandGroup heading={groupLabels[group]} key={group}>
                     {catalog

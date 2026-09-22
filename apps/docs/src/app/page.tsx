@@ -78,6 +78,23 @@ export default function Home() {
         </div>
       </section>
       <section className="home-showcase">
+        <div className="home-collection-links">
+          <Link href="/blocks/">
+            <strong>24 Blocks</strong>
+            <span>컴포넌트를 조합한 완성된 화면</span>
+            <ArrowUpRight size={18} />
+          </Link>
+          <Link href="/charts/">
+            <strong>12 Charts</strong>
+            <span>데이터에 맞는 다양한 표현</span>
+            <ArrowUpRight size={18} />
+          </Link>
+          <Link href="/carousels/">
+            <strong>6 Carousels</strong>
+            <span>콘텐츠를 연결하는 움직임</span>
+            <ArrowUpRight size={18} />
+          </Link>
+        </div>
         <div className="section-heading">
           <div>
             <span className="eyebrow">THE BUILDING BLOCKS</span>

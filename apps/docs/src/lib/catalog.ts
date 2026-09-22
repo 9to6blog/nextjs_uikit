@@ -577,7 +577,7 @@ export const catalog: ComponentEntry[] = [
   {
     slug: "chart",
     name: "Chart",
-    description: "Area·Bar·Line·Pie·Radar 등 조합 가능한 차트.",
+    description: "개별 차트 요소와 12가지 데이터 시각화 구성을 지원합니다.",
     group: "data",
     api: "ChartContainer, config, label, ChartTooltip, ChartLegend, Recharts primitives",
     usage:
@@ -587,9 +587,9 @@ export const catalog: ComponentEntry[] = [
   {
     slug: "carousel",
     name: "Carousel",
-    description: "터치와 버튼으로 탐색하는 슬라이드.",
+    description: "터치·키보드·썸네일로 탐색하는 가로·세로 슬라이드.",
     group: "data",
-    api: "slides, label, loop",
+    api: "slides, label, loop, orientation, slideSize, height, dots, thumbnails, autoplay, interval, onIndexChange",
     usage:
       '<Carousel label="미리보기" slides={[<div key="a">첫 번째</div>, <div key="b">두 번째</div>]} />',
     source: "carousel",

@@ -104,6 +104,18 @@ export default async function ComponentPage({
             함께 제공하는 것을 권장합니다.
           </p>
         )}
+        {item.slug === "chart" && (
+          <p>
+            <Link href="/charts/">12가지 차트 유형과 데이터 표 예제 보기</Link>
+          </p>
+        )}
+        {item.slug === "carousel" && (
+          <p>
+            <Link href="/carousels/">
+              썸네일·다중 카드·세로 이동 등 6가지 캐러셀 예제 보기
+            </Link>
+          </p>
+        )}
         {item.slug === "submit-button" && (
           <p>
             상위 form의 action 안에서 사용합니다. 여기서는 클라이언트 비동기

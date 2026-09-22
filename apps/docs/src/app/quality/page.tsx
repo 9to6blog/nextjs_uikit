@@ -55,6 +55,13 @@ export default function Quality() {
       </section>
       <section className="doc-section">
         <h2>현재 제공하는 범위</h2>
+        <p>
+          <Link href="/blocks/">블록 24종</Link>,{" "}
+          <Link href="/charts/">차트 구성 12종</Link>,{" "}
+          <Link href="/carousels/">캐러셀 예제 6종</Link>을 별도 갤러리로
+          제공합니다. 블록은 콘텐츠·대시보드·폼·마케팅 화면을 다루며,
+          저장·인증·결제는 호출하는 앱의 API로 연결합니다.
+        </p>
         <ul className="doc-list">
           <li>
             타입 선언, 개별 import 경로, 정적 CSS, 소스 registry, 정적 문서
