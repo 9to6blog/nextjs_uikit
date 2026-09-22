@@ -1,0 +1,70 @@
+1:"$Sreact.fragment"
+2:I[49615,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"AppShell"]
+3:I[39756,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+4:I[37457,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+6:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"ViewportBoundary"]
+c:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"MetadataBoundary"]
+e:I[68027,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default",1]
+:HL["/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","style"]
+9:X
+0:{"P":null,"c":["","blocks","feature-grid",""],"q":"","i":false,"f":[[["",{"children":["blocks",{"children":[["slug","feature-grid","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","async":true,"nonce":"$undefined"}],["$","script","script-2",{"src":"/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","async":true,"nonce":"$undefined"}],["$","script","script-3",{"src":"/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"ko","children":["$","body",null,{"children":["$","$L2",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$9"]},null,false,"$9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],null]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"K2AkQnm45RyRB1tWhDsMO"}
+9:C
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+d:[["$","title","0",{"children":"Feature Grid · NINE UI"}],["$","meta","1",{"name":"description","content":"Next.js를 위한 독립 UI 라이브러리. 조합 가능한 컴포넌트, 의미 있는 모션, 나만의 디자인 시스템."}]]
+f:I[22016,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],""]
+10:I[60253,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],"BlockDemo"]
+11:I[83266,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],"CodeBlock"]
+12:T5ca,import { FeatureGrid } from "@9to6/ui/blocks/feature-grid";
+import { Icon } from "@9to6/ui/icons";
+
+export default function Example() {
+  return (
+    <FeatureGrid
+      title="생각을 완성하는 도구들"
+      features={[
+        {
+          id: "write",
+          title: "흐름을 지키는 기록",
+          description: "생각이 떠오르는 순서대로 가볍게 적습니다.",
+          icon: <Icon name="document" />,
+        },
+        {
+          id: "save",
+          title: "다시 꺼내는 발견",
+          description: "좋은 자료와 문장을 한곳에 모읍니다.",
+          icon: <Icon name="bookmark" />,
+        },
+        {
+          id: "plan",
+          title: "꾸준한 발행",
+          description: "기록의 리듬을 내 일정에 맞춥니다.",
+          icon: <Icon name="calendar" />,
+        },
+        {
+          id: "share",
+          title: "열린 이야기",
+          description: "완성한 글을 읽기 좋은 화면으로 전합니다.",
+          icon: <Icon name="arrow-up-right" />,
+        },
+        {
+          id: "review",
+          title: "세심한 검토",
+          description: "마지막 확인까지 놓치지 않습니다.",
+          icon: <Icon name="check" />,
+        },
+        {
+          id: "grow",
+          title: "쌓이는 경험",
+          description: "하나씩 더하며 나만의 기준을 만듭니다.",
+          icon: <Icon name="arrow-up" />,
+        },
+      ]}
+    />
+  );
+}
+5:["$","article",null,{"className":"component-page block-page","children":[["$","div",null,{"className":"doc-breadcrumb","children":[["$","$Lf",null,{"href":"/blocks/","children":"Blocks"}],["$","span",null,{"children":"/"}],"Marketing · 소개와 안내"]}],["$","header",null,{"className":"doc-heading","children":[["$","h1",null,{"children":"Feature Grid"}],["$","p",null,{"children":"SVG 아이콘과 핵심 기능을 배치한 반응형 특징 섹션."}]]}],["$","div",null,{"className":"preview-toolbar","children":[["$","span",null,{"children":"Preview"}],["$","span",null,{"children":"반응형 · Light / Dark"}]]}],["$","section",null,{"className":"block-preview","aria-label":"Feature Grid 미리보기","children":["$","$L10",null,{"slug":"feature-grid"}]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"이 블록 사용하기"}],["$","p",null,{"children":"패키지의 독립 경로로 가져옵니다. Next.js와 React 모두 같은 블록을 사용하며, 데이터 저장과 서버 요청은 앱의 콜백에 연결합니다."}],["$","$L11",null,{"code":"// Next.js: app/layout.tsx · React: 앱 진입 파일\nimport \"@9to6/ui/styles.css\";\nimport \"@9to6/ui/blocks.css\";"}],["$","div",null,{"className":"api-list","children":[["$","code","features: id",{"children":"features: id"}],["$","code","title",{"children":"title"}],["$","code","description",{"children":"description"}],["$","code","icon",{"children":"icon"}],["$","code","href",{"children":"href"}]]}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":"실행 가능한 예제 코드"}],["$","$L11",null,{"code":"$12","label":"feature-grid-example.tsx"}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":"블록 컴포넌트 소스"}],["$","$L11",null,{"code":"import type { ReactNode } from \"react\";\nimport { BlockShell, type BlockProps } from \"./shared.js\";\nexport type FeatureGridProps = BlockProps & {\n  features: {\n    id: string;\n    title: string;\n    description: string;\n    icon: ReactNode;\n    href?: string;\n  }[];\n};\nexport function FeatureGrid({ features, ...props }: FeatureGridProps) {\n  return (\n    <BlockShell {...props}>\n      <div className=\"n-block-grid n-block-features\">\n        {features.map((f) => (\n          <article key={f.id}>\n            <span className=\"n-block-symbol\" aria-hidden=\"true\">\n              {f.icon}\n            </span>\n            <h3>{f.href ? <a href={f.href}>{f.title}</a> : f.title}</h3>\n            <p>{f.description}</p>\n          </article>\n        ))}\n      </div>\n    </BlockShell>\n  );\n}\n","label":"blocks/feature-grid.tsx"}]]}],["$","p",null,{"className":"block-source-note","children":["예제에 있는 ",["$","code",null,{"children":"block-demo-*"}]," 클래스는 문서 안내용입니다. 블록의 스타일은 ","$L13","에 포함됩니다. 소스를 직접 복사할 때는 같은 폴더의 shared 모듈도 함께 가져오세요."]}],"$L14"]}]
+13:["$","code",null,{"children":"blocks.css"}]
+14:["$","nav",null,{"className":"doc-pagination","aria-label":"이전 다음 블록","children":[["$","$Lf",null,{"href":"/blocks/testimonials/","children":"Testimonials"}],["$","$Lf",null,{"href":"/blocks/stats-band/","children":"Stats Band"}]]}]

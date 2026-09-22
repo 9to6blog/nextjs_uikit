@@ -1,0 +1,164 @@
+1:"$Sreact.fragment"
+2:I[22016,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],""]
+3:I[60253,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],"BlockDemo"]
+4:I[83266,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],"CodeBlock"]
+5:T7c2,"use client";
+import { ArticleGrid } from "@9to6/ui/blocks/article-grid";
+
+const articles = [
+  {
+    id: "space",
+    title: "작은 여백의 힘",
+    excerpt: "요소 사이의 간격으로 읽는 흐름을 만드는 방법.",
+    category: "디자인",
+    href: "#article-space",
+    readingTime: "6분",
+    date: "2026. 09. 20",
+  },
+  {
+    id: "motion",
+    title: "모션에 이유를 더하기",
+    excerpt: "상태의 변화를 자연스럽게 알려 주는 움직임.",
+    category: "디자인",
+    href: "#article-motion",
+    readingTime: "8분",
+    date: "2026. 09. 18",
+  },
+  {
+    id: "server",
+    title: "가벼운 페이지를 만드는 습관",
+    excerpt: "클라이언트와 서버의 역할을 분명하게 나눕니다.",
+    category: "개발",
+    href: "#article-server",
+    readingTime: "5분",
+    date: "2026. 09. 16",
+  },
+];
+export default function Example() {
+  return (
+    <>
+      <ArticleGrid
+        title="최근에 기록한 것들"
+        description="관찰하고, 만들고, 다시 생각합니다."
+        articles={articles.map((a) => ({
+          ...a,
+          artwork: (
+            <svg
+              viewBox="0 0 300 240"
+              fill="none"
+              role="img"
+              aria-label="겹쳐진 종이와 검은 원의 추상 일러스트"
+            >
+              <path fill="#e9e7e2" d="M0 0h300v240H0z" />
+              <path fill="#fcfbf8" d="m45 30 195 18-15 165L30 190z" />
+              <circle cx="152" cy="108" r="52" fill="#171717" />
+              <path stroke="#a6a39b" d="M70 188h130M70 198h82" />
+            </svg>
+          ),
+        }))}
+      />
+      <div className="block-demo-destinations">
+        {articles.map((a) => (
+          <details key={a.id} id={`article-${a.id}`}>
+            <summary>{a.title} · 예시 본문</summary>
+            <p>{a.excerpt} 이곳을 실제 글 주소로 연결해 사용하세요.</p>
+          </details>
+        ))}
+      </div>
+    </>
+  );
+}
+6:T79a,"use client";
+import { useId, useState } from "react";
+import { Input } from "../input.js";
+import { Button } from "../button.js";
+import {
+  BlockShell,
+  ArticleTile,
+  type Article,
+  type BlockProps,
+} from "./shared.js";
+export type ArticleGridProps = BlockProps & { articles: Article[] };
+export function ArticleGrid({ articles, ...props }: ArticleGridProps) {
+  const id = useId();
+  const [query, setQuery] = useState("");
+  const [category, setCategory] = useState("전체");
+  const filtered = articles.filter(
+    (a) =>
+      (category === "전체" || a.category === category) &&
+      `${a.title} ${a.excerpt}`
+        .toLocaleLowerCase()
+        .includes(query.toLocaleLowerCase()),
+  );
+  return (
+    <BlockShell {...props}>
+      <div className="n-block-toolbar">
+        <label className="n-sr-only" htmlFor={id}>
+          글 검색
+        </label>
+        <Input
+          id={id}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="읽고 싶은 글 찾기"
+        />
+        <div className="n-block-chips" role="group" aria-label="글 분류">
+          {["전체", ...new Set(articles.map((a) => a.category))].map((c) => (
+            <Button
+              key={c}
+              size="sm"
+              variant={category === c ? "primary" : "ghost"}
+              aria-pressed={category === c}
+              onClick={() => setCategory(c)}
+            >
+              {c}
+            </Button>
+          ))}
+        </div>
+      </div>
+      <p className="n-block-muted" role="status">
+        {filtered.length}개의 글
+      </p>
+      <div className="n-block-grid">
+        {filtered.map((a) => (
+          <ArticleTile key={a.id} article={a} />
+        ))}
+      </div>
+      {!filtered.length && (
+        <p className="n-block-empty">
+          검색한 글이 없습니다. 다른 검색어를 입력해 보세요.
+        </p>
+      )}
+    </BlockShell>
+  );
+}
+c:X
+11:X
+11:C
+0:{"buildId":"K2AkQnm45RyRB1tWhDsMO","data":[{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"component-page block-page","children":[["$","div",null,{"className":"doc-breadcrumb","children":[["$","$L2",null,{"href":"/blocks/","children":"Blocks"}],["$","span",null,{"children":"/"}],"Content · 콘텐츠"]}],["$","header",null,{"className":"doc-heading","children":[["$","h1",null,{"children":"Article Grid"}],["$","p",null,{"children":"검색과 분류 필터가 있는 반응형 글 목록."}]]}],["$","div",null,{"className":"preview-toolbar","children":[["$","span",null,{"children":"Preview"}],["$","span",null,{"children":"반응형 · Light / Dark"}]]}],["$","section",null,{"className":"block-preview","aria-label":"Article Grid 미리보기","children":["$","$L3",null,{"slug":"article-grid"}]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"이 블록 사용하기"}],["$","p",null,{"children":"패키지의 독립 경로로 가져옵니다. Next.js와 React 모두 같은 블록을 사용하며, 데이터 저장과 서버 요청은 앱의 콜백에 연결합니다."}],["$","$L4",null,{"code":"// Next.js: app/layout.tsx · React: 앱 진입 파일\nimport \"@9to6/ui/styles.css\";\nimport \"@9to6/ui/blocks.css\";"}],["$","div",null,{"className":"api-list","children":[["$","code","articles: Article[]",{"children":"articles: Article[]"}]]}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":"실행 가능한 예제 코드"}],["$","$L4",null,{"code":"$5","label":"article-grid-example.tsx"}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":"블록 컴포넌트 소스"}],["$","$L4",null,{"code":"$6","label":"blocks/article-grid.tsx"}]]}],"$L7","$L8"]}],["$L9"],"$La"]}],"isPartial":"$@b","staleTime":"$c","varyParams":null},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$c","varyParams":null},{"rsc":"$Lf","isPartial":"$@10","staleTime":"$c","varyParams":"$11"},{"rsc":"$L12","isPartial":"$@13","staleTime":"$c","varyParams":"$11"},{"rsc":"$L14","isPartial":"$@15","staleTime":"$c","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@16","rootVaryParams":null,"needsRuntimeRequest":"$@17"}
+18:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+1b:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"ViewportBoundary"]
+1c:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"MetadataBoundary"]
+1d:I[39756,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+1e:I[37457,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+1f:I[49615,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"AppShell"]
+:HL["/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","style"]
+7:["$","p",null,{"className":"block-source-note","children":["예제에 있는 ",["$","code",null,{"children":"block-demo-*"}]," 클래스는 문서 안내용입니다. 블록의 스타일은 ",["$","code",null,{"children":"blocks.css"}],"에 포함됩니다. 소스를 직접 복사할 때는 같은 폴더의 shared 모듈도 함께 가져오세요."]}]
+8:["$","nav",null,{"className":"doc-pagination","aria-label":"이전 다음 블록","children":[["$","$L2",null,{"href":"/blocks/editorial-hero/","children":"Editorial Hero"}],["$","$L2",null,{"href":"/blocks/featured-story/","children":"Featured Story"}]]}]
+9:["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js","async":true}]
+a:["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]
+d:["$","$1","h",{"children":[null,["$","$L1b",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L1c",null,{"children":["$","$19",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Article Grid · NINE UI"}],["$","meta","1",{"name":"description","content":"Next.js를 위한 독립 UI 라이브러리. 조합 가능한 컴포넌트, 의미 있는 모션, 나만의 디자인 시스템."}]]}]}]}],null]}]
+f:["$","$1","c",{"children":[null,["$","$L1d",null,{"parallelRouterKey":"children","template":["$","$L1e",null,{}]}]]}]
+12:["$","$1","c",{"children":[null,["$","$L1d",null,{"parallelRouterKey":"children","template":["$","$L1e",null,{}]}]]}]
+14:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","precedence":"next"}],["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","async":true}],["$","script","script-1",{"src":"/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","async":true}],["$","script","script-2",{"src":"/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","async":true}],["$","script","script-3",{"src":"/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","async":true}]],["$","html",null,{"lang":"ko","children":["$","body",null,{"children":["$","$L1f",null,{"children":["$","$L1d",null,{"parallelRouterKey":"children","template":["$","$L1e",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]}]]}]
+1a:null
+17:true
+c:300
+c:C
+16:0
+e:"$undefined"
+10:"$undefined"
+13:"$undefined"
+15:"$undefined"
+b:"$undefined"

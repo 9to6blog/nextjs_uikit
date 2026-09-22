@@ -1,0 +1,103 @@
+1:"$Sreact.fragment"
+2:I[22016,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],""]
+3:I[60253,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],"BlockDemo"]
+4:I[83266,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],"CodeBlock"]
+5:T4c1,import { EditorialHero } from "@9to6/ui/blocks/editorial-hero";
+
+export default function Example() {
+  return (
+    <>
+      <EditorialHero
+        title={"생각을 기록하고,\n다음으로 나아가세요."}
+        description="작은 발견을 모아 오래 읽히는 이야기로 만듭니다."
+        eyebrow="THE QUIET STUDIO"
+        primary={{ label: "글 둘러보기", href: "#hero-articles" }}
+        secondary={{ label: "작업실 소개", href: "#hero-about" }}
+        artwork={
+          <svg
+            viewBox="0 0 300 240"
+            fill="none"
+            role="img"
+            aria-label="겹쳐진 종이와 검은 원의 추상 일러스트"
+          >
+            <path fill="#e9e7e2" d="M0 0h300v240H0z" />
+            <path fill="#fcfbf8" d="m45 30 195 18-15 165L30 190z" />
+            <circle cx="152" cy="108" r="52" fill="#171717" />
+            <path stroke="#a6a39b" d="M70 188h130M70 198h82" />
+          </svg>
+        }
+      />
+      <div className="block-demo-destinations">
+        <p id="hero-articles">최근 글 · 작은 여백의 힘</p>
+        <p id="hero-about">매주 하나의 발견을 기록하는 작은 작업실입니다.</p>
+      </div>
+    </>
+  );
+}
+6:T409,import type { ReactNode } from "react";
+import { Badge } from "../badge.js";
+import { BlockLink, type BlockProps } from "./shared.js";
+export type EditorialHeroProps = BlockProps & {
+  eyebrow?: string;
+  primary: { label: string; href: string };
+  secondary?: { label: string; href: string };
+  artwork?: ReactNode;
+};
+export function EditorialHero({
+  title,
+  description,
+  eyebrow,
+  primary,
+  secondary,
+  artwork,
+  className,
+}: EditorialHeroProps) {
+  return (
+    <section className={`n-block n-block-hero ${className ?? ""}`}>
+      <div>
+        {eyebrow && <Badge>{eyebrow}</Badge>}
+        <h2>{title}</h2>
+        <p>{description}</p>
+        <div className="n-block-actions">
+          <BlockLink href={primary.href}>{primary.label}</BlockLink>
+          {secondary && (
+            <BlockLink href={secondary.href} secondary>
+              {secondary.label}
+            </BlockLink>
+          )}
+        </div>
+      </div>
+      {artwork && <div className="n-block-hero-art">{artwork}</div>}
+    </section>
+  );
+}
+c:X
+11:X
+11:C
+0:{"buildId":"K2AkQnm45RyRB1tWhDsMO","data":[{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"component-page block-page","children":[["$","div",null,{"className":"doc-breadcrumb","children":[["$","$L2",null,{"href":"/blocks/","children":"Blocks"}],["$","span",null,{"children":"/"}],"Content · 콘텐츠"]}],["$","header",null,{"className":"doc-heading","children":[["$","h1",null,{"children":"Editorial Hero"}],["$","p",null,{"children":"글과 제품의 첫인상을 만드는 비주얼 히어로."}]]}],["$","div",null,{"className":"preview-toolbar","children":[["$","span",null,{"children":"Preview"}],["$","span",null,{"children":"반응형 · Light / Dark"}]]}],["$","section",null,{"className":"block-preview","aria-label":"Editorial Hero 미리보기","children":["$","$L3",null,{"slug":"editorial-hero"}]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"이 블록 사용하기"}],["$","p",null,{"children":"패키지의 독립 경로로 가져옵니다. Next.js와 React 모두 같은 블록을 사용하며, 데이터 저장과 서버 요청은 앱의 콜백에 연결합니다."}],["$","$L4",null,{"code":"// Next.js: app/layout.tsx · React: 앱 진입 파일\nimport \"@9to6/ui/styles.css\";\nimport \"@9to6/ui/blocks.css\";"}],["$","div",null,{"className":"api-list","children":[["$","code","title",{"children":"title"}],["$","code","description",{"children":"description"}],["$","code","eyebrow",{"children":"eyebrow"}],["$","code","primary",{"children":"primary"}],["$","code","secondary",{"children":"secondary"}],["$","code","artwork",{"children":"artwork"}]]}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":"실행 가능한 예제 코드"}],["$","$L4",null,{"code":"$5","label":"editorial-hero-example.tsx"}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":"블록 컴포넌트 소스"}],["$","$L4",null,{"code":"$6","label":"blocks/editorial-hero.tsx"}]]}],"$L7","$L8"]}],["$L9"],"$La"]}],"isPartial":"$@b","staleTime":"$c","varyParams":null},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$c","varyParams":null},{"rsc":"$Lf","isPartial":"$@10","staleTime":"$c","varyParams":"$11"},{"rsc":"$L12","isPartial":"$@13","staleTime":"$c","varyParams":"$11"},{"rsc":"$L14","isPartial":"$@15","staleTime":"$c","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@16","rootVaryParams":null,"needsRuntimeRequest":"$@17"}
+18:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+1b:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"ViewportBoundary"]
+1c:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"MetadataBoundary"]
+1d:I[39756,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+1e:I[37457,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+1f:I[49615,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"AppShell"]
+:HL["/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","style"]
+7:["$","p",null,{"className":"block-source-note","children":["예제에 있는 ",["$","code",null,{"children":"block-demo-*"}]," 클래스는 문서 안내용입니다. 블록의 스타일은 ",["$","code",null,{"children":"blocks.css"}],"에 포함됩니다. 소스를 직접 복사할 때는 같은 폴더의 shared 모듈도 함께 가져오세요."]}]
+8:["$","nav",null,{"className":"doc-pagination","aria-label":"이전 다음 블록","children":[["$","$L2",null,{"href":"/blocks/","children":"모든 블록"}],["$","$L2",null,{"href":"/blocks/article-grid/","children":"Article Grid"}]]}]
+9:["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js","async":true}]
+a:["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]
+d:["$","$1","h",{"children":[null,["$","$L1b",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L1c",null,{"children":["$","$19",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Editorial Hero · NINE UI"}],["$","meta","1",{"name":"description","content":"Next.js를 위한 독립 UI 라이브러리. 조합 가능한 컴포넌트, 의미 있는 모션, 나만의 디자인 시스템."}]]}]}]}],null]}]
+f:["$","$1","c",{"children":[null,["$","$L1d",null,{"parallelRouterKey":"children","template":["$","$L1e",null,{}]}]]}]
+12:["$","$1","c",{"children":[null,["$","$L1d",null,{"parallelRouterKey":"children","template":["$","$L1e",null,{}]}]]}]
+14:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","precedence":"next"}],["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","async":true}],["$","script","script-1",{"src":"/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","async":true}],["$","script","script-2",{"src":"/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","async":true}],["$","script","script-3",{"src":"/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","async":true}]],["$","html",null,{"lang":"ko","children":["$","body",null,{"children":["$","$L1f",null,{"children":["$","$L1d",null,{"parallelRouterKey":"children","template":["$","$L1e",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]}]]}]
+1a:null
+17:true
+c:300
+c:C
+16:0
+e:"$undefined"
+10:"$undefined"
+13:"$undefined"
+15:"$undefined"
+b:"$undefined"

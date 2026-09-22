@@ -1,0 +1,98 @@
+1:"$Sreact.fragment"
+2:I[49615,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"AppShell"]
+3:I[39756,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+4:I[37457,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+6:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"ViewportBoundary"]
+c:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"MetadataBoundary"]
+e:I[68027,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default",1]
+:HL["/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","style"]
+9:X
+0:{"P":null,"c":["","blocks","project-board",""],"q":"","i":false,"f":[[["",{"children":["blocks",{"children":[["slug","project-board","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","async":true,"nonce":"$undefined"}],["$","script","script-2",{"src":"/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","async":true,"nonce":"$undefined"}],["$","script","script-3",{"src":"/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"ko","children":["$","body",null,{"children":["$","$L2",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$9"]},null,false,"$9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],null]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"K2AkQnm45RyRB1tWhDsMO"}
+9:C
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+d:[["$","title","0",{"children":"Project Board · NINE UI"}],["$","meta","1",{"name":"description","content":"Next.js를 위한 독립 UI 라이브러리. 조합 가능한 컴포넌트, 의미 있는 모션, 나만의 디자인 시스템."}]]
+f:I[22016,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],""]
+10:I[60253,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],"BlockDemo"]
+11:I[83266,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],"CodeBlock"]
+12:T884,"use client";
+import { Badge } from "../badge.js";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../select.js";
+import { BlockShell, type BlockProps } from "./shared.js";
+export type BoardTask = {
+  id: string;
+  title: string;
+  description: string;
+  status: string;
+  tag: string;
+};
+export type ProjectBoardProps = BlockProps & {
+  columns: { id: string; label: string }[];
+  tasks: BoardTask[];
+  onTasksChange: (tasks: BoardTask[]) => void;
+};
+export function ProjectBoard({
+  columns,
+  tasks,
+  onTasksChange,
+  ...props
+}: ProjectBoardProps) {
+  return (
+    <BlockShell {...props}>
+      <div className="n-block-board">
+        {columns.map((c) => (
+          <section key={c.id}>
+            <h3>
+              {c.label}
+              <span>{tasks.filter((t) => t.status === c.id).length}</span>
+            </h3>
+            {tasks
+              .filter((t) => t.status === c.id)
+              .map((t) => (
+                <article key={t.id}>
+                  <Badge>{t.tag}</Badge>
+                  <h4>{t.title}</h4>
+                  <p>{t.description}</p>
+                  <Select
+                    value={t.status}
+                    onValueChange={(status) =>
+                      onTasksChange(
+                        tasks.map((a) =>
+                          a.id === t.id ? { ...a, status } : a,
+                        ),
+                      )
+                    }
+                  >
+                    <SelectTrigger aria-label={`${t.title} 상태`}>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {columns.map((o) => (
+                        <SelectItem value={o.id} key={o.id}>
+                          {o.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </article>
+              ))}
+            {!tasks.some((t) => t.status === c.id) && (
+              <p className="n-block-empty">아직 작업이 없습니다.</p>
+            )}
+          </section>
+        ))}
+      </div>
+    </BlockShell>
+  );
+}
+5:["$","article",null,{"className":"component-page block-page","children":[["$","div",null,{"className":"doc-breadcrumb","children":[["$","$Lf",null,{"href":"/blocks/","children":"Blocks"}],["$","span",null,{"children":"/"}],"Dashboard · 대시보드"]}],["$","header",null,{"className":"doc-heading","children":[["$","h1",null,{"children":"Project Board"}],["$","p",null,{"children":"접근 가능한 상태 선택기로 작업을 옮기는 칸반 보드."}]]}],["$","div",null,{"className":"preview-toolbar","children":[["$","span",null,{"children":"Preview"}],["$","span",null,{"children":"반응형 · Light / Dark"}]]}],["$","section",null,{"className":"block-preview","aria-label":"Project Board 미리보기","children":["$","$L10",null,{"slug":"project-board"}]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"이 블록 사용하기"}],["$","p",null,{"children":"패키지의 독립 경로로 가져옵니다. Next.js와 React 모두 같은 블록을 사용하며, 데이터 저장과 서버 요청은 앱의 콜백에 연결합니다."}],["$","$L11",null,{"code":"// Next.js: app/layout.tsx · React: 앱 진입 파일\nimport \"@9to6/ui/styles.css\";\nimport \"@9to6/ui/blocks.css\";"}],["$","div",null,{"className":"api-list","children":[["$","code","columns",{"children":"columns"}],["$","code","tasks",{"children":"tasks"}],["$","code","onTasksChange",{"children":"onTasksChange"}]]}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":"실행 가능한 예제 코드"}],["$","$L11",null,{"code":"\"use client\";\nimport { ProjectBoard } from \"@9to6/ui/blocks/project-board\";\nimport { useState } from \"react\";\nimport type { BoardTask } from \"@9to6/ui/blocks/project-board\";\n\nexport default function Example() {\n  const [tasks, setTasks] = useState<BoardTask[]>([\n    {\n      id: \"outline\",\n      title: \"글 구조 정리\",\n      description: \"핵심 질문 세 가지를 먼저 정합니다.\",\n      status: \"todo\",\n      tag: \"글쓰기\",\n    },\n    {\n      id: \"cover\",\n      title: \"표지 다듬기\",\n      description: \"주제에 맞는 도형과 색을 고릅니다.\",\n      status: \"doing\",\n      tag: \"디자인\",\n    },\n    {\n      id: \"check\",\n      title: \"링크 점검\",\n      description: \"본문에 연결한 자료를 확인합니다.\",\n      status: \"done\",\n      tag: \"검토\",\n    },\n  ]);\n  return (\n    <ProjectBoard\n      title=\"다음 발행 준비\"\n      description=\"각 카드의 상태를 변경해 보세요.\"\n      columns={[\n        { id: \"todo\", label: \"할 일\" },\n        { id: \"doing\", label: \"진행 중\" },\n        { id: \"done\", label: \"완료\" },\n      ]}\n      tasks={tasks}\n      onTasksChange={setTasks}\n    />\n  );\n}\n","label":"project-board-example.tsx"}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":"블록 컴포넌트 소스"}],["$","$L11",null,{"code":"$12","label":"blocks/project-board.tsx"}]]}],"$L13","$L14"]}]
+13:["$","p",null,{"className":"block-source-note","children":["예제에 있는 ",["$","code",null,{"children":"block-demo-*"}]," 클래스는 문서 안내용입니다. 블록의 스타일은 ",["$","code",null,{"children":"blocks.css"}],"에 포함됩니다. 소스를 직접 복사할 때는 같은 폴더의 shared 모듈도 함께 가져오세요."]}]
+14:["$","nav",null,{"className":"doc-pagination","aria-label":"이전 다음 블록","children":[["$","$Lf",null,{"href":"/blocks/activity-feed/","children":"Activity Feed"}],["$","$Lf",null,{"href":"/blocks/task-panel/","children":"Task Panel"}]]}]

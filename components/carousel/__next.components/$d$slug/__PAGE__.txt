@@ -1,58 +1,174 @@
 1:"$Sreact.fragment"
-2:I[5014,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/17sto58s9w48p.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js","/nextjs_uikit/_next/static/chunks/2o4e8t_t31qkx.js"],"default"]
-3:I[60133,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/17sto58s9w48p.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js","/nextjs_uikit/_next/static/chunks/2o4e8t_t31qkx.js"],"DemoHost"]
-4:I[83266,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/17sto58s9w48p.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js","/nextjs_uikit/_next/static/chunks/2o4e8t_t31qkx.js"],"CodeBlock"]
-5:T9eb,"use client";
+2:I[5014,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/3737e4s-99ypi.js"],"default"]
+3:I[60133,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/3737e4s-99ypi.js"],"DemoHost"]
+4:I[83266,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/3737e4s-99ypi.js"],"CodeBlock"]
+5:I[22016,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/3737e4s-99ypi.js"],""]
+6:T1b39,"use client";
 import { Icon } from "./icons.js";
-import { useCallback, useEffect, useState, type ReactNode } from "react";
+import {
+  useCallback,
+  useEffect,
+  useState,
+  type ReactNode,
+  type CSSProperties,
+} from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Button } from "./button.js";
 import { useReducedMotion } from "./use-reduced-motion.js";
+import { cn } from "./utils.js";
 export type CarouselProps = {
   slides: ReactNode[];
   label: string;
   loop?: boolean;
   className?: string;
+  orientation?: "horizontal" | "vertical";
+  /** Percentage width per slide on larger screens. Mobile uses a full slide. */
+  slideSize?: string;
+  height?: number;
+  dots?: boolean;
+  thumbnails?: ReactNode[];
+  /** Focus and manual navigation pause until explicitly resumed. */
+  autoplay?: boolean;
+  interval?: number;
+  onIndexChange?: (index: number) => void;
 };
 export function Carousel({
   slides,
   label,
   loop = false,
   className,
+  orientation = "horizontal",
+  slideSize = "100%",
+  height = 300,
+  dots = false,
+  thumbnails,
+  autoplay = false,
+  interval = 5000,
+  onIndexChange,
 }: CarouselProps) {
   const reducedMotion = useReducedMotion();
   const [ref, api] = useEmblaCarousel({
     loop,
+    axis: orientation === "vertical" ? "y" : "x",
+    align: "start",
+    inViewThreshold: 0.5,
     duration: reducedMotion ? 0 : 25,
   });
   const [state, setState] = useState({
     previous: false,
     next: slides.length > 1,
     index: 0,
+    snaps: slides.length,
+    visible: [0],
   });
+  const [stopped, setStopped] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const playing =
+    autoplay &&
+    !stopped &&
+    !hovered &&
+    !hidden &&
+    !reducedMotion &&
+    state.snaps > 1;
   const update = useCallback(() => {
     if (api)
       setState({
         previous: api.canScrollPrev(),
         next: api.canScrollNext(),
         index: api.selectedScrollSnap(),
+        snaps: slides.length ? api.scrollSnapList().length : 0,
+        visible: api.slidesInView(),
       });
-  }, [api]);
+  }, [api, slides.length]);
   useEffect(() => {
     if (!api) return;
-    api.on("select", update).on("reInit", update);
+    const changed = () => {
+      update();
+      onIndexChange?.(api.selectedScrollSnap());
+    };
+    const pause = () => setStopped(true);
+    api
+      .on("select", changed)
+      .on("reInit", update)
+      .on("slidesInView", update)
+      .on("pointerDown", pause);
     const frame = requestAnimationFrame(update);
     return () => {
       cancelAnimationFrame(frame);
-      api.off("select", update).off("reInit", update);
+      api
+        .off("select", changed)
+        .off("reInit", update)
+        .off("slidesInView", update)
+        .off("pointerDown", pause);
     };
-  }, [api, update]);
+  }, [api, update, onIndexChange]);
+  useEffect(() => {
+    const changed = () => setHidden(document.hidden);
+    document.addEventListener("visibilitychange", changed);
+    return () => document.removeEventListener("visibilitychange", changed);
+  }, []);
+  useEffect(() => {
+    if (!api || !playing) return;
+    const timer = window.setInterval(
+      () => (api.canScrollNext() ? api.scrollNext() : api.scrollTo(0)),
+      Number.isFinite(interval) ? Math.max(1000, interval) : 5000,
+    );
+    return () => window.clearInterval(timer);
+  }, [api, playing, interval]);
+  const move = (direction: "previous" | "next") => {
+    setStopped(true);
+    if (direction === "previous") api?.scrollPrev(reducedMotion);
+    else api?.scrollNext(reducedMotion);
+  };
   return (
     <section
-      className={className}
+      className={cn("n-carousel", className)}
       aria-label={label}
       aria-roledescription="carousel"
+      data-orientation={orientation}
+      data-playing={playing}
+      style={
+        {
+          "--n-slide-size": slideSize,
+          "--n-carousel-height": `${height}px`,
+        } as CSSProperties
+      }
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocusCapture={() => setStopped(true)}
+      onKeyDown={(event) => {
+        if (
+          (event.target as HTMLElement).closest(
+            "input,textarea,select,[contenteditable=true]",
+          )
+        )
+          return;
+        const prev = orientation === "vertical" ? "ArrowUp" : "ArrowLeft";
+        const next = orientation === "vertical" ? "ArrowDown" : "ArrowRight";
+        if (event.key === prev || event.key === next) {
+          event.preventDefault();
+          move(event.key === prev ? "previous" : "next");
+        }
+      }}
     >
+      {autoplay && (
+        <Button
+          className="n-carousel-rotation"
+          variant="ghost"
+          size="sm"
+          data-rotation-control
+          disabled={reducedMotion || slides.length < 2}
+          onPointerDown={(event) => event.preventDefault()}
+          onClick={() => setStopped(!stopped)}
+        >
+          {reducedMotion
+            ? "자동 재생 꺼짐 · 모션 감소"
+            : stopped
+              ? "자동 재생 시작"
+              : "자동 재생 정지"}
+        </Button>
+      )}
       <div ref={ref} className="n-carousel-viewport">
         <div className="n-carousel-track">
           {slides.map((slide, i) => (
@@ -62,7 +178,7 @@ export function Carousel({
               role="group"
               aria-roledescription="slide"
               aria-label={`${i + 1} / ${slides.length}`}
-              inert={i !== state.index}
+              inert={!state.visible.includes(i)}
             >
               {slide}
             </div>
@@ -75,53 +191,76 @@ export function Carousel({
           size="sm"
           aria-label="이전 슬라이드"
           disabled={!state.previous}
-          onClick={() => api?.scrollPrev(reducedMotion)}
+          onClick={() => move("previous")}
         >
-          <Icon name="arrow-left" />
+          <Icon name={orientation === "vertical" ? "arrow-up" : "arrow-left"} />
         </Button>
-        <span aria-live="polite">
-          {slides.length ? state.index + 1 : 0} / {slides.length}
+        <span aria-live={playing ? "off" : "polite"} aria-atomic="true">
+          {slides.length ? state.index + 1 : 0} / {state.snaps}
         </span>
         <Button
           variant="outline"
           size="sm"
           aria-label="다음 슬라이드"
           disabled={!state.next}
-          onClick={() => api?.scrollNext(reducedMotion)}
+          onClick={() => move("next")}
         >
-          <Icon name="arrow-right" />
+          <Icon
+            name={orientation === "vertical" ? "arrow-down" : "arrow-right"}
+          />
         </Button>
       </div>
+      {(dots || thumbnails) && (
+        <div
+          className={thumbnails ? "n-carousel-thumbnails" : "n-carousel-dots"}
+          role="group"
+          aria-label="슬라이드 선택"
+        >
+          {Array.from({ length: state.snaps }, (_, i) => (
+            <button
+              type="button"
+              key={i}
+              aria-label={`${i + 1}번 슬라이드 보기`}
+              aria-current={state.index === i ? "true" : undefined}
+              onClick={() => {
+                setStopped(true);
+                api?.scrollTo(i, reducedMotion);
+              }}
+            >
+              {thumbnails ? (thumbnails[i] ?? i + 1) : <span />}
+            </button>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
-a:X
-f:X
-f:C
-0:{"buildId":"1ly-nu0GYn1yD-PbG5JPO","data":[{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"component-page","children":[["$","div",null,{"className":"doc-breadcrumb","children":["Components ",["$","span",null,{"children":"/"}]," ","Data & layout"]}],["$","header",null,{"className":"doc-heading","children":[["$","div",null,{"className":"doc-title-row","children":[["$","h1",null,{"children":"Carousel"}],["$","span",null,{"data-slot":"badge","data-tone":"neutral","className":"n-badge","children":["$undefined","Client"]}]]}],["$","p",null,{"children":"터치와 버튼으로 탐색하는 슬라이드."}]]}],["$","div",null,{"className":"preview-toolbar","children":[["$","span",null,{"children":[["$","$L2",null,{"icon":{"name":"box","size":24,"node":[["path",{"d":"M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z","key":"hh9hay"}],["path",{"d":"m3.3 7 8.7 5 8.7-5","key":"g66t2b"}],["path",{"d":"M12 22V12","key":"d0xqtd"}]]},"size":14}]," Preview"]}],["$","div",null,{"children":[["$","span",null,{"data-slot":"badge","data-tone":"accent","className":"n-badge","children":["$undefined","Interactive"]}],["$","span",null,{"className":"preview-toolbar-hint","children":"직접 조작해 보세요"}]]}]]}],["$","section",null,{"className":"component-preview ","aria-label":"Carousel 미리보기","children":["$","$L3",null,{"name":"carousel","group":"data"}]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"Usage"}],["$","p",null,{"children":"개별 경로로 가져오면 필요한 컴포넌트를 명확하게 선택할 수 있습니다."}],["$","$L4",null,{"code":"// app/layout.tsx 에서 한 번 불러오기\nimport \"@9to6/ui/styles.css\";\n\n// 컴포넌트 경로: @9to6/ui/carousel\n<Carousel label=\"미리보기\" slides={[<div key=\"a\">첫 번째</div>, <div key=\"b\">두 번째</div>]} />"}]]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"API & composition"}],["$","div",null,{"className":"api-list","children":[["$","code","slides",{"children":"slides"}],["$","code","label",{"children":"label"}],["$","code","loop",{"children":"loop"}]]}],["$","p",null,{"children":"네이티브 요소와 기반 컴포넌트의 TypeScript 속성을 전달합니다. 정확한 타입과 기본값은 아래 소스와 패키지의 선언 파일에서 확인할 수 있습니다."}],false,false,false,false]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"Interaction notes"}],["$","ul",null,{"className":"doc-list","children":[["$","li",null,{"children":"컨트롤의 접근 가능한 이름을 label 또는 aria-label로 연결하세요."}],["$","li",null,{"children":"disabled, loading, empty, error 상태를 실제 데이터 흐름과 연결하세요."}],["$","li",null,{"children":"공통 모션은 운영체제의 prefers-reduced-motion 설정을 존중합니다."}],["$","li",null,{"children":"팝업 컴포넌트는 UIProvider의 테마·밀도·강조 색상을 포털에도 전달합니다."}]]}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":[["$","$L2",null,{"icon":{"name":"code-xml","size":24,"node":[["path",{"d":"m18 16 4-4-4-4","key":"1inbqp"}],["path",{"d":"m6 8-4 4 4 4","key":"15zrgr"}],["path",{"d":"m14.5 4-5 16","key":"e7oirm"}]],"aliases":["code-2"]},"size":16}]," Component source ",["$","span",null,{"children":["carousel",".tsx"]}]]}],["$","$L4",null,{"code":"$5","label":"carousel.tsx"}]]}],"$L6"]}],["$L7"],"$L8"]}],"isPartial":"$@9","staleTime":"$a","varyParams":null},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$a","varyParams":null},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$a","varyParams":"$f"},{"rsc":"$L10","isPartial":"$@11","staleTime":"$a","varyParams":"$f"},{"rsc":"$L12","isPartial":"$@13","staleTime":"$a","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@14","rootVaryParams":null,"needsRuntimeRequest":"$@15"}
-16:I[22016,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/17sto58s9w48p.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js","/nextjs_uikit/_next/static/chunks/2o4e8t_t31qkx.js"],""]
-17:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/17sto58s9w48p.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js"],"OutletBoundary"]
+b:X
+10:X
+10:C
+0:{"buildId":"K2AkQnm45RyRB1tWhDsMO","data":[{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"component-page","children":[["$","div",null,{"className":"doc-breadcrumb","children":["Components ",["$","span",null,{"children":"/"}]," ","Data & layout"]}],["$","header",null,{"className":"doc-heading","children":[["$","div",null,{"className":"doc-title-row","children":[["$","h1",null,{"children":"Carousel"}],["$","span",null,{"data-slot":"badge","data-tone":"neutral","className":"n-badge","children":["$undefined","Client"]}]]}],["$","p",null,{"children":"터치·키보드·썸네일로 탐색하는 가로·세로 슬라이드."}]]}],["$","div",null,{"className":"preview-toolbar","children":[["$","span",null,{"children":[["$","$L2",null,{"icon":{"name":"box","size":24,"node":[["path",{"d":"M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z","key":"hh9hay"}],["path",{"d":"m3.3 7 8.7 5 8.7-5","key":"g66t2b"}],["path",{"d":"M12 22V12","key":"d0xqtd"}]]},"size":14}]," Preview"]}],["$","div",null,{"children":[["$","span",null,{"data-slot":"badge","data-tone":"accent","className":"n-badge","children":["$undefined","Interactive"]}],["$","span",null,{"className":"preview-toolbar-hint","children":"직접 조작해 보세요"}]]}]]}],["$","section",null,{"className":"component-preview ","aria-label":"Carousel 미리보기","children":["$","$L3",null,{"name":"carousel","group":"data"}]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"Usage"}],["$","p",null,{"children":"개별 경로로 가져오면 필요한 컴포넌트를 명확하게 선택할 수 있습니다."}],["$","$L4",null,{"code":"// app/layout.tsx 에서 한 번 불러오기\nimport \"@9to6/ui/styles.css\";\n\n// 컴포넌트 경로: @9to6/ui/carousel\n<Carousel label=\"미리보기\" slides={[<div key=\"a\">첫 번째</div>, <div key=\"b\">두 번째</div>]} />"}]]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"API & composition"}],["$","div",null,{"className":"api-list","children":[["$","code","slides",{"children":"slides"}],["$","code","label",{"children":"label"}],["$","code","loop",{"children":"loop"}],["$","code","orientation",{"children":"orientation"}],["$","code","slideSize",{"children":"slideSize"}],["$","code","height",{"children":"height"}],["$","code","dots",{"children":"dots"}],["$","code","thumbnails",{"children":"thumbnails"}],["$","code","autoplay",{"children":"autoplay"}],["$","code","interval",{"children":"interval"}],["$","code","onIndexChange",{"children":"onIndexChange"}]]}],["$","p",null,{"children":"네이티브 요소와 기반 컴포넌트의 TypeScript 속성을 전달합니다. 정확한 타입과 기본값은 아래 소스와 패키지의 선언 파일에서 확인할 수 있습니다."}],false,false,false,false,["$","p",null,{"children":["$","$L5",null,{"href":"/carousels/","children":"썸네일·다중 카드·세로 이동 등 6가지 캐러셀 예제 보기"}]}],false]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"Interaction notes"}],["$","ul",null,{"className":"doc-list","children":[["$","li",null,{"children":"컨트롤의 접근 가능한 이름을 label 또는 aria-label로 연결하세요."}],["$","li",null,{"children":"disabled, loading, empty, error 상태를 실제 데이터 흐름과 연결하세요."}],["$","li",null,{"children":"공통 모션은 운영체제의 prefers-reduced-motion 설정을 존중합니다."}],["$","li",null,{"children":"팝업 컴포넌트는 UIProvider의 테마·밀도·강조 색상을 포털에도 전달합니다."}]]}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":[["$","$L2",null,{"icon":{"name":"code-xml","size":24,"node":[["path",{"d":"m18 16 4-4-4-4","key":"1inbqp"}],["path",{"d":"m6 8-4 4 4 4","key":"15zrgr"}],["path",{"d":"m14.5 4-5 16","key":"e7oirm"}]],"aliases":["code-2"]},"size":16}]," Component source ",["$","span",null,{"children":["carousel",".tsx"]}]]}],["$","$L4",null,{"code":"$6","label":"carousel.tsx"}]]}],"$L7"]}],["$L8"],"$L9"]}],"isPartial":"$@a","staleTime":"$b","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$b","varyParams":null},{"rsc":"$Le","isPartial":"$@f","staleTime":"$b","varyParams":"$10"},{"rsc":"$L11","isPartial":"$@12","staleTime":"$b","varyParams":"$10"},{"rsc":"$L13","isPartial":"$@14","staleTime":"$b","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@15","rootVaryParams":null,"needsRuntimeRequest":"$@16"}
+17:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"OutletBoundary"]
 18:"$Sreact.suspense"
-1a:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/17sto58s9w48p.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js"],"ViewportBoundary"]
-1b:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/17sto58s9w48p.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js"],"MetadataBoundary"]
-1c:I[39756,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/17sto58s9w48p.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js"],"default"]
-1d:I[37457,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/17sto58s9w48p.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js"],"default"]
-1e:I[49615,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/17sto58s9w48p.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js"],"AppShell"]
-:HL["/nextjs_uikit/_next/static/chunks/32sjqps_toykl.css","style"]
-6:["$","nav",null,{"className":"doc-pagination","aria-label":"이전 다음 컴포넌트","children":[["$","$L16",null,{"href":"/components/chart/","children":[["$","$L2",null,{"icon":{"name":"arrow-left","size":24,"node":[["path",{"d":"m12 19-7-7 7-7","key":"1l729n"}],["path",{"d":"M19 12H5","key":"x3x0zl"}]]},"size":14}],"Chart"]}],["$","$L16",null,{"href":"/components/scroll-area/","children":["Scroll Area",["$","$L2",null,{"icon":{"name":"arrow-right","size":24,"node":[["path",{"d":"M5 12h14","key":"1ays0h"}],["path",{"d":"m12 5 7 7-7 7","key":"xquz4c"}]]},"size":14}]]}]]}]
-7:["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/2o4e8t_t31qkx.js","async":true}]
-8:["$","$L17",null,{"children":["$","$18",null,{"name":"Next.MetadataOutlet","children":"$@19"}]}]
-b:["$","$1","h",{"children":[null,["$","$L1a",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L1b",null,{"children":["$","$18",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Carousel · NINE UI"}],["$","meta","1",{"name":"description","content":"Next.js를 위한 독립 UI 라이브러리. 조합 가능한 컴포넌트, 의미 있는 모션, 나만의 디자인 시스템."}]]}]}]}],null]}]
-d:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
-10:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
-12:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/nextjs_uikit/_next/static/chunks/32sjqps_toykl.css","precedence":"next"}],["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","async":true}],["$","script","script-1",{"src":"/nextjs_uikit/_next/static/chunks/17sto58s9w48p.js","async":true}],["$","script","script-2",{"src":"/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","async":true}],["$","script","script-3",{"src":"/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js","async":true}]],["$","html",null,{"lang":"ko","children":["$","body",null,{"children":["$","$L1e",null,{"children":["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]}]]}]
+1a:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"ViewportBoundary"]
+1b:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"MetadataBoundary"]
+1c:I[39756,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+1d:I[37457,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+1e:I[49615,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"AppShell"]
+:HL["/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","style"]
+7:["$","nav",null,{"className":"doc-pagination","aria-label":"이전 다음 컴포넌트","children":[["$","$L5",null,{"href":"/components/chart/","children":[["$","$L2",null,{"icon":{"name":"arrow-left","size":24,"node":[["path",{"d":"m12 19-7-7 7-7","key":"1l729n"}],["path",{"d":"M19 12H5","key":"x3x0zl"}]]},"size":14}],"Chart"]}],["$","$L5",null,{"href":"/components/scroll-area/","children":["Scroll Area",["$","$L2",null,{"icon":{"name":"arrow-right","size":24,"node":[["path",{"d":"M5 12h14","key":"1ays0h"}],["path",{"d":"m12 5 7 7-7 7","key":"xquz4c"}]]},"size":14}]]}]]}]
+8:["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/3737e4s-99ypi.js","async":true}]
+9:["$","$L17",null,{"children":["$","$18",null,{"name":"Next.MetadataOutlet","children":"$@19"}]}]
+c:["$","$1","h",{"children":[null,["$","$L1a",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L1b",null,{"children":["$","$18",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Carousel · NINE UI"}],["$","meta","1",{"name":"description","content":"Next.js를 위한 독립 UI 라이브러리. 조합 가능한 컴포넌트, 의미 있는 모션, 나만의 디자인 시스템."}]]}]}]}],null]}]
+e:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
+11:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
+13:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","precedence":"next"}],["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","async":true}],["$","script","script-1",{"src":"/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","async":true}],["$","script","script-2",{"src":"/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","async":true}],["$","script","script-3",{"src":"/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","async":true}]],["$","html",null,{"lang":"ko","children":["$","body",null,{"children":["$","$L1e",null,{"children":["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]}]]}]
 19:null
-15:true
-a:300
-a:C
-14:0
-c:"$undefined"
-e:"$undefined"
-11:"$undefined"
-13:"$undefined"
-9:"$undefined"
+16:true
+b:300
+b:C
+15:0
+d:"$undefined"
+f:"$undefined"
+12:"$undefined"
+14:"$undefined"
+a:"$undefined"

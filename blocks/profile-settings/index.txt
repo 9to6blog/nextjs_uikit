@@ -1,0 +1,107 @@
+1:"$Sreact.fragment"
+2:I[49615,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"AppShell"]
+3:I[39756,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+4:I[37457,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+6:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"ViewportBoundary"]
+c:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"MetadataBoundary"]
+e:I[68027,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default",1]
+:HL["/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","style"]
+9:X
+0:{"P":null,"c":["","blocks","profile-settings",""],"q":"","i":false,"f":[[["",{"children":["blocks",{"children":[["slug","profile-settings","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","async":true,"nonce":"$undefined"}],["$","script","script-2",{"src":"/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","async":true,"nonce":"$undefined"}],["$","script","script-3",{"src":"/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"ko","children":["$","body",null,{"children":["$","$L2",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$9"]},null,false,"$9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],null]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"K2AkQnm45RyRB1tWhDsMO"}
+9:C
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+d:[["$","title","0",{"children":"Profile Settings · NINE UI"}],["$","meta","1",{"name":"description","content":"Next.js를 위한 독립 UI 라이브러리. 조합 가능한 컴포넌트, 의미 있는 모션, 나만의 디자인 시스템."}]]
+f:I[22016,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],""]
+10:I[60253,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],"BlockDemo"]
+11:I[83266,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],"CodeBlock"]
+12:Ta45,"use client";
+import { useId } from "react";
+import { Input, Textarea, Field } from "../input.js";
+import { Button } from "../button.js";
+import { BlockShell, type BlockProps } from "./shared.js";
+import { useSubmission } from "./use-submission.js";
+export type ProfileValues = { name: string; handle: string; bio: string };
+export type ProfileSettingsProps = BlockProps & {
+  profile: ProfileValues;
+  onSave: (values: ProfileValues) => void | Promise<void>;
+  successMessage?: string;
+};
+export function ProfileSettings({
+  profile,
+  onSave,
+  successMessage = "프로필을 저장했습니다.",
+  ...props
+}: ProfileSettingsProps) {
+  const id = useId();
+  const { pending, run, feedback } = useSubmission(successMessage);
+  return (
+    <BlockShell {...props}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          const f = new FormData(e.currentTarget);
+          void run(() =>
+            onSave({
+              name: String(f.get("name")),
+              handle: String(f.get("handle")),
+              bio: String(f.get("bio")),
+            }),
+          );
+        }}
+      >
+        <fieldset disabled={pending}>
+          <div className="n-block-grid n-block-grid-two">
+            <Field label="표시 이름" htmlFor={`${id}-name`} required>
+              <Input
+                id={`${id}-name`}
+                name="name"
+                defaultValue={profile.name}
+                autoComplete="name"
+                required
+              />
+            </Field>
+            <Field
+              label="사용자 이름"
+              htmlFor={`${id}-handle`}
+              required
+              description="영문, 숫자, 밑줄로 입력하세요."
+            >
+              <Input
+                id={`${id}-handle`}
+                name="handle"
+                defaultValue={profile.handle}
+                pattern="[A-Za-z0-9_]+"
+                aria-describedby={`${id}-handle-hint`}
+                required
+              />
+            </Field>
+          </div>
+          <Field label="소개" htmlFor={`${id}-bio`}>
+            <Textarea
+              id={`${id}-bio`}
+              name="bio"
+              defaultValue={profile.bio}
+              maxLength={240}
+              rows={3}
+            />
+          </Field>
+          <div className="n-block-actions">
+            <Button type="submit" loading={pending}>
+              변경사항 저장
+            </Button>
+            <Button type="reset" variant="ghost">
+              되돌리기
+            </Button>
+          </div>
+        </fieldset>
+        {feedback}
+      </form>
+    </BlockShell>
+  );
+}
+5:["$","article",null,{"className":"component-page block-page","children":[["$","div",null,{"className":"doc-breadcrumb","children":[["$","$Lf",null,{"href":"/blocks/","children":"Blocks"}],["$","span",null,{"children":"/"}],"Forms · 입력과 설정"]}],["$","header",null,{"className":"doc-heading","children":[["$","h1",null,{"children":"Profile Settings"}],["$","p",null,{"children":"프로필 편집·초기화·저장 결과를 한 화면에 배치."}]]}],["$","div",null,{"className":"preview-toolbar","children":[["$","span",null,{"children":"Preview"}],["$","span",null,{"children":"반응형 · Light / Dark"}]]}],["$","section",null,{"className":"block-preview","aria-label":"Profile Settings 미리보기","children":["$","$L10",null,{"slug":"profile-settings"}]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"이 블록 사용하기"}],["$","p",null,{"children":"패키지의 독립 경로로 가져옵니다. Next.js와 React 모두 같은 블록을 사용하며, 데이터 저장과 서버 요청은 앱의 콜백에 연결합니다."}],["$","$L11",null,{"code":"// Next.js: app/layout.tsx · React: 앱 진입 파일\nimport \"@9to6/ui/styles.css\";\nimport \"@9to6/ui/blocks.css\";"}],["$","div",null,{"className":"api-list","children":[["$","code","profile",{"children":"profile"}],["$","code","onSave",{"children":"onSave"}],["$","code","successMessage",{"children":"successMessage"}]]}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":"실행 가능한 예제 코드"}],["$","$L11",null,{"code":"\"use client\";\nimport { ProfileSettings } from \"@9to6/ui/blocks/profile-settings\";\n\nexport default function Example() {\n  return (\n    <>\n      <p className=\"block-demo-note\">\n        브라우저 동작 예제입니다. 서버로 전송하거나 계정·구독을 만들지 않습니다.\n        사용하는 앱의 API를 콜백에 연결하세요.\n      </p>\n      <ProfileSettings\n        title=\"내 프로필\"\n        description=\"공개 프로필에 표시되는 정보를 관리합니다.\"\n        profile={{\n          name: \"지안\",\n          handle: \"quiet_studio\",\n          bio: \"디자인과 코드 사이에서 발견한 것들을 기록합니다.\",\n        }}\n        onSave={async () => {\n          await new Promise((resolve) => setTimeout(resolve, 400));\n        }}\n        successMessage=\"예시 프로필 콜백을 실행했습니다.\"\n      />\n    </>\n  );\n}\n","label":"profile-settings-example.tsx"}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":"블록 컴포넌트 소스"}],["$","$L11",null,{"code":"$12","label":"blocks/profile-settings.tsx"}]]}],"$L13","$L14"]}]
+13:["$","p",null,{"className":"block-source-note","children":["예제에 있는 ",["$","code",null,{"children":"block-demo-*"}]," 클래스는 문서 안내용입니다. 블록의 스타일은 ",["$","code",null,{"children":"blocks.css"}],"에 포함됩니다. 소스를 직접 복사할 때는 같은 폴더의 shared 모듈도 함께 가져오세요."]}]
+14:["$","nav",null,{"className":"doc-pagination","aria-label":"이전 다음 블록","children":[["$","$Lf",null,{"href":"/blocks/contact/","children":"Contact"}],["$","$Lf",null,{"href":"/blocks/notification-settings/","children":"Notification Settings"}]]}]

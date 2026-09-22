@@ -313,6 +313,37 @@
       ]
     },
     {
+      "name": "chart-view",
+      "type": "registry:ui",
+      "title": "NINE UI · chart-view",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/use-reduced-motion.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/chart.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/chart-view.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "chart",
       "type": "registry:ui",
       "title": "NINE UI · chart",

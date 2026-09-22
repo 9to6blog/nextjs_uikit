@@ -1,0 +1,97 @@
+1:"$Sreact.fragment"
+2:I[22016,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],""]
+3:I[60253,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],"BlockDemo"]
+4:I[83266,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],"CodeBlock"]
+5:T73a,import { FeaturedStory } from "@9to6/ui/blocks/featured-story";
+
+const articles = [
+  {
+    id: "space",
+    title: "작은 여백의 힘",
+    excerpt: "요소 사이의 간격으로 읽는 흐름을 만드는 방법.",
+    category: "디자인",
+    href: "#article-space",
+    readingTime: "6분",
+    date: "2026. 09. 20",
+  },
+  {
+    id: "motion",
+    title: "모션에 이유를 더하기",
+    excerpt: "상태의 변화를 자연스럽게 알려 주는 움직임.",
+    category: "디자인",
+    href: "#article-motion",
+    readingTime: "8분",
+    date: "2026. 09. 18",
+  },
+  {
+    id: "server",
+    title: "가벼운 페이지를 만드는 습관",
+    excerpt: "클라이언트와 서버의 역할을 분명하게 나눕니다.",
+    category: "개발",
+    href: "#article-server",
+    readingTime: "5분",
+    date: "2026. 09. 16",
+  },
+];
+export default function Example() {
+  return (
+    <>
+      <FeaturedStory
+        article={{
+          ...articles[0],
+          artwork: (
+            <svg
+              viewBox="0 0 300 240"
+              fill="none"
+              role="img"
+              aria-label="겹쳐진 종이와 검은 원의 추상 일러스트"
+            >
+              <path fill="#e9e7e2" d="M0 0h300v240H0z" />
+              <path fill="#fcfbf8" d="m45 30 195 18-15 165L30 190z" />
+              <circle cx="152" cy="108" r="52" fill="#171717" />
+              <path stroke="#a6a39b" d="M70 188h130M70 198h82" />
+            </svg>
+          ),
+        }}
+      />
+      <div className="block-demo-destinations">
+        {articles.map((a) => (
+          <details key={a.id} id={`article-${a.id}`}>
+            <summary>{a.title} · 예시 본문</summary>
+            <p>{a.excerpt} 이곳을 실제 글 주소로 연결해 사용하세요.</p>
+          </details>
+        ))}
+      </div>
+    </>
+  );
+}
+b:X
+10:X
+10:C
+0:{"buildId":"K2AkQnm45RyRB1tWhDsMO","data":[{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"component-page block-page","children":[["$","div",null,{"className":"doc-breadcrumb","children":[["$","$L2",null,{"href":"/blocks/","children":"Blocks"}],["$","span",null,{"children":"/"}],"Content · 콘텐츠"]}],["$","header",null,{"className":"doc-heading","children":[["$","h1",null,{"children":"Featured Story"}],["$","p",null,{"children":"큰 비주얼과 글 소개를 나란히 배치한 추천 콘텐츠."}]]}],["$","div",null,{"className":"preview-toolbar","children":[["$","span",null,{"children":"Preview"}],["$","span",null,{"children":"반응형 · Light / Dark"}]]}],["$","section",null,{"className":"block-preview","aria-label":"Featured Story 미리보기","children":["$","$L3",null,{"slug":"featured-story"}]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"이 블록 사용하기"}],["$","p",null,{"children":"패키지의 독립 경로로 가져옵니다. Next.js와 React 모두 같은 블록을 사용하며, 데이터 저장과 서버 요청은 앱의 콜백에 연결합니다."}],["$","$L4",null,{"code":"// Next.js: app/layout.tsx · React: 앱 진입 파일\nimport \"@9to6/ui/styles.css\";\nimport \"@9to6/ui/blocks.css\";"}],["$","div",null,{"className":"api-list","children":[["$","code","article",{"children":"article"}],["$","code","eyebrow",{"children":"eyebrow"}]]}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":"실행 가능한 예제 코드"}],["$","$L4",null,{"code":"$5","label":"featured-story-example.tsx"}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":"블록 컴포넌트 소스"}],["$","$L4",null,{"code":"import { Badge } from \"../badge.js\";\nimport { BlockLink, type Article } from \"./shared.js\";\nexport type FeaturedStoryProps = {\n  article: Article;\n  eyebrow?: string;\n  className?: string;\n};\nexport function FeaturedStory({\n  article,\n  eyebrow = \"추천 글\",\n  className,\n}: FeaturedStoryProps) {\n  return (\n    <article className={`n-block n-block-featured ${className ?? \"\"}`}>\n      <div className=\"n-block-featured-art\">{article.artwork}</div>\n      <div>\n        <Badge>{eyebrow}</Badge>\n        <h2>{article.title}</h2>\n        <p>{article.excerpt}</p>\n        <div className=\"n-block-meta\">\n          <span>{article.category}</span>\n          <span>{article.readingTime}</span>\n        </div>\n        <BlockLink href={article.href}>이야기 읽기</BlockLink>\n      </div>\n    </article>\n  );\n}\n","label":"blocks/featured-story.tsx"}]]}],"$L6","$L7"]}],["$L8"],"$L9"]}],"isPartial":"$@a","staleTime":"$b","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$b","varyParams":null},{"rsc":"$Le","isPartial":"$@f","staleTime":"$b","varyParams":"$10"},{"rsc":"$L11","isPartial":"$@12","staleTime":"$b","varyParams":"$10"},{"rsc":"$L13","isPartial":"$@14","staleTime":"$b","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@15","rootVaryParams":null,"needsRuntimeRequest":"$@16"}
+17:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"OutletBoundary"]
+18:"$Sreact.suspense"
+1a:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"ViewportBoundary"]
+1b:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"MetadataBoundary"]
+1c:I[39756,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+1d:I[37457,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+1e:I[49615,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"AppShell"]
+:HL["/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","style"]
+6:["$","p",null,{"className":"block-source-note","children":["예제에 있는 ",["$","code",null,{"children":"block-demo-*"}]," 클래스는 문서 안내용입니다. 블록의 스타일은 ",["$","code",null,{"children":"blocks.css"}],"에 포함됩니다. 소스를 직접 복사할 때는 같은 폴더의 shared 모듈도 함께 가져오세요."]}]
+7:["$","nav",null,{"className":"doc-pagination","aria-label":"이전 다음 블록","children":[["$","$L2",null,{"href":"/blocks/article-grid/","children":"Article Grid"}],["$","$L2",null,{"href":"/blocks/reading-list/","children":"Reading List"}]]}]
+8:["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js","async":true}]
+9:["$","$L17",null,{"children":["$","$18",null,{"name":"Next.MetadataOutlet","children":"$@19"}]}]
+c:["$","$1","h",{"children":[null,["$","$L1a",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L1b",null,{"children":["$","$18",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Featured Story · NINE UI"}],["$","meta","1",{"name":"description","content":"Next.js를 위한 독립 UI 라이브러리. 조합 가능한 컴포넌트, 의미 있는 모션, 나만의 디자인 시스템."}]]}]}]}],null]}]
+e:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
+11:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
+13:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","precedence":"next"}],["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","async":true}],["$","script","script-1",{"src":"/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","async":true}],["$","script","script-2",{"src":"/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","async":true}],["$","script","script-3",{"src":"/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","async":true}]],["$","html",null,{"lang":"ko","children":["$","body",null,{"children":["$","$L1e",null,{"children":["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]}]]}]
+19:null
+16:true
+b:300
+b:C
+15:0
+d:"$undefined"
+f:"$undefined"
+12:"$undefined"
+14:"$undefined"
+a:"$undefined"

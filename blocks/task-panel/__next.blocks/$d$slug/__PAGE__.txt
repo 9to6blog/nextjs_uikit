@@ -1,0 +1,93 @@
+1:"$Sreact.fragment"
+2:I[22016,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],""]
+3:I[60253,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],"BlockDemo"]
+4:I[83266,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],"CodeBlock"]
+5:T648,"use client";
+import { useId } from "react";
+import { Checkbox } from "../checkbox.js";
+import { Progress } from "../progress.js";
+import { BlockShell, type BlockProps } from "./shared.js";
+export type TaskItem = {
+  id: string;
+  title: string;
+  detail?: string;
+  done: boolean;
+};
+export type TaskPanelProps = BlockProps & {
+  tasks: TaskItem[];
+  onTasksChange: (tasks: TaskItem[]) => void;
+};
+export function TaskPanel({ tasks, onTasksChange, ...props }: TaskPanelProps) {
+  const id = useId();
+  const done = tasks.filter((t) => t.done).length;
+  return (
+    <BlockShell
+      {...props}
+      action={
+        <span className="n-block-muted" role="status">
+          {done} / {tasks.length} 완료
+        </span>
+      }
+    >
+      <Progress
+        label="작업 완료율"
+        value={tasks.length ? (done / tasks.length) * 100 : 0}
+      />
+      <ul className="n-block-list">
+        {tasks.map((t) => (
+          <li key={t.id}>
+            <Checkbox
+              id={`${id}-${t.id}`}
+              checked={t.done}
+              onCheckedChange={(checked) =>
+                onTasksChange(
+                  tasks.map((a) =>
+                    a.id === t.id ? { ...a, done: checked === true } : a,
+                  ),
+                )
+              }
+            />
+            <label
+              htmlFor={`${id}-${t.id}`}
+              className="n-block-grow"
+              data-done={t.done}
+            >
+              <strong>{t.title}</strong>
+              {t.detail && <p>{t.detail}</p>}
+            </label>
+          </li>
+        ))}
+      </ul>
+    </BlockShell>
+  );
+}
+b:X
+10:X
+10:C
+0:{"buildId":"K2AkQnm45RyRB1tWhDsMO","data":[{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"component-page block-page","children":[["$","div",null,{"className":"doc-breadcrumb","children":[["$","$L2",null,{"href":"/blocks/","children":"Blocks"}],["$","span",null,{"children":"/"}],"Dashboard · 대시보드"]}],["$","header",null,{"className":"doc-heading","children":[["$","h1",null,{"children":"Task Panel"}],["$","p",null,{"children":"자체 체크박스와 진행률을 함께 쓰는 작업 체크리스트."}]]}],["$","div",null,{"className":"preview-toolbar","children":[["$","span",null,{"children":"Preview"}],["$","span",null,{"children":"반응형 · Light / Dark"}]]}],["$","section",null,{"className":"block-preview","aria-label":"Task Panel 미리보기","children":["$","$L3",null,{"slug":"task-panel"}]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"이 블록 사용하기"}],["$","p",null,{"children":"패키지의 독립 경로로 가져옵니다. Next.js와 React 모두 같은 블록을 사용하며, 데이터 저장과 서버 요청은 앱의 콜백에 연결합니다."}],["$","$L4",null,{"code":"// Next.js: app/layout.tsx · React: 앱 진입 파일\nimport \"@9to6/ui/styles.css\";\nimport \"@9to6/ui/blocks.css\";"}],["$","div",null,{"className":"api-list","children":[["$","code","tasks",{"children":"tasks"}],["$","code","onTasksChange",{"children":"onTasksChange"}]]}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":"실행 가능한 예제 코드"}],["$","$L4",null,{"code":"\"use client\";\nimport { TaskPanel, type TaskItem } from \"@9to6/ui/blocks/task-panel\";\nimport { useState } from \"react\";\n\nexport default function Example() {\n  const [tasks, setTasks] = useState<TaskItem[]>([\n    {\n      id: \"title\",\n      title: \"제목과 설명 검토\",\n      detail: \"목록과 검색 화면에서도 자연스럽게\",\n      done: true,\n    },\n    {\n      id: \"alt\",\n      title: \"이미지 대체 텍스트 작성\",\n      detail: \"이미지의 역할을 짧게 설명하기\",\n      done: false,\n    },\n    {\n      id: \"preview\",\n      title: \"모바일 미리보기\",\n      detail: \"줄바꿈과 터치 영역 확인\",\n      done: false,\n    },\n  ]);\n  return (\n    <TaskPanel\n      title=\"발행 전 마지막 확인\"\n      tasks={tasks}\n      onTasksChange={setTasks}\n    />\n  );\n}\n","label":"task-panel-example.tsx"}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":"블록 컴포넌트 소스"}],["$","$L4",null,{"code":"$5","label":"blocks/task-panel.tsx"}]]}],"$L6","$L7"]}],["$L8"],"$L9"]}],"isPartial":"$@a","staleTime":"$b","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$b","varyParams":null},{"rsc":"$Le","isPartial":"$@f","staleTime":"$b","varyParams":"$10"},{"rsc":"$L11","isPartial":"$@12","staleTime":"$b","varyParams":"$10"},{"rsc":"$L13","isPartial":"$@14","staleTime":"$b","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@15","rootVaryParams":null,"needsRuntimeRequest":"$@16"}
+17:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"OutletBoundary"]
+18:"$Sreact.suspense"
+1a:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"ViewportBoundary"]
+1b:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"MetadataBoundary"]
+1c:I[39756,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+1d:I[37457,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+1e:I[49615,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"AppShell"]
+:HL["/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","style"]
+6:["$","p",null,{"className":"block-source-note","children":["예제에 있는 ",["$","code",null,{"children":"block-demo-*"}]," 클래스는 문서 안내용입니다. 블록의 스타일은 ",["$","code",null,{"children":"blocks.css"}],"에 포함됩니다. 소스를 직접 복사할 때는 같은 폴더의 shared 모듈도 함께 가져오세요."]}]
+7:["$","nav",null,{"className":"doc-pagination","aria-label":"이전 다음 블록","children":[["$","$L2",null,{"href":"/blocks/project-board/","children":"Project Board"}],["$","$L2",null,{"href":"/blocks/team-directory/","children":"Team Directory"}]]}]
+8:["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js","async":true}]
+9:["$","$L17",null,{"children":["$","$18",null,{"name":"Next.MetadataOutlet","children":"$@19"}]}]
+c:["$","$1","h",{"children":[null,["$","$L1a",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L1b",null,{"children":["$","$18",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Task Panel · NINE UI"}],["$","meta","1",{"name":"description","content":"Next.js를 위한 독립 UI 라이브러리. 조합 가능한 컴포넌트, 의미 있는 모션, 나만의 디자인 시스템."}]]}]}]}],null]}]
+e:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
+11:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
+13:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","precedence":"next"}],["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","async":true}],["$","script","script-1",{"src":"/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","async":true}],["$","script","script-2",{"src":"/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","async":true}],["$","script","script-3",{"src":"/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","async":true}]],["$","html",null,{"lang":"ko","children":["$","body",null,{"children":["$","$L1e",null,{"children":["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]}]]}]
+19:null
+16:true
+b:300
+b:C
+15:0
+d:"$undefined"
+f:"$undefined"
+12:"$undefined"
+14:"$undefined"
+a:"$undefined"

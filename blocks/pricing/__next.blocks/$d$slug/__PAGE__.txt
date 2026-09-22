@@ -1,0 +1,170 @@
+1:"$Sreact.fragment"
+2:I[22016,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],""]
+3:I[60253,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],"BlockDemo"]
+4:I[83266,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js"],"CodeBlock"]
+5:T632,"use client";
+import { Pricing } from "@9to6/ui/blocks/pricing";
+import { useState } from "react";
+
+export default function Example() {
+  const [selection, setSelection] = useState(
+    "플랜을 선택해 보세요. 결제는 발생하지 않습니다.",
+  );
+  return (
+    <>
+      <Pricing
+        title="작업실의 크기에 맞게"
+        description="아래 금액과 플랜은 화면 구성을 위한 예시입니다."
+        plans={[
+          {
+            id: "personal",
+            name: "개인",
+            description: "혼자 차분하게 기록하기",
+            monthly: 0,
+            yearly: 0,
+            features: ["글과 노트", "기본 테마", "공개 프로필"],
+          },
+          {
+            id: "studio",
+            name: "스튜디오",
+            description: "나만의 공간을 더 깊게",
+            monthly: 12000,
+            yearly: 120000,
+            recommended: true,
+            features: ["맞춤 도메인", "콘텐츠 분석", "예약 발행"],
+          },
+          {
+            id: "team",
+            name: "팀",
+            description: "동료와 함께 완성하기",
+            monthly: 29000,
+            yearly: 290000,
+            features: ["팀원 초대", "검토 워크플로", "팀 활동 기록"],
+          },
+        ]}
+        onSelect={(plan, billing) =>
+          setSelection(
+            `${plan.name} · ${billing === "monthly" ? "월간" : "연간"} 선택`,
+          )
+        }
+      />
+      <p role="status" className="block-demo-note">
+        {selection}
+      </p>
+    </>
+  );
+}
+6:T986,"use client";
+import { useState } from "react";
+import { Button } from "../button.js";
+import { Badge } from "../badge.js";
+import { Icon } from "../icons.js";
+import { BlockShell, type BlockProps } from "./shared.js";
+export type PricingPlan = {
+  id: string;
+  name: string;
+  description: string;
+  monthly: number;
+  yearly: number;
+  features: string[];
+  recommended?: boolean;
+};
+export type PricingProps = BlockProps & {
+  plans: PricingPlan[];
+  currency?: string;
+  locale?: string;
+  onSelect: (plan: PricingPlan, billing: "monthly" | "yearly") => void;
+};
+export function Pricing({
+  plans,
+  currency = "KRW",
+  locale = "ko-KR",
+  onSelect,
+  ...props
+}: PricingProps) {
+  const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
+  const money = new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency,
+    maximumFractionDigits: 0,
+  });
+  return (
+    <BlockShell {...props}>
+      <div className="n-block-chips" role="group" aria-label="결제 주기">
+        <Button
+          variant={billing === "monthly" ? "primary" : "ghost"}
+          aria-pressed={billing === "monthly"}
+          onClick={() => setBilling("monthly")}
+        >
+          월간 결제
+        </Button>
+        <Button
+          variant={billing === "yearly" ? "primary" : "ghost"}
+          aria-pressed={billing === "yearly"}
+          onClick={() => setBilling("yearly")}
+        >
+          연간 결제
+        </Button>
+      </div>
+      <div className="n-block-grid n-block-pricing">
+        {plans.map((p) => (
+          <article key={p.id} data-recommended={p.recommended}>
+            <div className="n-block-row">
+              <h3>{p.name}</h3>
+              {p.recommended && <Badge>추천</Badge>}
+            </div>
+            <p>{p.description}</p>
+            <div className="n-block-price">
+              {money.format(p[billing])}
+              <span>/ {billing === "monthly" ? "월" : "년"}</span>
+            </div>
+            <ul>
+              {p.features.map((f) => (
+                <li key={f}>
+                  <Icon name="check" />
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <Button
+              variant={p.recommended ? "primary" : "outline"}
+              onClick={() => onSelect(p, billing)}
+            >
+              {p.name} 선택
+            </Button>
+          </article>
+        ))}
+      </div>
+    </BlockShell>
+  );
+}
+c:X
+11:X
+11:C
+0:{"buildId":"K2AkQnm45RyRB1tWhDsMO","data":[{"rsc":["$","$1","c",{"children":[["$","article",null,{"className":"component-page block-page","children":[["$","div",null,{"className":"doc-breadcrumb","children":[["$","$L2",null,{"href":"/blocks/","children":"Blocks"}],["$","span",null,{"children":"/"}],"Marketing · 소개와 안내"]}],["$","header",null,{"className":"doc-heading","children":[["$","h1",null,{"children":"Pricing"}],["$","p",null,{"children":"월간·연간 금액 전환과 플랜 선택 콜백이 있는 요금표."}]]}],["$","div",null,{"className":"preview-toolbar","children":[["$","span",null,{"children":"Preview"}],["$","span",null,{"children":"반응형 · Light / Dark"}]]}],["$","section",null,{"className":"block-preview","aria-label":"Pricing 미리보기","children":["$","$L3",null,{"slug":"pricing"}]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"이 블록 사용하기"}],["$","p",null,{"children":"패키지의 독립 경로로 가져옵니다. Next.js와 React 모두 같은 블록을 사용하며, 데이터 저장과 서버 요청은 앱의 콜백에 연결합니다."}],["$","$L4",null,{"code":"// Next.js: app/layout.tsx · React: 앱 진입 파일\nimport \"@9to6/ui/styles.css\";\nimport \"@9to6/ui/blocks.css\";"}],["$","div",null,{"className":"api-list","children":[["$","code","plans",{"children":"plans"}],["$","code","currency",{"children":"currency"}],["$","code","locale",{"children":"locale"}],["$","code","onSelect",{"children":"onSelect"}]]}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":"실행 가능한 예제 코드"}],["$","$L4",null,{"code":"$5","label":"pricing-example.tsx"}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":"블록 컴포넌트 소스"}],["$","$L4",null,{"code":"$6","label":"blocks/pricing.tsx"}]]}],"$L7","$L8"]}],["$L9"],"$La"]}],"isPartial":"$@b","staleTime":"$c","varyParams":null},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$c","varyParams":null},{"rsc":"$Lf","isPartial":"$@10","staleTime":"$c","varyParams":"$11"},{"rsc":"$L12","isPartial":"$@13","staleTime":"$c","varyParams":"$11"},{"rsc":"$L14","isPartial":"$@15","staleTime":"$c","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@16","rootVaryParams":null,"needsRuntimeRequest":"$@17"}
+18:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+1b:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"ViewportBoundary"]
+1c:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"MetadataBoundary"]
+1d:I[39756,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+1e:I[37457,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"default"]
+1f:I[49615,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js"],"AppShell"]
+:HL["/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","style"]
+7:["$","p",null,{"className":"block-source-note","children":["예제에 있는 ",["$","code",null,{"children":"block-demo-*"}]," 클래스는 문서 안내용입니다. 블록의 스타일은 ",["$","code",null,{"children":"blocks.css"}],"에 포함됩니다. 소스를 직접 복사할 때는 같은 폴더의 shared 모듈도 함께 가져오세요."]}]
+8:["$","nav",null,{"className":"doc-pagination","aria-label":"이전 다음 블록","children":[["$","$L2",null,{"href":"/blocks/upload-panel/","children":"Upload Panel"}],["$","$L2",null,{"href":"/blocks/faq/","children":"FAQ"}]]}]
+9:["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/08q3rb8_eoy6q.js","async":true}]
+a:["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]
+d:["$","$1","h",{"children":[null,["$","$L1b",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L1c",null,{"children":["$","$19",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Pricing · NINE UI"}],["$","meta","1",{"name":"description","content":"Next.js를 위한 독립 UI 라이브러리. 조합 가능한 컴포넌트, 의미 있는 모션, 나만의 디자인 시스템."}]]}]}]}],null]}]
+f:["$","$1","c",{"children":[null,["$","$L1d",null,{"parallelRouterKey":"children","template":["$","$L1e",null,{}]}]]}]
+12:["$","$1","c",{"children":[null,["$","$L1d",null,{"parallelRouterKey":"children","template":["$","$L1e",null,{}]}]]}]
+14:["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/nextjs_uikit/_next/static/chunks/3-oqlgxtnzn1j.css","precedence":"next"}],["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","async":true}],["$","script","script-1",{"src":"/nextjs_uikit/_next/static/chunks/104mcs9lub5nv.js","async":true}],["$","script","script-2",{"src":"/nextjs_uikit/_next/static/chunks/3pj2cywmomr5d.js","async":true}],["$","script","script-3",{"src":"/nextjs_uikit/_next/static/chunks/2efoayj2fh7c4.js","async":true}]],["$","html",null,{"lang":"ko","children":["$","body",null,{"children":["$","$L1f",null,{"children":["$","$L1d",null,{"parallelRouterKey":"children","template":["$","$L1e",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]}]]}]
+1a:null
+17:true
+c:300
+c:C
+16:0
+e:"$undefined"
+10:"$undefined"
+13:"$undefined"
+15:"$undefined"
+b:"$undefined"

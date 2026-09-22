@@ -1,1 +1,0 @@
-(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,68533,e=>{"use strict";var t=e.i(71645);e.s(["useDemoReady",0,function(e){(0,t.useEffect)(()=>{let t=document.querySelectorAll(`[data-demo="${CSS.escape(e)}"]`);for(let e of t)e.dataset.ready="true";return()=>{for(let e of t)delete e.dataset.ready}},[e])}])}]);
