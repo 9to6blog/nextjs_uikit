@@ -1,11 +1,12 @@
 # Support contract — v0.1
 
-The catalog baseline is all 64 names shown in the Shadcn documentation on 2026-09-22, plus 15 independent additions, for 79 documented components. The additions include File Upload, Tree, Sortable, Nav Link, Submit Button and the ten motion patterns documented in [REFERENCE-DESIGN.md](REFERENCE-DESIGN.md). This is a finite inventory, not compatibility with every existing or future UI library.
+The catalog contains 79 documented components spanning primitives, forms, navigation, overlays, data presentation and motion patterns. These include File Upload, Tree, Sortable, Nav Link, Submit Button and the ten motion patterns documented in [REFERENCE-DESIGN.md](REFERENCE-DESIGN.md). This is a finite inventory; each component's documented API defines its supported behavior.
 
 ## Implemented
 
 - Native form props and React refs, disabled/error/loading examples, controlled or uncontrolled Radix APIs where those primitives support them.
 - Keyboard navigation, focus management, portal themes, light/dark/system themes, four accent presets (black by default), two density presets, reduced motion.
+- Radial Menu opens with the pointer's context-menu action, not an ordinary left click. Keyboard activation includes Shift+F10, the context-menu key, Enter and Space; Escape restores focus to the trigger.
 - SVG checkbox check/mixed strokes, radio springs, popup entrance/exit, moving highlights, blurred tabs, icon sidebar collapse, code typing/tabs, notification stacks, pinned/todo lists, radial menus, shine cards, multi-step dialogs and timezone clocks. See the reference matrix for individual APIs and limits.
 - Calendar single/multiple/range modes through DayPicker. Date Picker is a single-date composition; use Calendar with Popover for a range picker.
 - Data Table client filtering, sorting, paging, row selection, stable row IDs, column visibility and empty state.
@@ -16,9 +17,16 @@ The catalog baseline is all 64 names shown in the Shadcn documentation on 2026-0
 - Questionnaire text/email/textarea/select/radio fields, native validation, async pending and error handling.
 - Dialog/menu/tooltip/popover/scroll/layout primitives with their exposed upstream props.
 
+## Compositions
+
+- 24 independently imported blocks: Editorial Hero, Article Grid, Featured Story, Reading List, Author Profile, Article Outline; Analytics Overview, Activity Feed, Project Board, Task Panel, Team Directory, Command Workspace; Sign In, Newsletter, Contact, Profile Settings, Notification Settings, Upload Panel; Pricing, FAQ, Testimonials, Feature Grid, Stats Band, Release Notes. Each has a typed API, its own preview route and a self-contained example. Import `@9to6/ui/blocks.css` after the base styles.
+- `ChartView` supports line, area, bar, horizontal-bar, stacked-bar, stacked-area, pie, donut, radar, radial, scatter and composed. Circular views use the first series. Scatter uses `xKey` for numeric X values; the other views use `categoryKey` for categories. It includes a legend and optional data table; app data must contain valid numeric series values. The lower-level chart primitives remain available for custom layouts.
+- Carousel supports horizontal/vertical axes, responsive slide widths (full width at 640px and below), dots, thumbnails, scroll-snap index callbacks and optional autoplay. Focus, drag and manual navigation pause rotation until explicit resume. Hover and document visibility temporarily pause it; reduced motion disables autoplay. Empty/one-slide views disable navigation. Multi-card views use Embla's visible-slide list for focus exclusion.
+- Blocks expose callbacks; authentication, persistence, billing and uploads belong to the consuming app. Native field validation is a UI convenience. Project Board uses a keyboard-accessible status selector, not cross-column drag-and-drop. Article Outline receives progress/current section from the caller. Carousel thumbnail buttons refer to scroll snaps; when using multiple slides and edge containment, there may be fewer snaps than slides.
+
 ## Explicit limits
 
-- The composition style is familiar to Shadcn users, but this is not a drop-in replacement for every Shadcn variant, slot, recipe, or version.
+- Components expose NINE UI's own composition APIs, variants, tokens and motion settings.
 - Data Table is not an enterprise virtualized data grid. Server pagination, cell editing, grouping, aggregation, pinning and virtualization require further composition or an additional API.
 - Tree does not yet provide multiselection, checkbox cascading, virtualized rows, lazy loading or tree drag-and-drop. Sortable handles one vertical list, not nested/cross-container transfers.
 - Combobox is single-select. Multi-select tokens, async remote querying and virtualized results are not part of this component API.

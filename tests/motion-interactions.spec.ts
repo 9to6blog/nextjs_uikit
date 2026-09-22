@@ -278,14 +278,22 @@ test("todo completion draws and erases its strike", async ({ page }) => {
   ).toBe("1px");
 });
 
-test("radial menu supports keyboard open, selection, Escape and focus return", async ({
+test("radial menu ignores primary clicks and supports right-click, keyboard and focus return", async ({
   page,
 }) => {
   await gotoReady(page, "/components/radial-menu/");
   const trigger = page.locator(".n-radial-trigger");
+  const menu = page.getByRole("menu", { name: "원형 메뉴", exact: true });
+  await trigger.click();
+  await expect(trigger).toHaveAttribute("aria-expanded", "false");
+  await expect(menu).not.toBeVisible();
+  await trigger.click({ button: "right" });
+  await expect(menu).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(menu).not.toBeVisible();
+  await expect(trigger).toBeFocused();
   await trigger.focus();
   await page.keyboard.press("Shift+F10");
-  const menu = page.getByRole("menu", { name: "원형 메뉴", exact: true });
   await expect(menu).toBeVisible();
   await settleAnimations(page);
   const origin = (await trigger.boundingBox())!;
@@ -312,6 +320,10 @@ test("radial menu supports keyboard open, selection, Escape and focus return", a
   await page.keyboard.press("Escape");
   await expect(menu).not.toBeVisible();
   await expect(trigger).toBeFocused();
+  await trigger.press("Enter");
+  await expect(menu).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(menu).not.toBeVisible();
 });
 
 test("multi-step dialog goes forward and back, completes, and resets on reopen", async ({

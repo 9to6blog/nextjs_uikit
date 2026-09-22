@@ -21,7 +21,7 @@ async function walk(directory) {
 await walk(root);
 assert.equal(
   routes.length,
-  84,
+  111,
   "Every public documentation route must be checked",
 );
 let server;
@@ -181,6 +181,41 @@ try {
       `Escaped project path: ${path}`,
     );
   }
+  await open("blocks/");
+  await expect(page.locator(".block-gallery-card")).toHaveCount(24);
+  await page.getByRole("textbox", { name: "블록 검색" }).fill("Task Panel");
+  await page.locator(".block-gallery-card").click();
+  await expect(
+    page.getByRole("heading", { name: "Task Panel", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("checkbox", { name: /이미지 대체 텍스트/ }).click();
+  await expect(page.locator(".n-block [role=status]")).toHaveText("2 / 3 완료");
+  await open("charts/");
+  for (const theme of ["light", "dark"]) {
+    if (theme === "dark")
+      await page
+        .getByRole("button", { name: "다크 테마로 변경", exact: true })
+        .click();
+    await expect(
+      page.locator(".recharts-cartesian-axis-tick-value").first(),
+    ).toHaveCSS(
+      "fill",
+      await page
+        .locator(".n-chart-caption ul")
+        .evaluate((el) => getComputedStyle(el).color),
+    );
+  }
+  await page
+    .getByRole("button", { name: "라이트 테마로 변경", exact: true })
+    .click();
+  await page.getByRole("button", { name: /도넛/ }).click();
+  await expect(page.locator(".recharts-pie-sector")).toHaveCount(6);
+  await open("carousels/");
+  await page.getByRole("button", { name: "썸네일", exact: true }).click();
+  await page.getByRole("button", { name: "3번 슬라이드 보기" }).click();
+  await expect(page.locator(".n-carousel-controls span[aria-live]")).toHaveText(
+    "3 / 3",
+  );
   await open("");
   await mkdir("artifacts/pages-review", { recursive: true });
   await page.screenshot({
@@ -212,6 +247,9 @@ try {
     calendar: true,
     card: true,
     table: true,
+    blocks: 24,
+    chartKinds: 12,
+    carouselExamples: 6,
     mobileWidth: 390,
     browserErrors: errors,
   };

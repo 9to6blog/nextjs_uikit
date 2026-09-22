@@ -82,7 +82,12 @@ await writeFile(
   `import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { UIProvider, Button, Checkbox, Combobox, NavLink, Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, Popover, PopoverTrigger, PopoverContent, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, Sheet, SheetTrigger, SheetContent, SheetTitle, SheetDescription } from "@9to6/ui/react";
+import {TaskPanel,type TaskItem} from "@9to6/ui/blocks/task-panel";
+import {ChartView} from "@9to6/ui/chart-view";
+import {Carousel} from "@9to6/ui/carousel";
 import "@9to6/ui/styles.css";
+import "@9to6/ui/blocks.css";
+function Expansion(){const [tasks,setTasks]=useState<TaskItem[]>([{id:"review",title:"Review draft",done:false}]);return <div style={{maxWidth:640,marginTop:40}}><TaskPanel title="React tasks" tasks={tasks} onTasksChange={setTasks}/><ChartView kind="bar" label="React chart" data={[{name:"A",count:12},{name:"B",count:24}]} series={[{key:"count",label:"Count"}]}/><Carousel label="React carousel" dots slides={[<p key="1">First</p>,<p key="2">Second</p>]}/></div>}
 function App() {
   const [checked, setChecked] = useState(false);
   const [value, setValue] = useState("react");
@@ -101,7 +106,7 @@ function App() {
       <Dialog open={source === "dialog"} onOpenChange={open => setSource(open ? "dialog" : null)}><DialogTrigger asChild><Button>Open source dialog</Button></DialogTrigger><DialogContent><DialogTitle>Source dialog</DialogTitle><DialogDescription>Transfer without waiting for exit.</DialogDescription><Button onClick={transfer}>Continue from dialog</Button></DialogContent></Dialog>
       <Dialog open={handoff} onOpenChange={setHandoff}><DialogTrigger asChild><Button>Open handoff dialog</Button></DialogTrigger><DialogContent><DialogTitle>Handoff dialog</DialogTitle><DialogDescription>The first Escape must reach this active layer.</DialogDescription></DialogContent></Dialog>
     </section>
-  </main></UIProvider>;
+  </main><Expansion/></UIProvider>;
 }
 createRoot(document.getElementById("root")!).render(<App/>);`,
 );
@@ -119,6 +124,10 @@ assert.equal(
   "Next.js must not be installed",
 );
 const output = await run(["run", "build"], fixture);
+for (const name of ["shadcn", "@shadcn/ui"])
+  await assert.rejects(stat(join(fixture, "node_modules", name)), {
+    code: "ENOENT",
+  });
 await writeFile(join(artifacts, "react-build.log"), output);
 console.log("React types and production build passed; Next.js is absent.");
 const root = join(fixture, "dist");
@@ -155,8 +164,10 @@ try {
   await expect(
     page.getByRole("link", { name: "Current route" }),
   ).toHaveAttribute("aria-current", "page");
-  await page.getByRole("checkbox").click();
-  await expect(page.getByRole("status")).toHaveText("Enabled");
+  await page.getByRole("checkbox", { name: "Enable notifications" }).click();
+  await expect(
+    page.getByRole("status").filter({ hasText: "Enabled" }),
+  ).toHaveText("Enabled");
   await page.getByRole("button", { name: "Framework", exact: true }).click();
   await page.evaluate(async () => {
     await new Promise(requestAnimationFrame);
@@ -230,12 +241,24 @@ try {
     overlayHandoffs.push(source);
   }
   assert.deepEqual(errors, []);
+  await page.getByRole("checkbox", { name: "Review draft" }).click();
+  await expect(
+    page.getByRole("checkbox", { name: "Review draft" }),
+  ).toBeChecked();
+  await expect(page.locator(".n-block")).toHaveCSS("border-radius", "16px");
+  await expect(page.locator(".recharts-bar-rectangle")).toHaveCount(2);
+  await page.getByRole("button", { name: "2번 슬라이드 보기" }).click();
+  await expect(page.locator(".n-carousel-controls span[aria-live]")).toHaveText(
+    "2 / 2",
+  );
+  assert.deepEqual(errors, []);
   const evidence = {
     date: new Date().toISOString(),
     fixture,
     react: "19.3.0",
     vite: "8.3.0",
     nextInstalled: false,
+    shadcnInstalled: false,
     types: true,
     build: true,
     checkbox: true,
@@ -243,6 +266,9 @@ try {
     dialog: true,
     overlayHandoffs,
     activeLink: true,
+    block: true,
+    chart: true,
+    carousel: true,
     browserErrors: errors,
   };
   await writeFile(

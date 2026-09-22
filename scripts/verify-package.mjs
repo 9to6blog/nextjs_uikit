@@ -56,13 +56,21 @@ const packed = JSON.parse(
 )[0];
 assert(packed.files.some((file) => file.path === "dist/button.js"));
 assert(packed.files.some((file) => file.path === "dist/dialog.d.ts"));
+assert(packed.files.some((file) => file.path === "dist/blocks.css"));
+assert(packed.files.some((file) => file.path === "dist/chart-view.d.ts"));
+assert(
+  packed.files.some((file) => file.path === "dist/blocks/editorial-hero.js"),
+);
+assert(
+  packed.files.some((file) => file.path === "dist/blocks/task-panel.d.ts"),
+);
 assert(
   packed.files.every(
     (file) =>
       !file.path.includes("node_modules") && !file.path.includes(".env"),
   ),
 );
-const sources = await readdir("packages/ui/src");
+const sources = await readdir("packages/ui/src", { recursive: true });
 for (const source of sources.filter((name) => /\.tsx?$/.test(name))) {
   const text = await readFile(join("packages/ui/src", source), "utf8");
   const output = await readFile(
@@ -160,11 +168,11 @@ await writeFile(
 );
 await writeFile(
   join(fixture, "app/layout.tsx"),
-  'import "@9to6/ui/styles.css";\nimport { UIProvider } from "@9to6/ui/provider";\nexport default function Layout({children}:{children:React.ReactNode}){return <html lang="ko"><body><UIProvider theme="light">{children}</UIProvider></body></html>;}\n',
+  'import "@9to6/ui/styles.css";\nimport "@9to6/ui/blocks.css";\nimport { UIProvider } from "@9to6/ui/provider";\nexport default function Layout({children}:{children:React.ReactNode}){return <html lang="ko"><body><UIProvider theme="light">{children}</UIProvider></body></html>;}\n',
 );
 await writeFile(
   join(fixture, "app/page.tsx"),
-  'import { Card,CardContent } from "@9to6/ui/card";\nimport { Button } from "@9to6/ui/button";\nimport Example from "./example";\nexport default function Page(){return <main><h1>Tarball consumer</h1><Card><CardContent>Server component content<Button disabled>Server button</Button></CardContent></Card><Example/></main>;}\n',
+  'import { Card,CardContent } from "@9to6/ui/card";\nimport { Button } from "@9to6/ui/button";\nimport { StatsBand } from "@9to6/ui/blocks/stats-band";\nimport Example from "./example";\nexport default function Page(){return <main><h1>Tarball consumer</h1><Card><CardContent>Server component content<Button disabled>Server button</Button></CardContent></Card><StatsBand title="Server block" stats={[{label:"Articles",value:"32",detail:"Rendered on the server"}]}/><Example/></main>;}\n',
 );
 await writeFile(
   join(fixture, "app/example.tsx"),
@@ -255,6 +263,10 @@ const html = await readFile(join(fixture, "out/index.html"), "utf8");
 assert(
   html.includes("Server component content"),
   "Server content missing from static HTML",
+);
+assert(
+  html.includes("Server block") && html.includes("Rendered on the server"),
+  "Static block missing from server HTML",
 );
 const chunks = [];
 async function walk(directory) {

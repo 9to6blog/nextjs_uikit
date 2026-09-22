@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { AppShell } from "@/components/app-shell";
 import "@9to6/ui/styles.css";
+import "@9to6/ui/blocks.css";
 import "./globals.css";
+import "./collections.css";
 export const metadata: Metadata = {
   title: {
     default: "NINE UI — Interfaces in good motion",

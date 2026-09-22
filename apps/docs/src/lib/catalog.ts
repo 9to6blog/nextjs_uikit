@@ -577,7 +577,7 @@ export const catalog: ComponentEntry[] = [
   {
     slug: "chart",
     name: "Chart",
-    description: "Area·Bar·Line·Pie·Radar 등 조합 가능한 차트.",
+    description: "개별 차트 요소와 12가지 데이터 시각화 구성을 지원합니다.",
     group: "data",
     api: "ChartContainer, config, label, ChartTooltip, ChartLegend, Recharts primitives",
     usage:
@@ -587,9 +587,9 @@ export const catalog: ComponentEntry[] = [
   {
     slug: "carousel",
     name: "Carousel",
-    description: "터치와 버튼으로 탐색하는 슬라이드.",
+    description: "터치·키보드·썸네일로 탐색하는 가로·세로 슬라이드.",
     group: "data",
-    api: "slides, label, loop",
+    api: "slides, label, loop, orientation, slideSize, height, dots, thumbnails, autoplay, interval, onIndexChange",
     usage:
       '<Carousel label="미리보기" slides={[<div key="a">첫 번째</div>, <div key="b">두 번째</div>]} />',
     source: "carousel",
@@ -717,7 +717,7 @@ export const catalog: ComponentEntry[] = [
     group: "motion",
     api: "items, label, defaultExpanded",
     usage:
-      '<NotificationList items={[{id:"build",title:"Build complete",description:"Ready to preview"}]} />',
+      '<NotificationList label="작업실 알림" items={[{id:"published",title:"예약한 글이 발행됐어요",description:"저장한 원고가 공개되었습니다.",time:"방금"}]} />',
     source: "notification-list",
   },
   {
@@ -741,7 +741,7 @@ export const catalog: ComponentEntry[] = [
   {
     slug: "radial-menu",
     name: "Radial Menu",
-    description: "방향키와 우클릭을 지원하는 원형 액션 메뉴.",
+    description: "우클릭으로 열고 방향키로 탐색하는 원형 액션 메뉴.",
     group: "motion",
     api: "items, children, label",
     usage: "<RadialMenu items={actions}>오른쪽 클릭</RadialMenu>",

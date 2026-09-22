@@ -1,10 +1,26 @@
 # NINE UI
 
-React와 Next.js를 위한 독립 UI 라이브러리. Shadcn의 조합 가능한 컴포넌트·소스 소유 방식을 참고하고, 자체 디자인 토큰과 모션 규칙으로 구현합니다.
+React와 Next.js를 위한 독립 UI 라이브러리. 조합 가능한 컴포넌트와 자체 디자인 토큰, 모션 규칙을 제공합니다.
 
 `packages/ui`의 `@9to6/ui` 패키지와 `apps/docs`의 Next.js 문서·데모 사이트를 함께 관리합니다. 기존 블로그에 대한 수정이나 배포는 포함하지 않습니다.
 
 **[라이브 문서와 데모](https://9to6blog.github.io/nextjs_uikit/)** · [배포 방법](docs/PUBLISHING.md)
+
+## 블록·차트·캐러셀
+
+- [블록 24종](https://9to6blog.github.io/nextjs_uikit/blocks/): 콘텐츠 6종, 대시보드 6종, 폼과 설정 6종, 마케팅 6종. 검색·분류·북마크·작업 상태·폼 제출 콜백을 실제 조작할 수 있으며 각 페이지에 독립 실행 예제와 소스를 제공합니다.
+- [차트 구성 12종](https://9to6blog.github.io/nextjs_uikit/charts/): 선, 영역, 막대, 가로 막대, 누적 막대, 누적 영역, 파이, 도넛, 레이더, 방사형, 산점도, 혼합. 범례와 데이터 표, 모션 감소를 함께 지원합니다.
+- [캐러셀 예제 6종](https://9to6blog.github.io/nextjs_uikit/carousels/): 에디토리얼, 후기, 썸네일, 다중 카드, 세로 이동, 자동 재생. 터치·키보드·점 탐색·현재 위치 콜백을 제공합니다.
+
+```tsx
+import "@9to6/ui/styles.css";
+import "@9to6/ui/blocks.css"; // 블록을 사용할 때만 추가
+import { TaskPanel } from "@9to6/ui/blocks/task-panel";
+import { ChartView } from "@9to6/ui/chart-view";
+import { Carousel } from "@9to6/ui/carousel";
+```
+
+블록은 인증·결제·DB·파일 저장을 포함하지 않습니다. 앱의 비동기 함수를 콜백에 연결하며, 성공과 실패는 그 함수의 결과에 따라 표시합니다. 갤러리의 데이터와 후기는 자체 작성한 예시입니다. 칸반 보드는 상태 선택기로 이동하며 드래그 이동 API는 포함하지 않습니다.
 
 ## 실행
 
@@ -76,7 +92,7 @@ export default function Welcome() {
 - 정적 컴포넌트는 서버에서 사용할 수 있습니다. 이벤트 핸들러나 상태를 쓰는 소비 컴포넌트에는 `"use client"`가 필요합니다.
 - `/button`, `/dialog`, `/chart`처럼 개별 import 경로를 권장합니다. 루트 barrel도 제공하지만, 필요한 경로를 명시하면 경계를 더 쉽게 검토할 수 있습니다.
 - `Button`의 기본 type은 `button`입니다. 제출에는 `type="submit"` 또는 `SubmitButton`을 명시합니다. `asChild`는 Button API가 아니라 Radix Trigger/Close의 조합 API에서 사용합니다.
-- CSS는 `n-` 접두사와 `data-n-ui` 토큰 범위를 사용합니다. Tailwind를 요구하지 않으며 Shadcn/Tailwind 앱과 함께 사용할 수 있습니다.
+- CSS는 `n-` 접두사와 `data-n-ui` 토큰 범위를 사용합니다. Tailwind 설정 없이 패키지의 스타일을 가져와 사용할 수 있습니다.
 
 ## React · Vite에서 사용
 
@@ -106,7 +122,7 @@ React 진입점의 NavLink는 애플리케이션 라우터에서 `active`를 전
 
 ## 전체 카탈로그 기준
 
-2026-09-22 [Shadcn 공식 카탈로그](https://ui.shadcn.com/docs/components) 64개와 추가 컴포넌트 15개, 총 **79개 문서 항목**입니다. 각 항목에 실제 구현, 실행 예제, 사용 코드, 주요 API, 소스 조회가 연결됩니다.
+기본 UI 요소부터 데이터 표현과 모션 패턴까지 총 **79개 문서 항목**입니다. 각 항목에 실제 구현, 실행 예제, 사용 코드, 주요 API, 소스 조회가 연결됩니다.
 
 | 범주            | 컴포넌트                                                                                                                                                           |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -119,7 +135,7 @@ React 진입점의 NavLink는 애플리케이션 라우터에서 `active`를 전
 | 대화            | Attachment, Bubble, Message, Message Scroller, Questionnaire                                                                                                       |
 | 모션·패턴       | Code Block, Code Tabs, Notification List, Pinned List, Todo List, Radial Menu, Shine Card, Multi Step Dialog, Relative Time, Preview Link Card                     |
 
-카탈로그를 모두 구현했다는 것과 타 라이브러리의 모든 기능·버전·옵션 조합을 지원한다는 것은 다릅니다. 이 릴리스는 **개발용 v0.1**이며, “모든 상황에서 완벽” 또는 “Shadcn보다 모든 면에서 우수”하다는 주장은 하지 않습니다. 상세 기능 범위와 차이는 다음 문서를 확인하세요.
+이 릴리스는 **개발용 v0.1**입니다. 카탈로그는 제공하는 컴포넌트 목록이며, 세부 기능과 검증 범위는 다음 문서에 기록합니다.
 
 - [지원 범위와 제한](docs/SUPPORT.md)
 - [전체 지원을 위한 확장 목록과 완료 기준](docs/ROADMAP.md)
@@ -137,17 +153,9 @@ React 진입점의 NavLink는 애플리케이션 라우터에서 `active`를 전
 - 운영체제의 모션 감소 설정을 우선합니다. `useReducedMotion`은 CSS 외 JavaScript 모션에도 같은 정책을 전달합니다.
 - 패키지 자체는 localStorage, 원격 API, 인증 또는 분석 서비스에 접근하지 않습니다. 문서 앱만 테마 선호를 로컬에 저장합니다.
 
-## Shadcn source registry
+## 컴포넌트 소스
 
-```powershell
-npm run build
-npm run preview
-
-# 소비 프로젝트에서 실행, 로컬 문서 서버가 켜져 있어야 합니다.
-npx shadcn@latest add http://127.0.0.1:3106/r/button.json
-```
-
-`npm run dev`도 registry를 생성합니다. 설치 대상은 소비 프로젝트의 `components.json`에 있는 UI alias입니다. 설치된 `nine-ui.css`를 앱 레이아웃에서 한 번 import하세요. UIProvider를 사용하려면 `/r/provider.json`도 추가합니다. 소스 배포 규약은 [Shadcn registry](https://ui.shadcn.com/docs/registry)를 따릅니다.
+각 컴포넌트 문서와 패키지의 `src` 폴더에서 원본 TypeScript·CSS를 확인할 수 있습니다. 소스를 직접 수정하려면 관련 로컬 모듈과 패키지 의존성도 함께 가져오세요. `npm run registry:build`는 `/r/` 경로에 소스와 의존성 정보를 담은 JSON을 생성합니다. 일반적인 사용에는 위의 패키지 설치 방법을 권장합니다.
 
 ## 검사
 

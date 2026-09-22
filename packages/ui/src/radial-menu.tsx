@@ -58,11 +58,11 @@ export function RadialMenu({
           }
         }}
         onClick={(event) => {
+          // Assistive technology can activate a button without a pointer.
+          // Pointer activation belongs to the context-menu event above.
+          if (event.detail !== 0) return;
           const rect = event.currentTarget.getBoundingClientRect();
-          show(
-            event.detail === 0 ? rect.x + rect.width / 2 : event.clientX,
-            event.detail === 0 ? rect.y + rect.height / 2 : event.clientY,
-          );
+          show(rect.x + rect.width / 2, rect.y + rect.height / 2);
         }}
       >
         {children}

@@ -1,6 +1,7 @@
 import { gotoReady } from "./helpers";
 import { test, expect } from "@playwright/test";
 import { catalog } from "../apps/docs/src/lib/catalog";
+import { blocks } from "../apps/docs/src/lib/blocks";
 test("home, guides and every component fit the viewport", async ({
   page,
 }, testInfo) => {
@@ -11,6 +12,10 @@ test("home, guides and every component fit the viewport", async ({
     "/foundations/",
     "/motion/",
     "/quality/",
+    "/blocks/",
+    "/charts/",
+    "/carousels/",
+    ...blocks.map((b) => `/blocks/${b.slug}/`),
     ...catalog.map((c) => `/components/${c.slug}/`),
   ]) {
     await gotoReady(page, route);

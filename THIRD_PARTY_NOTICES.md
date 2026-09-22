@@ -1,6 +1,6 @@
 # Third-party notices
 
-NINE UI owns its component presentation and composition code. It uses the following maintained packages for interaction and rendering. The Shadcn name describes the benchmark and source registry format; this project is not an official Shadcn project and does not claim API identity.
+NINE UI owns its component presentation and composition code. It uses the following maintained packages for interaction and rendering.
 
 The packaged stylesheet includes react-day-picker's MIT-licensed CSS. Its copyright and permission notice is reproduced in licenses/react-day-picker.txt. Other dependency implementations are installed from their original packages and retain their own notices.
 

@@ -28,5 +28,8 @@ export async function gotoReady(page: Page, url: string) {
       "true",
     );
   }
+  if (/^\/blocks\/[^/]+/.test(new URL(page.url()).pathname)) {
+    await expect(page.locator(".block-demo .n-block")).toBeVisible();
+  }
   return response;
 }

@@ -64,22 +64,25 @@ export function MotionDemo({ name }: { name: string }) {
     case "notification-list":
       return (
         <NotificationList
+          label="작업실 알림"
           items={[
             {
-              id: "install",
-              title: "NPM Install Complete",
-              description: "Just now · 1,227 packages added!",
-              time: "2m",
+              id: "published",
+              title: "예약한 글이 발행됐어요",
+              description: "‘작은 여백의 힘’이 공개되었습니다.",
+              time: "방금",
             },
             {
-              id: "build",
-              title: "Build Succeeded",
-              description: "1m 11s · Build finished in 12.34s",
+              id: "comment",
+              title: "새 댓글이 도착했어요",
+              description: "‘컴포넌트 설계 노트’에 의견이 남겨졌습니다.",
+              time: "8분 전",
             },
             {
-              id: "lint",
-              title: "Lint Passed",
-              description: "5m · No problems found",
+              id: "preview",
+              title: "미리보기가 준비됐어요",
+              description: "저장한 초안을 발행 전에 확인해 보세요.",
+              time: "25분 전",
             },
           ]}
         />

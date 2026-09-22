@@ -29,7 +29,7 @@ for (const name of Object.keys(pkg.dependencies).sort()) {
   );
 }
 const text =
-  "# Third-party notices\n\nNINE UI owns its component presentation and composition code. It uses the following maintained packages for interaction and rendering. The Shadcn name describes the benchmark and source registry format; this project is not an official Shadcn project and does not claim API identity.\n\nThe packaged stylesheet includes react-day-picker's MIT-licensed CSS. Its copyright and permission notice is reproduced in licenses/react-day-picker.txt. Other dependency implementations are installed from their original packages and retain their own notices.\n\n| Package | Installed version | License | Notice |\n| --- | --- | --- | --- |\n" +
+  "# Third-party notices\n\nNINE UI owns its component presentation and composition code. It uses the following maintained packages for interaction and rendering.\n\nThe packaged stylesheet includes react-day-picker's MIT-licensed CSS. Its copyright and permission notice is reproduced in licenses/react-day-picker.txt. Other dependency implementations are installed from their original packages and retain their own notices.\n\n| Package | Installed version | License | Notice |\n| --- | --- | --- | --- |\n" +
   rows.join("\n") +
   "\n\nThe independently authored NINE UI code does not yet carry a public open-source license. npm publishing remains disabled.\n";
 await writeFile(join(library, "THIRD_PARTY_NOTICES.md"), text);
