@@ -1,0 +1,164 @@
+1:"$Sreact.fragment"
+2:I[49615,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/0g6xypdgjz2wx.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js"],"AppShell"]
+3:I[39756,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/0g6xypdgjz2wx.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js"],"default"]
+4:I[37457,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/0g6xypdgjz2wx.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js"],"default"]
+6:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/0g6xypdgjz2wx.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+a:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/0g6xypdgjz2wx.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js"],"ViewportBoundary"]
+c:I[97367,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/0g6xypdgjz2wx.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js"],"MetadataBoundary"]
+e:I[68027,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/0g6xypdgjz2wx.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js"],"default",1]
+:HL["/nextjs_uikit/_next/static/chunks/0au3crmtueg0t.css","style"]
+9:X
+0:{"P":null,"c":["","components","file-upload",""],"q":"","i":false,"f":[[["",{"children":["components",{"children":[["slug","file-upload","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/nextjs_uikit/_next/static/chunks/0au3crmtueg0t.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/nextjs_uikit/_next/static/chunks/0g6xypdgjz2wx.js","async":true,"nonce":"$undefined"}],["$","script","script-2",{"src":"/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","async":true,"nonce":"$undefined"}],["$","script","script-3",{"src":"/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"ko","children":["$","body",null,{"children":["$","$L2",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","script","script-0",{"src":"/nextjs_uikit/_next/static/chunks/2apadk7ch15e3.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,null]},null,false,"$9"]},null,false,"$9"]},null,false,null],["$","$1","h",{"children":[null,["$","$La",null,{"children":"$Lb"}],["$","div",null,{"hidden":true,"children":["$","$Lc",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Ld"}]}]}],null]}],false]],"m":"$undefined","G":["$e",[["$","link","0",{"rel":"stylesheet","href":"/nextjs_uikit/_next/static/chunks/0au3crmtueg0t.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"grciNbvwG1KlZcxnchY4S"}
+9:C
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+d:[["$","title","0",{"children":"File Upload · NINE UI"}],["$","meta","1",{"name":"description","content":"Next.js를 위한 독립 UI 라이브러리. 조합 가능한 컴포넌트, 의미 있는 모션, 나만의 디자인 시스템."}]]
+f:I[5014,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/0g6xypdgjz2wx.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js","/nextjs_uikit/_next/static/chunks/2apadk7ch15e3.js"],"default"]
+10:I[60133,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/0g6xypdgjz2wx.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js","/nextjs_uikit/_next/static/chunks/2apadk7ch15e3.js"],"DemoHost"]
+11:I[83266,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/0g6xypdgjz2wx.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js","/nextjs_uikit/_next/static/chunks/2apadk7ch15e3.js"],"CodeBlock"]
+12:T1012,"use client";
+import { Icon } from "./icons.js";
+import { useId, useRef, useState } from "react";
+import { Button } from "./button.js";
+export type FileUploadProps = {
+  value: File[];
+  onValueChange: (files: File[]) => void;
+  accept?: string;
+  maxFiles?: number;
+  maxSize?: number;
+  disabled?: boolean;
+  label?: string;
+};
+function accepted(file: File, accept?: string) {
+  return (
+    !accept ||
+    accept.split(",").some((rule) => {
+      const pattern = rule.trim().toLowerCase();
+      return pattern.startsWith(".")
+        ? file.name.toLowerCase().endsWith(pattern)
+        : pattern.endsWith("/*")
+          ? file.type.startsWith(pattern.slice(0, -1))
+          : file.type === pattern;
+    })
+  );
+}
+export function FileUpload({
+  value,
+  onValueChange,
+  accept,
+  maxFiles = 5,
+  maxSize = 10 * 1024 * 1024,
+  disabled,
+  label = "파일 업로드",
+}: FileUploadProps) {
+  const id = useId();
+  const input = useRef<HTMLInputElement>(null);
+  const [dragging, setDragging] = useState(false);
+  const [errors, setErrors] = useState<string[]>([]);
+  function add(files: File[]) {
+    if (disabled) return;
+    const next = [...value],
+      issues: string[] = [];
+    for (const file of files) {
+      if (!accepted(file, accept))
+        issues.push(`${file.name}: 허용하지 않는 형식입니다.`);
+      else if (file.size > maxSize)
+        issues.push(`${file.name}: 파일 크기 제한을 초과했습니다.`);
+      else if (next.length >= maxFiles)
+        issues.push(`최대 ${maxFiles}개까지 선택할 수 있습니다.`);
+      else if (
+        !next.some(
+          (item) =>
+            item.name === file.name &&
+            item.size === file.size &&
+            item.lastModified === file.lastModified,
+        )
+      )
+        next.push(file);
+    }
+    setErrors(issues);
+    onValueChange(next);
+  }
+  return (
+    <div className="n-upload">
+      <div
+        data-dragging={dragging}
+        data-disabled={disabled}
+        className="n-dropzone"
+        onDragOver={(e) => {
+          e.preventDefault();
+          if (!disabled) setDragging(true);
+        }}
+        onDragLeave={() => setDragging(false)}
+        onDrop={(e) => {
+          e.preventDefault();
+          setDragging(false);
+          add(Array.from(e.dataTransfer.files));
+        }}
+      >
+        <span aria-hidden="true" className="n-upload-symbol">
+          <Icon name="arrow-up" />
+        </span>
+        <strong>{label}</strong>
+        <p id={`${id}-hint`} className="n-description">
+          파일을 놓거나 선택하세요 · 최대 {maxFiles}개, 파일당{" "}
+          {Math.round(maxSize / 1024 / 1024)} MB
+        </p>
+        <input
+          ref={input}
+          className="n-sr-only"
+          type="file"
+          tabIndex={-1}
+          aria-label={label}
+          accept={accept}
+          multiple={maxFiles > 1}
+          disabled={disabled}
+          onChange={(e) => {
+            add(Array.from(e.target.files ?? []));
+            e.target.value = "";
+          }}
+        />
+        <Button
+          variant="outline"
+          disabled={disabled}
+          aria-describedby={`${id}-hint`}
+          onClick={() => input.current?.click()}
+        >
+          파일 선택
+        </Button>
+      </div>
+      <ul className="n-upload-list">
+        {value.map((file, i) => (
+          <li key={`${file.name}-${file.lastModified}`}>
+            <span>
+              {file.name}
+              <small>{Math.ceil(file.size / 1024)} KB</small>
+            </span>
+            <Button
+              variant="ghost"
+              size="sm"
+              disabled={disabled}
+              aria-label={`${file.name} 제거`}
+              onClick={() =>
+                onValueChange(value.filter((_, index) => index !== i))
+              }
+            >
+              <Icon name="close" />
+            </Button>
+          </li>
+        ))}
+      </ul>
+      {errors.length > 0 && (
+        <div role="alert" className="n-error">
+          {errors.map((error, i) => (
+            <p key={i}>{error}</p>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+5:["$","article",null,{"className":"component-page","children":[["$","div",null,{"className":"doc-breadcrumb","children":["Components ",["$","span",null,{"children":"/"}]," ","Advanced"]}],["$","header",null,{"className":"doc-heading","children":[["$","div",null,{"className":"doc-title-row","children":[["$","h1",null,{"children":"File Upload"}],["$","span",null,{"data-slot":"badge","data-tone":"neutral","className":"n-badge","children":["$undefined","Client"]}]]}],["$","p",null,{"children":"개수·크기·형식 검증을 갖춘 파일 선택."}]]}],["$","div",null,{"className":"preview-toolbar","children":[["$","span",null,{"children":[["$","$Lf",null,{"ref":"$undefined","icon":{"name":"box","size":24,"node":[["path",{"d":"M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z","key":"hh9hay"}],["path",{"d":"m3.3 7 8.7 5 8.7-5","key":"g66t2b"}],["path",{"d":"M12 22V12","key":"d0xqtd"}]]},"className":"$undefined","size":14}]," Preview"]}],["$","div",null,{"children":[["$","span",null,{"data-slot":"badge","data-tone":"accent","className":"n-badge","children":["$undefined","Interactive"]}],["$","span",null,{"className":"preview-toolbar-hint","children":"직접 조작해 보세요"}]]}]]}],["$","section",null,{"className":"component-preview ","aria-label":"File Upload 미리보기","children":["$","$L10",null,{"name":"file-upload","group":"advanced"}]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"Usage"}],["$","p",null,{"children":"개별 경로로 가져오면 필요한 컴포넌트를 명확하게 선택할 수 있습니다."}],["$","$L11",null,{"code":"// app/layout.tsx 에서 한 번 불러오기\nimport \"@9to6/ui/styles.css\";\n\n// 컴포넌트 경로: @9to6/ui/file-upload\n<FileUpload value={files} onValueChange={setFiles} accept=\"image/*\" />"}]]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"API & composition"}],["$","div",null,{"className":"api-list","children":[["$","code","value",{"children":"value"}],["$","code","onValueChange",{"children":"onValueChange"}],["$","code","accept",{"children":"accept"}],["$","code","maxFiles",{"children":"maxFiles"}],["$","code","maxSize",{"children":"maxSize"}],["$","code","disabled",{"children":"disabled"}]]}],["$","p",null,{"children":"네이티브 요소와 기반 컴포넌트의 TypeScript 속성을 전달합니다. 정확한 타입과 기본값은 아래 소스와 패키지의 선언 파일에서 확인할 수 있습니다."}],["$","p",null,{"children":"이 컴포넌트는 파일 선택과 클라이언트 검증을 담당합니다. 실제 업로드, 서버의 파일 검증, 저장소 연동은 사용하는 앱에서 구현합니다."}],false,false,false]}],["$","section",null,{"className":"doc-section","children":[["$","h2",null,{"children":"Interaction notes"}],["$","ul",null,{"className":"doc-list","children":[["$","li",null,{"children":"컨트롤의 접근 가능한 이름을 label 또는 aria-label로 연결하세요."}],["$","li",null,{"children":"disabled, loading, empty, error 상태를 실제 데이터 흐름과 연결하세요."}],["$","li",null,{"children":"공통 모션은 운영체제의 prefers-reduced-motion 설정을 존중합니다."}],["$","li",null,{"children":"팝업 컴포넌트는 UIProvider의 테마·밀도·강조 색상을 포털에도 전달합니다."}]]}]]}],["$","details",null,{"className":"source-details","children":[["$","summary",null,{"children":[["$","$Lf",null,{"ref":"$undefined","icon":{"name":"code-xml","size":24,"node":[["path",{"d":"m18 16 4-4-4-4","key":"1inbqp"}],["path",{"d":"m6 8-4 4 4 4","key":"15zrgr"}],["path",{"d":"m14.5 4-5 16","key":"e7oirm"}]],"aliases":["code-2"]},"className":"$undefined","size":16}]," Component source ",["$","span",null,{"children":["file-upload",".tsx"]}]]}],["$","$L11",null,{"code":"$12","label":"file-upload.tsx"}]]}],"$L13"]}]
+14:I[22016,["/nextjs_uikit/_next/static/chunks/3fntmmi971322.js","/nextjs_uikit/_next/static/chunks/0g6xypdgjz2wx.js","/nextjs_uikit/_next/static/chunks/0prehhhvjfhur.js","/nextjs_uikit/_next/static/chunks/1odm0oca0ef1p.js","/nextjs_uikit/_next/static/chunks/2apadk7ch15e3.js"],""]
+13:["$","nav",null,{"className":"doc-pagination","aria-label":"이전 다음 컴포넌트","children":[["$","$L14",null,{"href":"/components/resizable/","children":[["$","$Lf",null,{"ref":"$undefined","icon":{"name":"arrow-left","size":24,"node":[["path",{"d":"m12 19-7-7 7-7","key":"1l729n"}],["path",{"d":"M19 12H5","key":"x3x0zl"}]]},"className":"$undefined","size":14}],"Resizable"]}],["$","$L14",null,{"href":"/components/tree/","children":["Tree",["$","$Lf",null,{"ref":"$undefined","icon":{"name":"arrow-right","size":24,"node":[["path",{"d":"M5 12h14","key":"1ays0h"}],["path",{"d":"m12 5 7 7-7 7","key":"xquz4c"}]]},"className":"$undefined","size":14}]]}]]}]

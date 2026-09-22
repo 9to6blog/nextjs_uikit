@@ -1,0 +1,1898 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "nine-ui",
+  "homepage": "https://github.com/9to6blog/nextjs_uikit",
+  "items": [
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "NINE UI · accordion",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/accordion.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "NINE UI · alert-dialog",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "NINE UI · alert",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/alert.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "animated-size",
+      "type": "registry:ui",
+      "title": "NINE UI · animated-size",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/animated-size.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "NINE UI · aspect-ratio",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "attachment",
+      "type": "registry:ui",
+      "title": "NINE UI · attachment",
+      "files": [
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/attachment.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "NINE UI · avatar",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/avatar.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "NINE UI · badge",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/badge.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "NINE UI · breadcrumb",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bubble",
+      "type": "registry:ui",
+      "title": "NINE UI · bubble",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/bubble.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "NINE UI · button-group",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/button-group.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "NINE UI · button",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "NINE UI · calendar",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/calendar.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "NINE UI · card",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "NINE UI · carousel",
+      "files": [
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/use-reduced-motion.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/carousel.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "NINE UI · chart",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/use-reduced-motion.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/chart.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "NINE UI · checkbox",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/checkbox.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:ui",
+      "title": "NINE UI · code-block",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/use-reduced-motion.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/code-block.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "code-tabs",
+      "type": "registry:ui",
+      "title": "NINE UI · code-tabs",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/tabs.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/use-reduced-motion.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/code-block.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/animated-size.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/code-tabs.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "NINE UI · collapsible",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/collapsible.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "NINE UI · combobox",
+      "files": [
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/popover.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/command.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/combobox.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "NINE UI · command",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/command.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "NINE UI · context-menu",
+      "files": [
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/context-menu.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "NINE UI · data-table",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/table.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/input.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/checkbox.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/data-table.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "NINE UI · date-picker",
+      "files": [
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/calendar.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/popover.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/date-picker.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "NINE UI · dialog",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/dialog.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "direction",
+      "type": "registry:ui",
+      "title": "NINE UI · direction",
+      "files": [
+        {
+          "path": "ui/direction.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "NINE UI · drawer",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/drawer.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "NINE UI · dropdown-menu",
+      "files": [
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/moving-highlight.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "title": "NINE UI · empty-state",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/empty-state.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "NINE UI · empty",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/empty-state.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/empty.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "NINE UI · field",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/input.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/field.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "file-upload",
+      "type": "registry:ui",
+      "title": "NINE UI · file-upload",
+      "files": [
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/file-upload.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "NINE UI · hover-card",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/hover-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "icons",
+      "type": "registry:ui",
+      "title": "NINE UI · icons",
+      "files": [
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "NINE UI · input-group",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/input-group.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "NINE UI · input-otp",
+      "files": [
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/input-otp.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "NINE UI · input",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/input.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "NINE UI · item",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/item.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "NINE UI · kbd",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/kbd.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "NINE UI · label",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/label.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "marker",
+      "type": "registry:ui",
+      "title": "NINE UI · marker",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/marker.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "NINE UI · menubar",
+      "files": [
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/menubar.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "message-scroller",
+      "type": "registry:ui",
+      "title": "NINE UI · message-scroller",
+      "files": [
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/message-scroller.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "message",
+      "type": "registry:ui",
+      "title": "NINE UI · message",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/message.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "moving-highlight",
+      "type": "registry:ui",
+      "title": "NINE UI · moving-highlight",
+      "files": [
+        {
+          "path": "ui/moving-highlight.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "multi-step-dialog",
+      "type": "registry:ui",
+      "title": "NINE UI · multi-step-dialog",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/dialog.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/animated-size.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/multi-step-dialog.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "title": "NINE UI · native-select",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/native-select.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "nav-link",
+      "type": "registry:ui",
+      "title": "NINE UI · nav-link",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nav-link.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "NINE UI · navigation-menu",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "notification-list",
+      "type": "registry:ui",
+      "title": "NINE UI · notification-list",
+      "files": [
+        {
+          "path": "ui/notification-list.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "NINE UI · pagination",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/pagination.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pinned-list",
+      "type": "registry:ui",
+      "title": "NINE UI · pinned-list",
+      "files": [
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/use-reduced-motion.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/pinned-list.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "NINE UI · popover",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/popover.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "preview-link-card",
+      "type": "registry:ui",
+      "title": "NINE UI · preview-link-card",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/hover-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/preview-link-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "NINE UI · progress",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/progress.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "provider",
+      "type": "registry:ui",
+      "title": "NINE UI · provider",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "questionnaire",
+      "type": "registry:ui",
+      "title": "NINE UI · questionnaire",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/input.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/questionnaire.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radial-menu",
+      "type": "registry:ui",
+      "title": "NINE UI · radial-menu",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/radial-menu.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "NINE UI · radio-group",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/radio-group.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "react-nav-link",
+      "type": "registry:ui",
+      "title": "NINE UI · react-nav-link",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/react-nav-link.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "relative-time",
+      "type": "registry:ui",
+      "title": "NINE UI · relative-time",
+      "files": [
+        {
+          "path": "ui/relative-time.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "NINE UI · resizable",
+      "files": [
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/resizable.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "NINE UI · scroll-area",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/scroll-area.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "NINE UI · select",
+      "files": [
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/select.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "NINE UI · separator",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/separator.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "NINE UI · sheet",
+      "files": [
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/dialog.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/sheet.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "shine-card",
+      "type": "registry:ui",
+      "title": "NINE UI · shine-card",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/shine-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "NINE UI · sidebar",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/moving-highlight.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/sidebar.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "NINE UI · skeleton",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/skeleton.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "NINE UI · slider",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/slider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sortable",
+      "type": "registry:ui",
+      "title": "NINE UI · sortable",
+      "files": [
+        {
+          "path": "ui/icons.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/sortable.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "NINE UI · spinner",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/spinner.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "submit-button",
+      "type": "registry:ui",
+      "title": "NINE UI · submit-button",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/submit-button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "NINE UI · switch",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/switch.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "NINE UI · table",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/table.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "NINE UI · tabs",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/tabs.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "NINE UI · textarea",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/input.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/textarea.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "NINE UI · toast",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/toast.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "todo-list",
+      "type": "registry:ui",
+      "title": "NINE UI · todo-list",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/checkbox.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/todo-list.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "NINE UI · toggle-group",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/toggle-group.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "NINE UI · toggle",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/toggle.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "NINE UI · tooltip",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/provider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/tooltip.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tree",
+      "type": "registry:ui",
+      "title": "NINE UI · tree",
+      "files": [
+        {
+          "path": "ui/moving-highlight.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/tree.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "typography",
+      "type": "registry:ui",
+      "title": "NINE UI · typography",
+      "files": [
+        {
+          "path": "ui/utils.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/typography.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/nine-ui.css",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}
