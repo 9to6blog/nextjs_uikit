@@ -46,7 +46,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
       <body>
-        <UIProvider theme="system" accent="blue" motion="full">
+        <UIProvider theme="system" accent="black" motion="full">
           {children}
         </UIProvider>
       </body>
@@ -78,7 +78,7 @@ export default function Welcome() {
 
 ## 전체 카탈로그 기준
 
-2026-09-22 [Shadcn 공식 카탈로그](https://ui.shadcn.com/docs/components) 64개와 추가 컴포넌트 5개, 총 **69개 문서 항목**입니다. 각 항목에 실제 구현, 실행 예제, 사용 코드, 주요 API, 소스 조회가 연결됩니다.
+2026-09-22 [Shadcn 공식 카탈로그](https://ui.shadcn.com/docs/components) 64개와 추가 컴포넌트 15개, 총 **79개 문서 항목**입니다. 각 항목에 실제 구현, 실행 예제, 사용 코드, 주요 API, 소스 조회가 연결됩니다.
 
 | 범주            | 컴포넌트                                                                                                                                                           |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -89,6 +89,7 @@ export default function Welcome() {
 | 데이터·레이아웃 | Calendar, Date Picker, Table, Data Table, Chart, Carousel, Scroll Area, Resizable                                                                                  |
 | 추가 고급 요소  | File Upload, Tree, Sortable                                                                                                                                        |
 | 대화            | Attachment, Bubble, Message, Message Scroller, Questionnaire                                                                                                       |
+| 모션·패턴       | Code Block, Code Tabs, Notification List, Pinned List, Todo List, Radial Menu, Shine Card, Multi Step Dialog, Relative Time, Preview Link Card                     |
 
 카탈로그를 모두 구현했다는 것과 타 라이브러리의 모든 기능·버전·옵션 조합을 지원한다는 것은 다릅니다. 이 릴리스는 **개발용 v0.1**이며, “모든 상황에서 완벽” 또는 “Shadcn보다 모든 면에서 우수”하다는 주장은 하지 않습니다. 상세 기능 범위와 차이는 다음 문서를 확인하세요.
 
@@ -100,11 +101,11 @@ export default function Welcome() {
 ## 테마와 모션
 
 - `theme`: `light | dark | system`
-- `accent`: `blue | violet | teal`
+- `accent`: `black | blue | violet | teal` (기본: black)
 - `density`: `comfortable | compact`
 - `motion`: `full | reduced`
 - CSS 토큰: `--n-accent`, `--n-surface`, `--n-text`, `--n-border`, `--n-radius`, `--n-height` 등.
-- 공통 시간: 140 / 240 / 360 ms. `cubic-bezier(.22,1,.36,1)`로 finite easing을 통일합니다.
+- 공통 시간: 200 / 300 / 500 ms. 팝업은 300/25 스프링, 라디오는 200/16 스프링, 탭 콘텐츠는 500 ms blur 전환을 사용합니다. 영상 18개와 이미지 2개의 대응표는 [디자인·모션 기준](docs/REFERENCE-DESIGN.md)에 기록했습니다.
 - 운영체제의 모션 감소 설정을 우선합니다. `useReducedMotion`은 CSS 외 JavaScript 모션에도 같은 정책을 전달합니다.
 - 패키지 자체는 localStorage, 원격 API, 인증 또는 분석 서비스에 접근하지 않습니다. 문서 앱만 테마 선호를 로컬에 저장합니다.
 

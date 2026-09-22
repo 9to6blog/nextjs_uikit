@@ -30,6 +30,9 @@ export function FormsDemo({ name }: { name: string }) {
   const id = useId();
   const [selected, setSelected] = useState("next");
   const [checked, setChecked] = useState(true);
+  const [mixed, setMixed] = useState<boolean | "indeterminate">(
+    "indeterminate",
+  );
   const [value, setValue] = useState("");
   const [range, setRange] = useState([25, 75]);
   const [saved, setSaved] = useState(false);
@@ -122,13 +125,33 @@ export function FormsDemo({ name }: { name: string }) {
             이용 약관에 동의합니다.
           </label>
           <label className="n-choice">
-            <Checkbox checked="indeterminate" />
+            <Checkbox checked={mixed} onCheckedChange={setMixed} />
             일부 항목 선택
           </label>
           <label className="n-choice">
             <Checkbox disabled />
             사용할 수 없는 옵션
           </label>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() =>
+              setMixed((v) =>
+                v === "indeterminate" ? true : v ? false : "indeterminate",
+              )
+            }
+          >
+            체크·해제·마이너스 전환
+          </Button>
+          <form className="demo-stack">
+            <label className="n-choice">
+              <Checkbox name="uncontrolled" defaultChecked="indeterminate" />
+              초기 마이너스 상태
+            </label>
+            <Button variant="ghost" size="sm" type="reset">
+              초기 상태로 재설정
+            </Button>
+          </form>
         </div>
       );
     case "radio-group":

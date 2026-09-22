@@ -1,6 +1,8 @@
 "use client";
 import { useDemoReady } from "@/lib/use-demo-ready";
 import { useState } from "react";
+import { LayoutDashboard, Palette, Code2 } from "lucide-react";
+import { AnimatedSize } from "@9to6/ui/animated-size";
 import { Button } from "@9to6/ui/button";
 import {
   Accordion,
@@ -101,24 +103,26 @@ export function NavigationDemo({ name }: { name: string }) {
             <TabsTrigger value="code">Code</TabsTrigger>
             <TabsTrigger value="activity">Activity</TabsTrigger>
           </TabsList>
-          <TabsContent value="design">
-            <div className="tab-demo-content">
-              <strong>Designed with intention.</strong>
-              <p>여백, 대비, 움직임이 하나의 언어로 이어집니다.</p>
-            </div>
-          </TabsContent>
-          <TabsContent value="code">
-            <div className="tab-demo-content">
-              <strong>Built to make it yours.</strong>
-              <p>타입 안전한 API와 조합 가능한 컴포넌트.</p>
-            </div>
-          </TabsContent>
-          <TabsContent value="activity">
-            <div className="tab-demo-content">
-              <strong>Every detail, connected.</strong>
-              <p>새로운 컴포넌트를 탐색해 보세요.</p>
-            </div>
-          </TabsContent>
+          <AnimatedSize>
+            <TabsContent value="design">
+              <div className="tab-demo-content">
+                <strong>Designed with intention.</strong>
+                <p>여백, 대비, 움직임이 하나의 언어로 이어집니다.</p>
+              </div>
+            </TabsContent>
+            <TabsContent value="code">
+              <div className="tab-demo-content">
+                <strong>Built to make it yours.</strong>
+                <p>타입 안전한 API와 조합 가능한 컴포넌트.</p>
+              </div>
+            </TabsContent>
+            <TabsContent value="activity">
+              <div className="tab-demo-content">
+                <strong>Every detail, connected.</strong>
+                <p>새로운 컴포넌트를 탐색해 보세요.</p>
+              </div>
+            </TabsContent>
+          </AnimatedSize>
         </Tabs>
       );
     case "collapsible":
@@ -163,14 +167,24 @@ export function NavigationDemo({ name }: { name: string }) {
     case "sidebar":
       return (
         <SidebarProvider>
-          <Sidebar>
+          <Sidebar collapsible="icon">
             <SidebarContent>
               <strong>Workspace</strong>
               <SidebarGroup>
                 <SidebarGroupLabel>프로젝트</SidebarGroupLabel>
-                {["개요", "디자인", "개발"].map((item) => (
+                {["개요", "디자인", "개발"].map((item, index) => (
                   <SidebarMenuButton
                     key={item}
+                    icon={
+                      index === 0 ? (
+                        <LayoutDashboard size={16} />
+                      ) : index === 1 ? (
+                        <Palette size={16} />
+                      ) : (
+                        <Code2 size={16} />
+                      )
+                    }
+                    aria-pressed={selection === item}
                     onClick={() => setSelection(item)}
                   >
                     {item}

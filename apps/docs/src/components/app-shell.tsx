@@ -20,6 +20,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { UIProvider, type UISettings } from "@9to6/ui/provider";
+import { MovingHighlight } from "@9to6/ui/moving-highlight";
 import { Button } from "@9to6/ui/button";
 import { Kbd } from "@9to6/ui/kbd";
 import {
@@ -44,7 +45,7 @@ const initial: Settings = {
   theme: "light",
   motion: "full",
   density: "comfortable",
-  accent: "blue",
+  accent: "black",
 };
 const SettingsContext = createContext<{
   settings: Settings;
@@ -75,9 +76,12 @@ function parse(value: string): Settings {
         : "light",
       motion: data.motion === "reduced" ? "reduced" : "full",
       density: data.density === "compact" ? "compact" : "comfortable",
-      accent: ["blue", "violet", "teal"].includes(data.accent)
-        ? data.accent
-        : "blue",
+      accent:
+        data.version !== 2 && data.accent === "blue"
+          ? "black"
+          : ["black", "blue", "violet", "teal"].includes(data.accent)
+            ? data.accent
+            : "black",
     };
   } catch {
     return initial;
@@ -102,6 +106,7 @@ function ComponentNavigation({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
   return (
     <nav className="component-nav" aria-label="컴포넌트 탐색">
+      <MovingHighlight selector="a" variant="line" />
       <div className="nav-group">
         <span className="nav-group-title">GET STARTED</span>
         {[
@@ -168,7 +173,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     try {
       localStorage.setItem(
         "nine-ui-settings",
-        JSON.stringify({ ...settings, ...value }),
+        JSON.stringify({ ...settings, ...value, version: 2 }),
       );
       window.dispatchEvent(new Event("nine-settings"));
     } catch {

@@ -1,5 +1,12 @@
 export type Group =
-  "core" | "forms" | "navigation" | "overlays" | "data" | "advanced" | "chat";
+  | "core"
+  | "forms"
+  | "navigation"
+  | "overlays"
+  | "data"
+  | "advanced"
+  | "chat"
+  | "motion";
 export type ComponentEntry = {
   slug: string;
   name: string;
@@ -17,6 +24,7 @@ export const groupLabels: Record<Group, string> = {
   data: "Data & layout",
   advanced: "Advanced",
   chat: "Conversation",
+  motion: "Motion & patterns",
 };
 export const catalog: ComponentEntry[] = [
   {
@@ -683,6 +691,98 @@ export const catalog: ComponentEntry[] = [
     usage:
       '<Questionnaire questions={[{id:"email",label:"이메일",type:"email",required:true}]} onSubmit={saveAnswers} />',
     source: "questionnaire",
+  },
+  {
+    slug: "code-block",
+    name: "Code Block",
+    description: "타이핑과 전체 코드 복사를 지원합니다.",
+    group: "motion",
+    api: "code, filename, language, writing, duration",
+    usage: '<CodeBlock code={source} language="tsx" writing />',
+    source: "code-block",
+  },
+  {
+    slug: "code-tabs",
+    name: "Code Tabs",
+    description: "밑줄이 이동하고 내용이 전환되는 코드 탭.",
+    group: "motion",
+    api: "tabs, label, defaultValue",
+    usage: '<CodeTabs tabs={[{value:"tsx",label:"TSX",code:source}]} />',
+    source: "code-tabs",
+  },
+  {
+    slug: "notification-list",
+    name: "Notification List",
+    description: "포인터와 버튼으로 펼치는 알림 카드 묶음.",
+    group: "motion",
+    api: "items, label, defaultExpanded",
+    usage:
+      '<NotificationList items={[{id:"build",title:"Build complete",description:"Ready to preview"}]} />',
+    source: "notification-list",
+  },
+  {
+    slug: "pinned-list",
+    name: "Pinned List",
+    description: "고정한 항목이 그룹 사이를 부드럽게 이동합니다.",
+    group: "motion",
+    api: "items, value, defaultValue, onValueChange, label",
+    usage: '<PinnedList items={[{id:"one",title:"Project"}]} />',
+    source: "pinned-list",
+  },
+  {
+    slug: "todo-list",
+    name: "Todo List",
+    description: "완료 상태에 맞춰 손으로 그은 듯한 선이 나타납니다.",
+    group: "motion",
+    api: "items, value, defaultValue, onValueChange, label",
+    usage: '<TodoList items={[{id:"one",label:"Write a post"}]} />',
+    source: "todo-list",
+  },
+  {
+    slug: "radial-menu",
+    name: "Radial Menu",
+    description: "방향키와 우클릭을 지원하는 원형 액션 메뉴.",
+    group: "motion",
+    api: "items, children, label",
+    usage: "<RadialMenu items={actions}>오른쪽 클릭</RadialMenu>",
+    source: "radial-menu",
+  },
+  {
+    slug: "shine-card",
+    name: "Shine Card",
+    description: "검정 표면을 은은한 빛이 지나가는 카드.",
+    group: "motion",
+    api: "children, duration, className",
+    usage: "<ShineCard><h3>NINE UI</h3><p>Thoughtful motion.</p></ShineCard>",
+    source: "shine-card",
+  },
+  {
+    slug: "multi-step-dialog",
+    name: "Multi Step Dialog",
+    description: "앞뒤 방향과 높이에 맞춰 전환되는 단계별 대화상자.",
+    group: "motion",
+    api: "steps, trigger, onComplete, nextLabel, backLabel, completeLabel",
+    usage: "<MultiStepDialog trigger={<Button>시작</Button>} steps={steps} />",
+    source: "multi-step-dialog",
+  },
+  {
+    slug: "relative-time",
+    name: "Relative Time",
+    description: "같은 순간을 여러 시간대의 날짜와 시각으로 표시합니다.",
+    group: "motion",
+    api: "initialTime, zones, locale, live, label",
+    usage: '<RelativeTime initialTime="2026-09-22T04:59:45Z" />',
+    source: "relative-time",
+  },
+  {
+    slug: "preview-link-card",
+    name: "Preview Link Card",
+    description: "링크 위에 포인터를 두면 콘텐츠 미리보기를 표시합니다.",
+    group: "motion",
+    api: "href, children, preview, label",
+    usage:
+      '<PreviewLinkCard href="/docs" preview={<p>문서 미리보기</p>}>Docs</PreviewLinkCard>',
+    source: "preview-link-card",
   },
 ];
 export const groupOrder = Object.keys(groupLabels) as Group[];

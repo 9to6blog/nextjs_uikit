@@ -16,7 +16,11 @@ export function RadioGroupItem({
 }: ComponentProps<typeof Primitive.Item>) {
   return (
     <Primitive.Item {...props} className={cn("n-radio-group-item", className)}>
-      <Primitive.Indicator className="n-radio-indicator" />
+      <Primitive.Indicator
+        forceMount
+        className="n-radio-indicator"
+        aria-hidden="true"
+      />
     </Primitive.Item>
   );
 }

@@ -28,7 +28,7 @@ export function ThemeStudio() {
         <div className="studio-setting">
           <span>Accent color</span>
           <div className="demo-row">
-            {(["blue", "violet", "teal"] as const).map((accent) => (
+            {(["black", "blue", "violet", "teal"] as const).map((accent) => (
               <Button
                 key={accent}
                 size="sm"

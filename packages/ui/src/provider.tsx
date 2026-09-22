@@ -5,19 +5,19 @@ export type UISettings = {
   theme?: "light" | "dark" | "system";
   motion?: "full" | "reduced";
   density?: "comfortable" | "compact";
-  accent?: "blue" | "violet" | "teal";
+  accent?: "black" | "blue" | "violet" | "teal";
 };
 const UIContext = createContext<Required<UISettings>>({
   theme: "system",
   motion: "full",
   density: "comfortable",
-  accent: "blue",
+  accent: "black",
 });
 export function UIProvider({
   theme = "system",
   motion = "full",
   density = "comfortable",
-  accent = "blue",
+  accent = "black",
   className,
   children,
   ...props

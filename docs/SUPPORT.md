@@ -1,11 +1,12 @@
 # Support contract — v0.1
 
-The catalog baseline is all 64 names shown in the Shadcn documentation on 2026-09-22, plus File Upload, Tree, Sortable, Nav Link and Submit Button. This is a finite inventory, not compatibility with every existing or future UI library.
+The catalog baseline is all 64 names shown in the Shadcn documentation on 2026-09-22, plus 15 independent additions, for 79 documented components. The additions include File Upload, Tree, Sortable, Nav Link, Submit Button and the ten motion patterns documented in [REFERENCE-DESIGN.md](REFERENCE-DESIGN.md). This is a finite inventory, not compatibility with every existing or future UI library.
 
 ## Implemented
 
 - Native form props and React refs, disabled/error/loading examples, controlled or uncontrolled Radix APIs where those primitives support them.
-- Keyboard navigation, focus management, portal themes, light/dark/system themes, three accent presets, two density presets, reduced motion.
+- Keyboard navigation, focus management, portal themes, light/dark/system themes, four accent presets (black by default), two density presets, reduced motion.
+- SVG checkbox check/mixed strokes, radio springs, popup entrance/exit, moving highlights, blurred tabs, icon sidebar collapse, code typing/tabs, notification stacks, pinned/todo lists, radial menus, shine cards, multi-step dialogs and timezone clocks. See the reference matrix for individual APIs and limits.
 - Calendar single/multiple/range modes through DayPicker. Date Picker is a single-date composition; use Calendar with Popover for a range picker.
 - Data Table client filtering, sorting, paging, row selection, stable row IDs, column visibility and empty state.
 - Recharts primitives for area/bar/line/pie/radar/radial/scatter charts, theme colors and reduced-motion aware marks. Applications provide appropriate textual data alternatives.

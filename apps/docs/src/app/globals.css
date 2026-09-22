@@ -409,6 +409,27 @@ input {
   place-items: center;
   cursor: pointer;
 }
+.link-preview-document {
+  font-size: 8px;
+  line-height: 1.6;
+  padding: 5px;
+  height: 140px;
+  overflow: hidden;
+}
+.link-preview-document h3 {
+  font-size: 13px;
+  margin: 12px 0 5px;
+}
+.link-preview-document p {
+  margin: 5px 0 9px;
+}
+.link-preview-document hr {
+  border: 0;
+  border-top: 1px solid var(--n-border);
+}
+.theme-swatches [data-accent="black"] {
+  background: #0a0a0a;
+}
 .theme-swatches [data-accent="blue"] {
   background: #3659e3;
 }

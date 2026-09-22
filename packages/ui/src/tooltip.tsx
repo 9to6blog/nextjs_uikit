@@ -9,6 +9,7 @@ export const TooltipTrigger = Primitive.Trigger;
 export function TooltipContent({
   className,
   sideOffset = 8,
+  children,
   ...props
 }: ComponentProps<typeof Primitive.Content>) {
   const attributes = useUIAttributes();
@@ -19,7 +20,10 @@ export function TooltipContent({
         {...props}
         sideOffset={sideOffset}
         className={cn("n-tooltip", className)}
-      />
+      >
+        {children}
+        <Primitive.Arrow className="n-tooltip-arrow" width={10} height={5} />
+      </Primitive.Content>
     </Primitive.Portal>
   );
 }

@@ -122,7 +122,7 @@ export function HomePlayground() {
       <div className="playground-footer">
         <span>Make it yours</span>
         <div className="theme-swatches" aria-label="강조 색상">
-          {(["blue", "violet", "teal"] as const).map((accent) => (
+          {(["black", "blue", "violet", "teal"] as const).map((accent) => (
             <button
               type="button"
               key={accent}

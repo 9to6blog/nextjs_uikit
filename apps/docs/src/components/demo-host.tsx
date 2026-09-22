@@ -15,6 +15,7 @@ const demos = {
     import("@/demos/advanced").then((m) => m.AdvancedDemo),
   ),
   chat: dynamic(() => import("@/demos/chat").then((m) => m.ChatDemo)),
+  motion: dynamic(() => import("@/demos/motion").then((m) => m.MotionDemo)),
 };
 export function DemoHost({ name, group }: { name: string; group: Group }) {
   const Demo = demos[group];

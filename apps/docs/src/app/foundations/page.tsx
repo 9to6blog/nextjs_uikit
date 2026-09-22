@@ -37,7 +37,7 @@ export default function Foundations() {
         <CodeBlock
           label="CSS"
           code={
-            '/* 특정 테마 범위에서 토큰을 재정의합니다. */\n[data-n-ui][data-theme="light"] {\n  --n-accent: #3659e3;\n  --n-accent-hover: #2847c4;\n  --n-accent-soft: #eef2ff;\n  --n-accent-ink: #304dc3;\n  --n-on-accent: #ffffff;\n  --n-radius: 10px;\n  --n-height: 40px;\n}'
+            '/* 특정 테마 범위에서 토큰을 재정의합니다. */\n[data-n-ui][data-theme="light"] {\n  --n-accent: #0a0a0a;\n  --n-accent-hover: #262626;\n  --n-accent-soft: #f5f5f5;\n  --n-accent-ink: #171717;\n  --n-on-accent: #ffffff;\n  --n-radius: 8px;\n  --n-height: 36px;\n}'
           }
         />
       </section>

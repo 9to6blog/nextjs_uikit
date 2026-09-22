@@ -10,12 +10,19 @@ export function DialogContent({
   className,
   children,
   closeLabel = "닫기",
+  overlayClassName,
   ...props
-}: ComponentProps<typeof Primitive.Content> & { closeLabel?: string }) {
+}: ComponentProps<typeof Primitive.Content> & {
+  closeLabel?: string;
+  overlayClassName?: string;
+}) {
   const attributes = useUIAttributes();
   return (
     <Primitive.Portal>
-      <Primitive.Overlay {...attributes} className="n-dialog-overlay" />
+      <Primitive.Overlay
+        {...attributes}
+        className={cn("n-dialog-overlay", overlayClassName)}
+      />
       <Primitive.Content
         {...attributes}
         {...props}

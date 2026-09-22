@@ -1,4 +1,4 @@
-import { gotoReady, settleAnimations } from "./helpers";
+﻿import { gotoReady, settleAnimations } from "./helpers";
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
@@ -237,7 +237,7 @@ test("system dark accents match the explicit dark palette", async ({
   await page.emulateMedia({ colorScheme: "dark" });
   await gotoReady(page, "/foundations/");
   const root = page.locator(".app-root");
-  for (const accent of ["blue", "violet", "teal"]) {
+  for (const accent of ["black", "blue", "violet", "teal"]) {
     await page.getByRole("button", { name: accent, exact: true }).click();
     await page.getByRole("button", { name: "dark", exact: true }).click();
     const dark = await root.evaluate((el) =>

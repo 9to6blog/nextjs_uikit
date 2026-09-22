@@ -16,6 +16,6 @@ export default function Example() {
 }
 ```
 
-Use individual module paths. Static primitives remain server compatible; interactive modules preserve their client directives. The package includes the original source and typed declarations. UIProvider supports light/dark/system, blue/violet/teal, comfortable/compact and full/reduced motion.
+Use individual module paths. Static primitives remain server compatible; interactive modules preserve their client directives. The package includes the original source and typed declarations. UIProvider supports light/dark/system, black (default)/blue/violet/teal, comfortable/compact and full/reduced motion. Checkbox and radio indicators, popup transitions, moving highlights and the motion patterns share reduced-motion support without an extra animation runtime.
 
 See the repository's README, support contract and validation report for catalog coverage, API limitations and actual test evidence. Upstream third-party licenses are included. No general claim of perfect accessibility or universal UI-library compatibility is made.

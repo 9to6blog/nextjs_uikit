@@ -20,17 +20,17 @@ export default function Motion() {
         <h2>One motion language</h2>
         <div className="motion-token-grid">
           <div>
-            <span>140 ms</span>
+            <span>200 ms</span>
             <strong>Respond</strong>
             <p>버튼 피드백, 메뉴 닫힘</p>
           </div>
           <div>
-            <span>240 ms</span>
+            <span>300 ms</span>
             <strong>Connect</strong>
             <p>탭 이동, 상태 전환</p>
           </div>
           <div>
-            <span>360 ms</span>
+            <span>500 ms</span>
             <strong>Reveal</strong>
             <p>큰 표면, 진행률 변화</p>
           </div>
@@ -38,7 +38,7 @@ export default function Motion() {
         <CodeBlock
           label="CSS"
           code={
-            "--n-duration-fast: 140ms;\n--n-duration-normal: 240ms;\n--n-duration-slow: 360ms;\n--n-ease: cubic-bezier(.22, 1, .36, 1);\n--n-ease-exit: cubic-bezier(.4, 0, 1, 1);"
+            "--n-duration-fast: 200ms;\n--n-duration-normal: 300ms;\n--n-duration-slow: 500ms;\n--n-ease: cubic-bezier(.22, 1, .36, 1);\n--n-ease-exit: cubic-bezier(.4, 0, 1, 1);"
           }
         />
       </section>

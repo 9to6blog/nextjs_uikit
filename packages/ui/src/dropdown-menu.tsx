@@ -3,6 +3,7 @@ import type { ComponentProps } from "react";
 import { DropdownMenu as Primitive } from "radix-ui";
 import { cn } from "./utils.js";
 import { useUIAttributes } from "./provider.js";
+import { MovingHighlight } from "./moving-highlight.js";
 export const DropdownMenu = Primitive.Root;
 export const DropdownMenuTrigger = Primitive.Trigger;
 export const DropdownMenuGroup = Primitive.Group;
@@ -10,6 +11,7 @@ export const DropdownMenuRadioGroup = Primitive.RadioGroup;
 export const DropdownMenuSub = Primitive.Sub;
 export function DropdownMenuContent({
   className,
+  children,
   ...props
 }: ComponentProps<typeof Primitive.Content>) {
   const attributes = useUIAttributes();
@@ -19,7 +21,10 @@ export function DropdownMenuContent({
         {...attributes}
         {...props}
         className={cn("n-dropdown-menu-content", className)}
-      />
+      >
+        <MovingHighlight selector="[role^=menuitem]" />
+        {children}
+      </Primitive.Content>
     </Primitive.Portal>
   );
 }
@@ -103,6 +108,7 @@ export function DropdownMenuSubTrigger({
 }
 export function DropdownMenuSubContent({
   className,
+  children,
   ...props
 }: ComponentProps<typeof Primitive.SubContent>) {
   const attributes = useUIAttributes();
@@ -112,7 +118,10 @@ export function DropdownMenuSubContent({
         {...attributes}
         {...props}
         className={cn("n-dropdown-menu-sub-content", className)}
-      />
+      >
+        <MovingHighlight selector="[role^=menuitem]" />
+        {children}
+      </Primitive.SubContent>
     </Primitive.Portal>
   );
 }

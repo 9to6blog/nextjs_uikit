@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import type { CSSProperties, KeyboardEvent } from "react";
+import { MovingHighlight } from "./moving-highlight.js";
 export type TreeNode = {
   id: string;
   label: string;
@@ -118,6 +119,7 @@ export function Tree({
   }
   return (
     <div role="tree" aria-label={label} className="n-tree">
+      <MovingHighlight selector="[role=treeitem]" />
       {visible.map((node) => (
         <div
           key={node.id}
@@ -149,7 +151,28 @@ export function Tree({
           }}
         >
           <span aria-hidden="true">
-            {node.children?.length ? (expanded.has(node.id) ? "⌄" : "›") : "·"}
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              {node.children?.length ? (
+                <path
+                  d={
+                    expanded.has(node.id)
+                      ? "M3 8V5h6l2 3h10v3M3 8h7l2 3h10l-3 9H3Z"
+                      : "M3 5h6l2 3h10v12H3Z"
+                  }
+                />
+              ) : (
+                <path d="M6 3h8l4 4v14H6ZM14 3v5h4" />
+              )}
+            </svg>
           </span>
           {node.label}
         </div>
