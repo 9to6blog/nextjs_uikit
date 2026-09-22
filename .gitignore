@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+dist/
+playwright-report/
+test-results/
+artifacts/
+apps/docs/public/r/
+*.tsbuildinfo
+*.tgz
+.env*
+!.env.example
+*.log
+.DS_Store

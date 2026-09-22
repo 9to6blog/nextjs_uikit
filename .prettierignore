@@ -1,0 +1,9 @@
+node_modules
+.next
+out
+dist
+package-lock.json
+apps/docs/public/r
+playwright-report
+test-results
+artifacts

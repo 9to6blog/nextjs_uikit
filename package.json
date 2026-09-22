@@ -1,0 +1,39 @@
+{
+  "name": "nextjs-uikit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": "\u003e=22"
+  },
+  "scripts": {
+    "dev": "npm run build -w @9to6/ui \u0026\u0026 npm run registry:build \u0026\u0026 npm run dev -w @9to6/docs",
+    "build": "npm run build -w @9to6/ui \u0026\u0026 npm run registry:build \u0026\u0026 npm run build -w @9to6/docs",
+    "build:ui": "npm run build -w @9to6/ui",
+    "watch:ui": "tsc -p packages/ui/tsconfig.json --watch",
+    "typecheck": "npm run typecheck --workspaces",
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "registry:build": "node scripts/build-registry.mjs",
+    "test": "playwright test",
+    "preview": "node scripts/serve.mjs",
+    "check": "npm run lint \u0026\u0026 npm run build \u0026\u0026 npm run typecheck \u0026\u0026 npm test",
+    "test:package": "node scripts/verify-package.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "eslint": "^9.39.0",
+    "eslint-config-next": "16.3.5",
+    "prettier": "^3.9.0",
+    "typescript": "^5.9.3"
+  }
+}
