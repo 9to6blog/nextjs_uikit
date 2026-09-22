@@ -54,6 +54,13 @@ export type ChartViewProps = {
   height?: number;
   showTable?: boolean;
   className?: string;
+  xAxisLabel?: string;
+  yAxisLabel?: string;
+  tickFormatter?: (value: string | number) => string;
+  valueFormatter?: (value: string | number) => string;
+  tooltipContent?: ReactElement;
+  curve?: "monotone" | "stepAfter";
+  animated?: boolean;
 };
 const palette = [
   "var(--n-text)",
@@ -74,6 +81,13 @@ export function ChartView({
   height = 280,
   showTable = true,
   className,
+  xAxisLabel,
+  yAxisLabel,
+  tickFormatter,
+  valueFormatter = String,
+  tooltipContent,
+  curve = "monotone",
+  animated = true,
 }: ChartViewProps) {
   const colors = series.map((s, i) => s.color ?? palette[i % palette.length]);
   const first = series[0];
@@ -88,26 +102,63 @@ export function ChartView({
   );
   const horizontal = kind === "horizontal-bar";
   const circular = ["pie", "donut", "radial"].includes(kind);
+  const margin = {
+    top: 12,
+    right: 16,
+    bottom: xAxisLabel ? 24 : 0,
+    left: yAxisLabel ? 20 : 0,
+  };
+  const xLabel = xAxisLabel
+    ? {
+        value: xAxisLabel,
+        position: "insideBottom" as const,
+        offset: -16,
+        fill: "var(--n-muted)",
+      }
+    : undefined;
+  const yLabel = yAxisLabel
+    ? {
+        value: yAxisLabel,
+        position: "insideLeft" as const,
+        angle: -90,
+        fill: "var(--n-muted)",
+      }
+    : undefined;
+  const datumColor = (d: ChartDatum, i: number) =>
+    typeof d.fill === "string" ? d.fill : palette[i % palette.length];
   const axes = (
     <>
-      <CartesianGrid strokeDasharray="3 4" vertical={false} />
+      <CartesianGrid
+        strokeDasharray="3 4"
+        vertical={horizontal}
+        horizontal={!horizontal}
+      />
       <XAxis
         dataKey={horizontal ? undefined : categoryKey}
         type={horizontal ? "number" : "category"}
         tickLine={false}
         axisLine={false}
         minTickGap={12}
+        label={xLabel}
+        tickFormatter={horizontal ? tickFormatter : undefined}
       />
       <YAxis
         dataKey={horizontal ? categoryKey : undefined}
         type={horizontal ? "category" : "number"}
-        width={horizontal ? 64 : 40}
+        width={horizontal ? 88 : 64}
+        label={yLabel}
+        tickFormatter={horizontal ? undefined : tickFormatter}
         tickLine={false}
         axisLine={false}
       />
     </>
   );
-  const tooltip = <ChartTooltip contentStyle={{ color: "var(--n-text)" }} />;
+  const tooltip = (
+    <ChartTooltip
+      content={tooltipContent}
+      contentStyle={{ color: "var(--n-text)" }}
+    />
+  );
   const line = (s: ChartSeries, i: number) => (
     <Line
       key={s.key}
@@ -116,6 +167,8 @@ export function ChartView({
       stroke={colors[i]}
       strokeWidth={2}
       dot={false}
+      type={curve}
+      isAnimationActive={animated}
       animationDuration={400}
     />
   );
@@ -127,8 +180,16 @@ export function ChartView({
       fill={colors[i]}
       radius={kind === "stacked-bar" ? 0 : 3}
       stackId={kind === "stacked-bar" ? "total" : undefined}
+      isAnimationActive={animated}
       animationDuration={400}
-    />
+    >
+      {data.map((d, index) => (
+        <Cell
+          key={index}
+          fill={typeof d.fill === "string" ? d.fill : colors[i]}
+        />
+      ))}
+    </Bar>
   );
   const area = (s: ChartSeries, i: number) => (
     <Area
@@ -138,6 +199,8 @@ export function ChartView({
       stroke={colors[i]}
       fill={colors[i]}
       fillOpacity={0.14}
+      type={curve}
+      isAnimationActive={animated}
       strokeWidth={2}
       stackId={kind === "stacked-area" ? "total" : undefined}
       animationDuration={400}
@@ -156,10 +219,11 @@ export function ChartView({
           outerRadius="82%"
           paddingAngle={2}
           stroke="var(--n-surface)"
+          isAnimationActive={animated}
           animationDuration={400}
         >
-          {data.map((_, i) => (
-            <Cell key={i} fill={palette[i % palette.length]} />
+          {data.map((d, i) => (
+            <Cell key={i} fill={datumColor(d, i)} />
           ))}
         </Pie>
       </PieChart>
@@ -181,6 +245,7 @@ export function ChartView({
             stroke={colors[i]}
             fill={colors[i]}
             fillOpacity={0.12}
+            isAnimationActive={animated}
             animationDuration={400}
           />
         ))}
@@ -192,7 +257,7 @@ export function ChartView({
         data={data.map((d, i) => ({
           ...d,
           name: d[categoryKey],
-          fill: palette[i % palette.length],
+          fill: datumColor(d, i),
         }))}
         innerRadius="22%"
         outerRadius="92%"
@@ -214,13 +279,14 @@ export function ChartView({
           name={first.label}
           background={{ fill: "var(--n-raised)" }}
           cornerRadius={5}
+          isAnimationActive={animated}
           animationDuration={400}
         />
       </RadialBarChart>
     );
   else if (kind === "scatter")
     plot = (
-      <ScatterChart>
+      <ScatterChart margin={margin}>
         <CartesianGrid strokeDasharray="3 4" />
         <XAxis
           type="number"
@@ -228,11 +294,14 @@ export function ChartView({
           name={xKey}
           tickLine={false}
           axisLine={false}
+          label={xLabel}
         />
         <YAxis
           dataKey="y"
           type="number"
-          width={40}
+          width={64}
+          label={yLabel}
+          tickFormatter={tickFormatter}
           tickLine={false}
           axisLine={false}
         />
@@ -244,6 +313,7 @@ export function ChartView({
             data={data.map((d) => ({ ...d, y: d[s.key] }))}
             dataKey="y"
             fill={colors[i]}
+            isAnimationActive={animated}
             animationDuration={400}
           />
         ))}
@@ -251,7 +321,7 @@ export function ChartView({
     );
   else if (kind === "line")
     plot = (
-      <LineChart data={data}>
+      <LineChart data={data} margin={margin}>
         {axes}
         {tooltip}
         {series.map(line)}
@@ -259,7 +329,7 @@ export function ChartView({
     );
   else if (kind === "area" || kind === "stacked-area")
     plot = (
-      <AreaChart data={data}>
+      <AreaChart data={data} margin={margin}>
         {axes}
         {tooltip}
         {series.map(area)}
@@ -267,7 +337,7 @@ export function ChartView({
     );
   else if (kind === "composed")
     plot = (
-      <ComposedChart data={data}>
+      <ComposedChart data={data} margin={margin}>
         {axes}
         {tooltip}
         {series.map((s, i) => (i === 0 ? bar(s, i) : line(s, i)))}
@@ -275,7 +345,11 @@ export function ChartView({
     );
   else
     plot = (
-      <BarChart data={data} layout={horizontal ? "vertical" : "horizontal"}>
+      <BarChart
+        data={data}
+        margin={margin}
+        layout={horizontal ? "vertical" : "horizontal"}
+      >
         {axes}
         {tooltip}
         {series.map(bar)}
@@ -293,7 +367,7 @@ export function ChartView({
             ? data.map((d, i) => ({
                 key: String(i),
                 label: String(d[categoryKey]),
-                color: palette[i % palette.length],
+                color: datumColor(d, i),
               }))
             : series.map((s, i) => ({ ...s, color: colors[i] }))
           ).map((s) => (
@@ -327,7 +401,7 @@ export function ChartView({
                     <th scope="row">{d[categoryKey]}</th>
                     {kind === "scatter" && <td>{d[xKey]}</td>}
                     {series.map((s) => (
-                      <td key={s.key}>{d[s.key]}</td>
+                      <td key={s.key}>{valueFormatter(d[s.key])}</td>
                     ))}
                   </tr>
                 ))}

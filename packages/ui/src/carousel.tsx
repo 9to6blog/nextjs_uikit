@@ -4,10 +4,12 @@ import {
   useCallback,
   useEffect,
   useState,
+  useRef,
   type ReactNode,
   type CSSProperties,
 } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import Fade from "embla-carousel-fade";
 import { Button } from "./button.js";
 import { useReducedMotion } from "./use-reduced-motion.js";
 import { cn } from "./utils.js";
@@ -20,6 +22,16 @@ export type CarouselProps = {
   /** Percentage width per slide on larger screens. Mobile uses a full slide. */
   slideSize?: string;
   height?: number;
+  transition?: "slide" | "fade";
+  controlLabels?: {
+    previous: string;
+    next: string;
+    start: string;
+    stop: string;
+    reduced: string;
+    choose: string;
+    slide: (index: number) => string;
+  };
   dots?: boolean;
   thumbnails?: ReactNode[];
   /** Focus and manual navigation pause until explicitly resumed. */
@@ -35,6 +47,8 @@ export function Carousel({
   orientation = "horizontal",
   slideSize = "100%",
   height = 300,
+  transition = "slide",
+  controlLabels,
   dots = false,
   thumbnails,
   autoplay = false,
@@ -42,13 +56,16 @@ export function Carousel({
   onIndexChange,
 }: CarouselProps) {
   const reducedMotion = useReducedMotion();
-  const [ref, api] = useEmblaCarousel({
-    loop,
-    axis: orientation === "vertical" ? "y" : "x",
-    align: "start",
-    inViewThreshold: 0.5,
-    duration: reducedMotion ? 0 : 25,
-  });
+  const [ref, api] = useEmblaCarousel(
+    {
+      loop,
+      axis: orientation === "vertical" ? "y" : "x",
+      align: "start",
+      inViewThreshold: 0.5,
+      duration: reducedMotion ? 0 : 25,
+    },
+    transition === "fade" ? [Fade()] : [],
+  );
   const [state, setState] = useState({
     previous: false,
     next: slides.length > 1,
@@ -59,11 +76,21 @@ export function Carousel({
   const [stopped, setStopped] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const root = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) =>
+      setVisible(entry.isIntersecting),
+    );
+    if (root.current) observer.observe(root.current);
+    return () => observer.disconnect();
+  }, []);
   const playing =
     autoplay &&
     !stopped &&
     !hovered &&
     !hidden &&
+    visible &&
     !reducedMotion &&
     state.snaps > 1;
   const update = useCallback(() => {
@@ -118,10 +145,12 @@ export function Carousel({
   };
   return (
     <section
+      ref={root}
       className={cn("n-carousel", className)}
       aria-label={label}
       aria-roledescription="carousel"
       data-orientation={orientation}
+      data-transition={transition}
       data-playing={playing}
       style={
         {
@@ -158,10 +187,10 @@ export function Carousel({
           onClick={() => setStopped(!stopped)}
         >
           {reducedMotion
-            ? "자동 재생 꺼짐 · 모션 감소"
+            ? (controlLabels?.reduced ?? "자동 재생 꺼짐 · 모션 감소")
             : stopped
-              ? "자동 재생 시작"
-              : "자동 재생 정지"}
+              ? (controlLabels?.start ?? "자동 재생 시작")
+              : (controlLabels?.stop ?? "자동 재생 정지")}
         </Button>
       )}
       <div ref={ref} className="n-carousel-viewport">
@@ -184,7 +213,7 @@ export function Carousel({
         <Button
           variant="outline"
           size="sm"
-          aria-label="이전 슬라이드"
+          aria-label={controlLabels?.previous ?? "이전 슬라이드"}
           disabled={!state.previous}
           onClick={() => move("previous")}
         >
@@ -196,7 +225,7 @@ export function Carousel({
         <Button
           variant="outline"
           size="sm"
-          aria-label="다음 슬라이드"
+          aria-label={controlLabels?.next ?? "다음 슬라이드"}
           disabled={!state.next}
           onClick={() => move("next")}
         >
@@ -209,13 +238,15 @@ export function Carousel({
         <div
           className={thumbnails ? "n-carousel-thumbnails" : "n-carousel-dots"}
           role="group"
-          aria-label="슬라이드 선택"
+          aria-label={controlLabels?.choose ?? "슬라이드 선택"}
         >
           {Array.from({ length: state.snaps }, (_, i) => (
             <button
               type="button"
               key={i}
-              aria-label={`${i + 1}번 슬라이드 보기`}
+              aria-label={
+                controlLabels?.slide(i + 1) ?? `${i + 1}번 슬라이드 보기`
+              }
               aria-current={state.index === i ? "true" : undefined}
               onClick={() => {
                 setStopped(true);

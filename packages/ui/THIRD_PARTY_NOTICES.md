@@ -12,6 +12,7 @@ The packaged stylesheet includes react-day-picker's MIT-licensed CSS. Its copyri
 | @tanstack/react-table  | 8.21.3            | MIT     | [license](licenses/tanstack-react-table.txt)                       |
 | clsx                   | 2.1.1             | MIT     | [license](licenses/clsx.txt)                                       |
 | cmdk                   | 1.1.1             | MIT     | [license](licenses/cmdk.txt)                                       |
+| embla-carousel-fade    | 8.6.0             | MIT     | Dependency retains its original MIT notice                         |
 | embla-carousel-react   | 8.6.0             | MIT     | License from package metadata; no notice file in installed package |
 | input-otp              | 1.5.0             | MIT     | [license](licenses/input-otp.txt)                                  |
 | radix-ui               | 1.6.7             | MIT     | [license](licenses/radix-ui.txt)                                   |

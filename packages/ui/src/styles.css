@@ -1,4 +1,4 @@
-﻿/* NINE UI — scoped semantic tokens. No global reset, font request or runtime CSS. */
+/* NINE UI — scoped semantic tokens. No global reset, font request or runtime CSS. */
 @import "react-day-picker/style.css";
 [data-n-ui] {
   color-scheme: light;
@@ -879,8 +879,7 @@
   box-shadow: none;
 }
 .n-dialog-content[data-variant="command"]:focus-within {
-  border-color: var(--n-border-strong);
-  box-shadow: var(--n-shadow), var(--n-focus);
+  box-shadow: var(--n-shadow);
 }
 .n-dialog-header {
   display: flex;
@@ -990,17 +989,24 @@
   padding: 6px 8px;
   border-radius: 4px;
   font-size: 13px;
-  cursor: default;
+  cursor: pointer;
   user-select: none;
   outline: none;
 }
 :is(
     .n-dropdown-menu-item,
+    .n-dropdown-menu-checkbox-item,
+    .n-dropdown-menu-radio-item,
     .n-dropdown-menu-sub-trigger,
     .n-context-menu-item,
+    .n-context-menu-checkbox-item,
+    .n-context-menu-radio-item,
     .n-context-menu-sub-trigger,
     .n-menubar-item,
+    .n-menubar-checkbox-item,
+    .n-menubar-radio-item,
     .n-menubar-sub-trigger,
+    .n-select-item,
     .n-command-item
   )
   > svg,
@@ -1132,6 +1138,23 @@
   color: var(--n-text);
   background: var(--n-surface);
   font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.n-select-trigger > span:first-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.n-select-trigger > span:last-child {
+  flex: none;
+}
+:is(.n-select-trigger, [role^="menuitem"], .n-select-item):is(
+  :disabled,
+  [data-disabled]:not([data-disabled="false"]),
+  [aria-disabled="true"]
+) {
+  cursor: not-allowed;
 }
 .n-select-content {
   min-width: var(--radix-select-trigger-width);
@@ -1703,9 +1726,14 @@
   font-size: 13px;
   cursor: pointer;
 }
-.n-command-item[data-selected="true"] {
+.n-command-item[data-selected="true"],
+.n-command-item:not([data-disabled="true"]):hover {
   background: var(--n-accent-soft);
   color: var(--n-accent-ink);
+}
+.n-command-item {
+  width: 100%;
+  text-align: start;
 }
 .n-command-empty {
   padding: 24px;
@@ -2475,8 +2503,8 @@
   pointer-events: none;
 }
 .n-tabs-list {
-  padding: 3px;
-  gap: 0;
+  padding: 4px;
+  gap: 4px;
   border-radius: 8px;
 }
 .n-tabs-trigger {
