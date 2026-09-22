@@ -1530,7 +1530,6 @@
   outline: none;
   outline-offset: 0;
   border-bottom-color: var(--n-border-strong);
-  background: var(--n-raised);
 }
 .n-command-list {
   max-height: 290px;
@@ -1582,6 +1581,12 @@
 }
 .n-combobox-popover .n-command {
   border: 0;
+}
+.n-combobox-popover .n-command-input {
+  height: 36px;
+  padding: 0 12px;
+  font-size: 13px;
+  background: var(--n-surface);
 }
 .n-calendar {
   --rdp-accent-color: var(--n-accent);

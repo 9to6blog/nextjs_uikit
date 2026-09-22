@@ -6,6 +6,7 @@ The catalog contains 79 documented components spanning primitives, forms, naviga
 
 - Native form props and React refs, disabled/error/loading examples, controlled or uncontrolled Radix APIs where those primitives support them.
 - Keyboard navigation, focus management, portal themes, light/dark/system themes, four accent presets (black by default), two density presets, reduced motion.
+- Radial Menu opens with the pointer's context-menu action, not an ordinary left click. Keyboard activation includes Shift+F10, the context-menu key, Enter and Space; Escape restores focus to the trigger.
 - SVG checkbox check/mixed strokes, radio springs, popup entrance/exit, moving highlights, blurred tabs, icon sidebar collapse, code typing/tabs, notification stacks, pinned/todo lists, radial menus, shine cards, multi-step dialogs and timezone clocks. See the reference matrix for individual APIs and limits.
 - Calendar single/multiple/range modes through DayPicker. Date Picker is a single-date composition; use Calendar with Popover for a range picker.
 - Data Table client filtering, sorting, paging, row selection, stable row IDs, column visibility and empty state.

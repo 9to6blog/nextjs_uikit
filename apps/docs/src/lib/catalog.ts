@@ -717,7 +717,7 @@ export const catalog: ComponentEntry[] = [
     group: "motion",
     api: "items, label, defaultExpanded",
     usage:
-      '<NotificationList items={[{id:"build",title:"Build complete",description:"Ready to preview"}]} />',
+      '<NotificationList label="작업실 알림" items={[{id:"published",title:"예약한 글이 발행됐어요",description:"저장한 원고가 공개되었습니다.",time:"방금"}]} />',
     source: "notification-list",
   },
   {
@@ -741,7 +741,7 @@ export const catalog: ComponentEntry[] = [
   {
     slug: "radial-menu",
     name: "Radial Menu",
-    description: "방향키와 우클릭을 지원하는 원형 액션 메뉴.",
+    description: "우클릭으로 열고 방향키로 탐색하는 원형 액션 메뉴.",
     group: "motion",
     api: "items, children, label",
     usage: "<RadialMenu items={actions}>오른쪽 클릭</RadialMenu>",
