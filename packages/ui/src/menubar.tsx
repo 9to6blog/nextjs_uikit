@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "./icons.js";
 import { createContext, useContext, useId, type ComponentProps } from "react";
 import { Menubar as Primitive } from "radix-ui";
 import { cn } from "./utils.js";
@@ -70,7 +71,7 @@ export function MenubarCheckboxItem({
       className={cn("n-menubar-checkbox-item", "n-menu-check", className)}
     >
       <Primitive.ItemIndicator className="n-menu-indicator">
-        ✓
+        <Icon name="check" />
       </Primitive.ItemIndicator>
       {children}
     </Primitive.CheckboxItem>
@@ -87,7 +88,7 @@ export function MenubarRadioItem({
       className={cn("n-menubar-radio-item", "n-menu-check", className)}
     >
       <Primitive.ItemIndicator className="n-menu-indicator">
-        ✓
+        <Icon name="check" />
       </Primitive.ItemIndicator>
       {children}
     </Primitive.RadioItem>

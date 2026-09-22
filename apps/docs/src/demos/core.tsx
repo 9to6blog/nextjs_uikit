@@ -135,15 +135,13 @@ export function CoreDemo({ name }: { name: string }) {
             <Button
               size="sm"
               className="push-right"
-              onClick={() => setCount((c) => c + 1)}
+              style={{ minWidth: 90 }}
+              aria-pressed={count > 0}
+              onClick={() => setCount((c) => (c ? 0 : 1))}
             >
-              열기 <ArrowRight />
+              <span aria-live="polite">{count > 0 ? "선택됨" : "열기"}</span>
+              {count > 0 ? <Check /> : <ArrowRight />}
             </Button>
-            {count > 0 && (
-              <span role="status" className="demo-note">
-                선택됨
-              </span>
-            )}
           </CardFooter>
         </Card>
       );

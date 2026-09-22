@@ -69,7 +69,7 @@ export function AdvancedDemo({ name }: { name: string }) {
         <div className="demo-stack">
           <Sortable label="문서 순서" items={items} onValueChange={setItems} />
           <p className="demo-note">
-            핸들을 드래그하거나 Space → 방향키 → Space로 순서를 바꾸세요.
+            핸들을 드래그하거나 Space, 방향키, Space 순서로 순서를 바꾸세요.
           </p>
         </div>
       );

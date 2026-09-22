@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "./icons.js";
 import type { ComponentProps } from "react";
 import { ContextMenu as Primitive } from "radix-ui";
 import { cn } from "./utils.js";
@@ -81,7 +82,7 @@ export function ContextMenuCheckboxItem({
       className={cn("n-context-menu-checkbox-item", "n-menu-check", className)}
     >
       <Primitive.ItemIndicator className="n-menu-indicator">
-        ✓
+        <Icon name="check" />
       </Primitive.ItemIndicator>
       {children}
     </Primitive.CheckboxItem>
@@ -98,7 +99,7 @@ export function ContextMenuRadioItem({
       className={cn("n-context-menu-radio-item", "n-menu-check", className)}
     >
       <Primitive.ItemIndicator className="n-menu-indicator">
-        ✓
+        <Icon name="check" />
       </Primitive.ItemIndicator>
       {children}
     </Primitive.RadioItem>

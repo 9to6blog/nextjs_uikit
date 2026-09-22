@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "./icons.js";
 import { useState } from "react";
 import { Calendar } from "./calendar.js";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover.js";
@@ -41,7 +42,7 @@ export function DatePicker({
                 day: "numeric",
               })
             : placeholder}
-          <span aria-hidden="true">▦</span>
+          <Icon name="calendar" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="n-calendar-popover" aria-label={label}>

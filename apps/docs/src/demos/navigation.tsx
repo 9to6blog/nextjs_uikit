@@ -1,4 +1,6 @@
 "use client";
+import { sitePath } from "@/lib/site-path";
+import { Icon } from "@9to6/ui/icons";
 import { useDemoReady } from "@/lib/use-demo-ready";
 import { useState } from "react";
 import { LayoutDashboard, Palette, Code2 } from "lucide-react";
@@ -82,10 +84,10 @@ export function NavigationDemo({ name }: { name: string }) {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/">홈</BreadcrumbLink>
+              <BreadcrumbLink href={sitePath("/")}>홈</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/components/button/">
+              <BreadcrumbLink href={sitePath("/components/button/")}>
                 컴포넌트
               </BreadcrumbLink>
             </BreadcrumbItem>
@@ -144,18 +146,20 @@ export function NavigationDemo({ name }: { name: string }) {
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>시작하기 ⌄</NavigationMenuTrigger>
+              <NavigationMenuTrigger>
+                시작하기 <Icon name="chevron-down" />
+              </NavigationMenuTrigger>
               <NavigationMenuContent>
-                <NavigationMenuLink href="/getting-started/">
+                <NavigationMenuLink href={sitePath("/getting-started/")}>
                   설치 가이드
                 </NavigationMenuLink>
-                <NavigationMenuLink href="/foundations/">
+                <NavigationMenuLink href={sitePath("/foundations/")}>
                   디자인 토큰
                 </NavigationMenuLink>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuLink href="/components/button/">
+              <NavigationMenuLink href={sitePath("/components/button/")}>
                 컴포넌트
               </NavigationMenuLink>
             </NavigationMenuItem>

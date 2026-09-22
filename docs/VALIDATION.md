@@ -1,72 +1,59 @@
-# v0.1 디자인·모션 개정 검증 기록
+# v0.1 UI 수정 · React · Pages 검증
 
-검증일: **2026-09-22**. 독립 UI 패키지와 production 정적 문서 사이트의 로컬 검사입니다. 기존 블로그·AWS·Cloudflare와 실제 운영 트래픽은 이 검증에 포함하지 않습니다.
-
-## 환경과 빌드
-
-- Windows, Node.js 24.14.1, npm 11.11.0.
-- Next.js 16.3.5, React / React DOM 19.3.0, TypeScript 5.9.3.
-- Playwright 1.63.0, axe 4.13.0. Chromium 153.0.8010.12, Firefox 155.0, WebKit 26.6.
-- 전체 worker 2개, Firefox/WebKit은 각각 최대 1개. 자동 재시도 0회.
-- `npm run format:check`, `npm run lint`, `npm run typecheck`, `npm run build` 통과.
-- `npm audit --omit=dev --audit-level=high`: 알려진 production 의존성 취약점 0건.
-
-문서는 **79개 컴포넌트 + 5개 안내 페이지 = 84개 사용자 페이지**입니다. Next 빌드의 정적 출력은 내부 not-found를 포함한 86개이며, source registry는 helper와 alias를 포함한 83개 항목입니다.
+검증일: **2026-09-22**. 사용자 스크린샷 피드백에 따른 UI 수정과 독립 React 소비, GitHub Pages용 정적 빌드의 검증 기록입니다.
 
 ## 전체 브라우저 검사
 
-최종 `npm test` 통합 실행: **244 passed**, 실패·skip·flaky **0건**, 재시도 **0회**, 약 **8.4분**. 실행 시작 UTC: `2026-09-22T04:53:03.482Z`.
+`npm test`: **259 passed**, 실패·건너뜀·flaky **0건**, 재시도 **0회**. 소요 **9.3분**, 시작 UTC `2026-09-22T06:20:13.376Z`.
 
-| 프로젝트                      | 범위                                          | 검사 수 |
-| ----------------------------- | --------------------------------------------- | ------: |
-| Chromium desktop, 1440 × 1000 | 전체 카탈로그·상호작용·접근성·반응형          |     134 |
-| Chromium tablet, 820 × 1180   | 84개 페이지 가로 넘침, 모션 감소, 테마        |       3 |
-| Chromium mobile, 390 × 844    | 84개 페이지 가로 넘침, 모바일 탐색, 모션·테마 |       3 |
-| Firefox desktop, 1280 × 720   | 기존 상호작용과 추가 모션 패턴                |      52 |
-| WebKit desktop, 1280 × 720    | 기존 상호작용과 추가 모션 패턴                |      52 |
-| 합계                          | 저장소의 전체 suite                           |     244 |
+| 프로젝트         | 화면                 | 검사 수 |
+| ---------------- | -------------------- | ------: |
+| Chromium desktop | 1440 × 1000          |     139 |
+| Chromium tablet  | 820 × 1180           |       3 |
+| Chromium mobile  | 390 × 844 에뮬레이션 |       3 |
+| Firefox desktop  | 1280 × 720           |      57 |
+| WebKit desktop   | 1280 × 720           |      57 |
 
-79개 카탈로그의 라이트·다크 axe 검사는 Chromium에서 실행합니다. Firefox/WebKit은 상호작용 spec 전체를 실행합니다. 모바일은 Chromium 에뮬레이션이며 iPhone 실기기 Safari 결과가 아닙니다.
+79개 컴포넌트의 라이트·다크 렌더링·axe 검사는 Chromium에서 실행합니다. Firefox와 WebKit은 상호작용 spec 전체를 실행합니다. 반응형 검사는 79개 컴포넌트와 5개 안내 페이지, 총 84개 문서를 순회합니다.
 
-추가한 14개 모션 검사 × 3개 브라우저는 SVG 체크·마이너스의 X/Y 중심, 실제 드로잉 전환 중간값, controlled/uncontrolled mixed 상태와 form reset, reduced motion에서 지연 제거, 이동하는 트리 hover 표면, 코드 전체 복사·탭 키보드 이동, 알림 hover/키보드 펼침·접힘, 고정/해제 양방향 포커스, 완료선 드로잉, 원형 메뉴 중심과 키보드 선택·Escape·포커스 복귀, 모달 이전/다음/완료/재진입, 동일 instant의 시간대별 표시, 아이콘 사이드바와 설정 마이그레이션을 포함합니다.
+추가 회귀 검사는 내비게이션·사이드바의 단일 하이라이트와 active 복귀, 카드 버튼 내부 상태·폭 유지, Select SVG와 Combobox 트리거·팝업 폭·화살표 정렬, Calendar·DatePicker 선택 날짜 13px 유지, DataTable 공통 체크박스의 mixed·전체 선택·열 표시를 포함합니다. 기존 고정 목록의 이동·포커스 검사와 Todo 직선 완료선 검사도 유지합니다.
 
-기존 다이얼로그·메뉴·파일 선택·날짜·표·트리·정렬·폼·차트·문서 이동 검사는 유지했습니다. 페이지 오류·console error·실패한 HTTP 응답과 접근성 오류를 수집합니다. axe는 유한 CSS 애니메이션이 종료된 시점에서 검사합니다. 실패 조건을 삭제하거나 retry로 숨기지 않았습니다.
+제어용 화살표·체크·닫기·드래그·날짜 아이콘을 SVG로 구현했습니다. 화면 캡처로 테이블, 사이드바 hover, 카드 선택 상태, 새 고정 목록, 직선 완료선, 선택 날짜와 콤보박스 정렬을 직접 확인했습니다.
 
-알림의 spring 전환 중 WebKit 자동 스크롤이 hover 영역을 벗어나 이미 접힌 버튼을 누른 테스트 실패가 한 차례 있었습니다. 유한 전환의 실제 종료를 기다리고 펼친 상태를 재확인하도록 검사를 동기화했습니다. 기존 접힘 검증을 유지한 채 Chromium·Firefox·WebKit 각 10회, 총 30회 반복을 통과한 후 위 전체 suite를 실행했습니다.
+초기 전체 실행에서는 258개가 통과하고 Data Table의 다크 테마 전환 검사 1개가 대기 시간 초과로 실패했습니다. 추적을 활성화하면 닫힌 열 선택 메뉴의 체크박스 전환이 종료 promise를 처리하지 못하는 현상을 3회 재현했습니다. 메뉴가 열릴 때만 선택 항목을 렌더링하도록 수정한 뒤, 해당 접근성 검사는 3회 연속 통과하고 3개 브라우저의 열 선택 동작도 통과했습니다. 검사 시간 제한이나 접근성 판정은 변경하지 않았으며 이 문서의 전체 검사 결과는 수정 후 재실행입니다.
 
-## 디자인 검토와 수정
+별도 재실행에서는 Firefox의 제출 버튼 검사에서 눌림 scale의 중간 프레임을 레이아웃 너비 변화로 판정했습니다. 직접 측정한 CSS 너비는 처리 전·중 모두 125.667px이었고, scale 종료 후 화면 너비도 원래 값으로 복원됐습니다. 처리 중 CSS 너비를 추가 확인하고 애니메이션 종료 후 기존 화면 너비의 완전 일치 검사를 수행하도록 보완했습니다. 타임아웃·허용 오차·재시도 횟수는 변경하지 않았습니다.
 
-원본 영상 18개와 PNG 2개의 프레임·디자인 대응은 [REFERENCE-DESIGN.md](REFERENCE-DESIGN.md)에 기록했습니다. 입력·버튼·체크박스·라디오·OTP·스피너·새 패턴과 열린 팝오버·툴팁·미리보기·원형 메뉴·모달을 캡처해 직접 검토했습니다.
+## 정적 검사와 빌드
 
-- 기본 검정 테마, 얇은 입력 테두리, 중앙 SVG 체크/마이너스와 선 전환.
-- 처음 조정한 보조 회색이 연한 배지 위에서 4.34:1에 머물러 접근성 검사가 실패했습니다. 보조 텍스트를 `#6b6b6b`로 조정하고 검사를 다시 통과했습니다.
-- 원형 메뉴가 포인터의 오른쪽 아래에 열리던 것을 중심 기준 배치와 뷰포트 내 위치 제한으로 수정했습니다.
-- 다단계 모달은 영상처럼 진한 배경과 blur 없는 overlay를 사용합니다.
-- hover로 열린 알림을 접는 버튼의 상태 불일치를 실제 재현해 수정했습니다. 고정 목록의 DOM 이동 후 포커스도 양방향으로 검증했습니다.
-- 기존 저장 설정의 옛 blue 기본값은 black으로 마이그레이션하고, 새로 선택한 blue는 버전 2 설정으로 보존합니다.
+- 포맷·린트·타입 검사·로컬 production 빌드 통과.
+- Next.js 16.3.5, React 19.3.0, TypeScript 5.9.3, Playwright 1.63.0.
+- `main` 소스의 기본 경로 문서 빌드와 `/nextjs_uikit` basePath Pages 빌드를 각각 검증합니다.
+- Next.js 빌드의 오류 페이지는 공개 문서 84개에서 제외합니다.
 
-## 패키지와 소스 설치
+## 실제 패키지와 소비 앱
 
-`npm run test:package` 통과. 증거 생성 UTC: `2026-09-22T04:52:47.155Z`.
+`npm run test:package` 통과. 증거 UTC `2026-09-22T06:30:50.790Z`. 실제 tarball을 별도 Next.js 앱에 설치해 Server Component HTML, client 지시문, Dialog 열기·Escape·포커스, 공식 shadcn CLI 소스 설치·빌드를 검증했습니다. 브라우저 오류 0건입니다.
 
-1. 실제 `npm pack` tarball을 독립 Next.js 소비 앱에 설치하고 production 빌드.
-2. 공식 `shadcn@4.21.0` CLI로 로컬 registry의 Button/Dialog 소스를 설치해 빌드.
-3. 정적 Card/Button 서버 HTML과 모든 emitted client module의 `"use client"` 지시문 유지 확인.
-4. 패키지와 소스 설치 각각의 Dialog를 Chromium에서 열고 Escape로 닫음. page error 0건.
-5. 이 소비 예제의 JS에서 사용하지 않은 Recharts runtime marker가 없음.
+`npm run test:react` 통과. 증거 UTC `2026-09-22T06:31:21.603Z`. 작업 공간 밖의 독립 **React 19.3.0 + Vite 8.3.0** 앱에서 Next.js가 설치되지 않았음을 확인하고 타입·프로덕션 빌드·체크박스·콤보박스·다이얼로그·일반 NavLink를 검사했습니다. 작은 트리거에서도 `contentMinWidth`로 넓은 팝업을 사용할 수 있습니다. 브라우저 오류 0건입니다.
 
-| 배포물                     | 측정값                                                             |
-| -------------------------- | ------------------------------------------------------------------ |
-| 파일                       | `artifacts/9to6-ui-0.1.0.tgz`                                      |
-| 압축 크기                  | 96,487 bytes                                                       |
-| 압축 해제 크기             | 474,591 bytes / 362 files                                          |
-| SHA-256                    | `b21ba167bff4331ac0eb5f6e30ffec14dccec484160b529349171d6c06cb87d3` |
-| 소비 앱 전체 JS chunk 합계 | 623,644 bytes / gzip 192,054 bytes                                 |
+React 소비 앱은 `@9to6/ui/react`를 사용합니다. 기존 루트 barrel과 `/nav-link`는 Next.js 어댑터를 유지합니다. `/react`의 NavLink는 애플리케이션 라우터가 `active` 값을 전달합니다. React 18은 지원 대상으로 선언하지 않습니다.
 
-JS 수치는 Next.js·React runtime과 소비 예제 chunk를 포함하며 UI 단독 크기나 첫 페이지 전송량이 아닙니다. 추가 모션 런타임 의존성은 없습니다.
+| 패키지    | 값                                                                 |
+| --------- | ------------------------------------------------------------------ |
+| 파일      | `9to6-ui-0.1.0.tgz`                                                |
+| 압축 크기 | 101,153 bytes                                                      |
+| 압축 해제 | 498,435 bytes / 374 files                                          |
+| SHA-256   | `f9c21b42c1ea8bf5b7365d8ad0a9951458b7ebd361e7943b281f7dca5404bdab` |
 
-## 증거와 남은 범위
+## GitHub Pages
 
-로컬 증거: `artifacts/test-results.json`, `playwright-report/index.html`, `artifacts/package-verification.json`, `artifacts/design-review/`, `artifacts/references/`, `artifacts/design-full-tests.log`. 중간 검사 로그도 `artifacts/before-*.log` 등에 보존합니다. 원본 영상과 생성물·설치 fixture는 Git에 포함하지 않습니다.
+로컬 Pages 빌드의 `npm run test:pages`에서 **84개 문서 HTTP 200**, 문서·일반 링크·Next.js 링크의 프로젝트 경로 유지, registry, 다운로드 패키지 해시, 다이얼로그·카드·캘린더·테이블, 390px 화면을 검사했습니다. 브라우저 오류 0건입니다.
 
-GitHub Actions는 수동 workflow이며 이 기록은 원격 CI 실행 결과가 아닙니다. axe는 WCAG 인증이나 NVDA/VoiceOver·실제 터치 기기 검증을 대체하지 않습니다. 참고 영상과 모든 픽셀이 동일하다는 보증은 하지 않습니다. 지원 기능과 한계는 [SUPPORT.md](SUPPORT.md), 이후 확장 범위는 [ROADMAP.md](ROADMAP.md)에 기록합니다.
+공개 주소는 https://9to6blog.github.io/nextjs_uikit/ 입니다. 배포 스크립트는 현재 소스 커밋과 깨끗한 빌드, 최신 로컬 Pages 검증 기록의 일치를 요구합니다. GitHub의 게시 작업 성공과 실제 공개 주소 검증은 로컬 증거 `artifacts/pages-publish.json`, `artifacts/pages-live-verification.json`에 별도로 기록합니다. 이는 원격에서 전체 테스트 suite를 다시 실행했다는 뜻이 아닙니다. 배포 절차는 [PUBLISHING.md](PUBLISHING.md)를 참고하세요.
+
+## 증거와 범위
+
+`artifacts/review-full-tests.log`, `artifacts/test-results.json`, `artifacts/package-verification.json`, `artifacts/react-verification.json`, `artifacts/pages-local-verification.json`, `artifacts/polish-review/`에 증거가 있습니다. 원본 스크린샷·영상, 생성 산출물, 소비 앱 fixture는 `main`에 포함하지 않습니다.
+
+모바일은 에뮬레이션입니다. 실기기·스크린리더·고배율·모든 RTL 조합의 검증이나 WCAG 인증을 의미하지 않습니다. 기존 블로그·AWS·Cloudflare와 실제 운영 트래픽은 이번 검증 범위에 포함하지 않습니다. 기능 범위는 [SUPPORT.md](SUPPORT.md)에 명시합니다.

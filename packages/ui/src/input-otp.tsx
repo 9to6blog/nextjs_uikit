@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "./icons.js";
 import { Fragment } from "react";
 import { OTPInput, REGEXP_ONLY_DIGITS, type OTPInputProps } from "input-otp";
 import { cn } from "./utils.js";
@@ -23,7 +24,7 @@ export function InputOTP({
             <Fragment key={index}>
               {index === separatorAfter && (
                 <span className="n-otp-separator" aria-hidden="true">
-                  −
+                  <Icon name="minus" />
                 </span>
               )}
               <span

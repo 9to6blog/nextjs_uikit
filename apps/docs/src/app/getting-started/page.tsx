@@ -24,14 +24,14 @@ export default function GettingStarted() {
       <section className="doc-section">
         <h2>02. 내 프로젝트에 설치</h2>
         <p>
-          현재 npm 공개 배포 전입니다. 라이브러리를 빌드하고 로컬 tarball로
-          설치할 수 있습니다. 패키지는 React 19.2 이상과 Next.js 16을 대상으로
-          합니다.
+          GitHub Pages에서 제공하는 tarball을 설치하거나 직접 로컬에서 빌드할 수
+          있습니다. React 19.2 이상 20 미만을 대상으로 하며, Next.js 16 연동도
+          제공합니다.
         </p>
         <CodeBlock
           label="terminal"
           code={
-            "# 이 저장소에서\nnpm run build:ui\nnpm pack -w @9to6/ui\n\n# 사용하는 Next.js 프로젝트에서\nnpm install /absolute/path/to/9to6-ui-0.1.0.tgz"
+            "npm install https://9to6blog.github.io/nextjs_uikit/downloads/9to6-ui-0.1.0.tgz\n\n# 또는 이 저장소에서 로컬 패키지 생성\nnpm run build:ui\nnpm pack -w @9to6/ui"
           }
         />
       </section>
@@ -44,7 +44,7 @@ export default function GettingStarted() {
         <CodeBlock
           label="app/layout.tsx"
           code={
-            'import "@9to6/ui/styles.css";\nimport { UIProvider } from "@9to6/ui/provider";\n\nexport default function Layout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang="ko">\n      <body>\n        <UIProvider theme="system" accent="blue" motion="full">\n          {children}\n        </UIProvider>\n      </body>\n    </html>\n  );\n}'
+            'import "@9to6/ui/styles.css";\nimport { UIProvider } from "@9to6/ui/provider";\n\nexport default function Layout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang="ko">\n      <body>\n        <UIProvider theme="system" accent="black" motion="full">\n          {children}\n        </UIProvider>\n      </body>\n    </html>\n  );\n}'
           }
         />
       </section>
@@ -62,16 +62,30 @@ export default function GettingStarted() {
         </p>
       </section>
       <section className="doc-section">
+        <h2>React · Vite에서 사용</h2>
+        <p>
+          Next.js가 없는 앱에서는 @9to6/ui/react 또는 개별 컴포넌트 경로를
+          사용합니다. React 진입점의 NavLink는 active 값을 받는 일반 링크이며,
+          Next.js 라우터와 자동 연동할 때는 @9to6/ui/nav-link를 사용하세요.
+        </p>
+        <CodeBlock
+          label="src/App.tsx"
+          code={
+            'import "@9to6/ui/styles.css";\nimport { UIProvider, Button, NavLink } from "@9to6/ui/react";\n\nexport default function App() {\n  return <UIProvider><NavLink href="/" active>홈</NavLink><Button>시작하기</Button></UIProvider>;\n}'
+          }
+        />
+      </section>
+      <section className="doc-section">
         <h2>Shadcn registry로 소스 가져오기</h2>
         <p>
-          로컬 문서 서버의 /r 경로에서 생성된 registry를 제공합니다. CSS를
+          공개 문서 사이트의 /r 경로에서 생성된 registry를 제공합니다. CSS를
           추가한 뒤 레이아웃에서 가져오세요. 설치 전 CLI가 표시하는 변경 파일을
           확인할 수 있습니다.
         </p>
         <CodeBlock
           label="terminal"
           code={
-            "# 소비 프로젝트에서 — 로컬 문서 서버가 켜져 있어야 합니다.\nnpx shadcn@latest add http://127.0.0.1:3106/r/button.json\n\n# 생성된 스타일 파일을 app/layout.tsx에서 import\n# 실제 설치 경로는 프로젝트의 components.json aliases를 따릅니다."
+            "npx shadcn@latest add https://9to6blog.github.io/nextjs_uikit/r/button.json\n\n# 생성된 스타일을 앱에서 한 번 import\n# 실제 설치 경로는 프로젝트의 components.json aliases를 따릅니다."
           }
         />
       </section>

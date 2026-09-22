@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "./icons.js";
 import type { ComponentProps } from "react";
 import { Dialog as Primitive } from "radix-ui";
 import { useUIAttributes } from "./provider.js";
@@ -32,7 +33,7 @@ export function SheetContent({
       >
         {children}
         <Primitive.Close aria-label={closeLabel} className="n-dialog-close">
-          ×
+          <Icon name="close" />
         </Primitive.Close>
       </Primitive.Content>
     </Primitive.Portal>

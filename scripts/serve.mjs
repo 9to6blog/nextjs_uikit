@@ -1,7 +1,8 @@
 import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
 import { resolve, extname, sep } from "node:path";
-const root = resolve("apps/docs/out");
+const root = resolve(process.env.STATIC_ROOT ?? "apps/docs/out");
+const basePath = process.env.BASE_PATH ?? "";
 const port = Number(process.env.PORT ?? 3106);
 const mime = {
   ".html": "text/html; charset=utf-8",
@@ -16,9 +17,22 @@ const mime = {
 };
 createServer(async (req, res) => {
   try {
-    const pathname = decodeURIComponent(
+    let pathname = decodeURIComponent(
       new URL(req.url, "http://localhost").pathname,
     );
+    if (basePath) {
+      if (pathname === basePath) {
+        res.writeHead(308, { Location: `${basePath}/` });
+        res.end();
+        return;
+      }
+      if (!pathname.startsWith(`${basePath}/`)) {
+        res.writeHead(404);
+        res.end();
+        return;
+      }
+      pathname = pathname.slice(basePath.length);
+    }
     let file = resolve(root, `.${pathname}`);
     if (file !== root && !file.startsWith(root + sep)) {
       res.writeHead(403);

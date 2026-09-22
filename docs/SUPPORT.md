@@ -31,3 +31,9 @@ The catalog baseline is all 64 names shown in the Shadcn documentation on 2026-0
 ## Acceptance rule
 
 An item may be listed as implemented when it has working source, a runnable example, documented props and a recorded basic test. Production approval additionally requires the consuming application's actual states, input constraints, accessibility workflows, data scale and browser targets. Track missing features explicitly instead of hiding them behind the word "complete".
+
+## React and static hosting
+
+The `/react` entry supports React 19.2–19.x without a Next.js install. React 19.3 + Vite 8.3 is exercised by the isolated consumer check. Its NavLink accepts explicit active state; `/nav-link` retains the Next.js adapter. The legacy root barrel includes that adapter and is intended for Next.js. React 18 and native mobile runtimes are outside the current peer contract.
+
+GitHub Pages uses a locally built `/nextjs_uikit` basePath export. See [PUBLISHING.md](PUBLISHING.md) for artifact and deployment verification.

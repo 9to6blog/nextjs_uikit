@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "./icons.js";
 import type { ComponentProps } from "react";
 import { DropdownMenu as Primitive } from "radix-ui";
 import { cn } from "./utils.js";
@@ -50,7 +51,7 @@ export function DropdownMenuCheckboxItem({
       className={cn("n-dropdown-menu-checkbox-item", "n-menu-check", className)}
     >
       <Primitive.ItemIndicator className="n-menu-indicator">
-        ✓
+        <Icon name="check" />
       </Primitive.ItemIndicator>
       {children}
     </Primitive.CheckboxItem>
@@ -67,7 +68,7 @@ export function DropdownMenuRadioItem({
       className={cn("n-dropdown-menu-radio-item", "n-menu-check", className)}
     >
       <Primitive.ItemIndicator className="n-menu-indicator">
-        ✓
+        <Icon name="check" />
       </Primitive.ItemIndicator>
       {children}
     </Primitive.RadioItem>

@@ -1,8 +1,10 @@
 # NINE UI
 
-Next.js를 위한 독립 UI 라이브러리. Shadcn의 조합 가능한 컴포넌트·소스 소유 방식을 참고하고, 자체 디자인 토큰과 모션 규칙으로 구현합니다.
+React와 Next.js를 위한 독립 UI 라이브러리. Shadcn의 조합 가능한 컴포넌트·소스 소유 방식을 참고하고, 자체 디자인 토큰과 모션 규칙으로 구현합니다.
 
 `packages/ui`의 `@9to6/ui` 패키지와 `apps/docs`의 Next.js 문서·데모 사이트를 함께 관리합니다. 기존 블로그에 대한 수정이나 배포는 포함하지 않습니다.
+
+**[라이브 문서와 데모](https://9to6blog.github.io/nextjs_uikit/)** · [배포 방법](docs/PUBLISHING.md)
 
 ## 실행
 
@@ -76,6 +78,32 @@ export default function Welcome() {
 - `Button`의 기본 type은 `button`입니다. 제출에는 `type="submit"` 또는 `SubmitButton`을 명시합니다. `asChild`는 Button API가 아니라 Radix Trigger/Close의 조합 API에서 사용합니다.
 - CSS는 `n-` 접두사와 `data-n-ui` 토큰 범위를 사용합니다. Tailwind를 요구하지 않으며 Shadcn/Tailwind 앱과 함께 사용할 수 있습니다.
 
+## React · Vite에서 사용
+
+Next.js는 optional peer입니다. Next.js가 없는 React 앱은 `@9to6/ui/react` 또는 개별 컴포넌트 경로를 사용합니다. 기존 루트 진입점은 Next.js NavLink를 포함하므로 React 앱에서는 `/react`를 사용하세요.
+
+```sh
+npm install https://9to6blog.github.io/nextjs_uikit/downloads/9to6-ui-0.1.0.tgz
+```
+
+```tsx
+import "@9to6/ui/styles.css";
+import { UIProvider, Button, NavLink } from "@9to6/ui/react";
+
+export default function App() {
+  return (
+    <UIProvider>
+      <NavLink href="/" active>
+        홈
+      </NavLink>
+      <Button>시작하기</Button>
+    </UIProvider>
+  );
+}
+```
+
+React 진입점의 NavLink는 애플리케이션 라우터에서 `active`를 전달합니다. Next.js의 자동 경로 감지·prefetch는 기존 `@9to6/ui/nav-link`가 담당합니다. 검증 명령은 `npm run test:react`이며, React 19.3 + Vite 8.3의 독립 소비 앱에서 Next.js가 설치되지 않은 상태를 확인합니다. React 18은 현재 peer 지원 범위에 포함하지 않습니다.
+
 ## 전체 카탈로그 기준
 
 2026-09-22 [Shadcn 공식 카탈로그](https://ui.shadcn.com/docs/components) 64개와 추가 컴포넌트 15개, 총 **79개 문서 항목**입니다. 각 항목에 실제 구현, 실행 예제, 사용 코드, 주요 API, 소스 조회가 연결됩니다.
@@ -131,6 +159,7 @@ npm run typecheck
 npx playwright install chromium firefox webkit
 npm test
 npm run test:package
+npm run test:react
 ```
 
 브라우저 테스트는 production 정적 사이트를 사용합니다. 자동화 리포트는 `artifacts/`, `test-results/`, `playwright-report/`에 남으며 Git에는 포함하지 않습니다. GitHub Actions는 수동 실행만 제공합니다.

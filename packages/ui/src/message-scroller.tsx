@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "./icons.js";
 import { useEffect, useRef, useState, type ComponentProps } from "react";
 import { Button } from "./button.js";
 import { cn } from "./utils.js";
@@ -53,7 +54,7 @@ export function MessageScroller({
             setAtBottom(true);
           }}
         >
-          최신 메시지 ↓
+          최신 메시지 <Icon name="arrow-down" />
         </Button>
       )}
     </div>

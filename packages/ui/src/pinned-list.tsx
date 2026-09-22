@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "./icons.js";
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { useReducedMotion } from "./use-reduced-motion.js";
 export type PinnedListItem = {
@@ -70,18 +71,9 @@ export function PinnedList({
           className="n-pin-row"
           data-pinned={pinned.includes(item.id)}
         >
-          {index === count && <p className="n-pin-group-label">All items</p>}
+          {index === count && <p className="n-pin-group-label">자료 전체</p>}
           <span className="n-pin-icon" aria-hidden="true">
-            {item.icon ?? (
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <path d="m12 3 8 5v8l-8 5-8-5V8Zm-8 5 8 5 8-5M12 13v8" />
-              </svg>
-            )}
+            {item.icon ?? <Icon name="document" />}
           </span>
           <span className="n-pin-copy">
             <strong>{item.title}</strong>
@@ -103,15 +95,7 @@ export function PinnedList({
               onValueChange?.(next);
             }}
           >
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.7"
-            >
-              <path d="M9 3h6l-1 6 4 4v2H6v-2l4-4ZM12 15v7" />
-            </svg>
+            <Icon name="bookmark" />
           </button>
         </div>
       ))}

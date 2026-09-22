@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "@9to6/ui/icons";
 import { useDemoReady } from "@/lib/use-demo-ready";
 import { useState } from "react";
 import { Button } from "@9to6/ui/button";
@@ -259,7 +260,9 @@ export function OverlaysDemo({ name }: { name: string }) {
         <div className="demo-stack">
           <DropdownMenu modal={false}>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline">프로젝트 메뉴 ⌄</Button>
+              <Button variant="outline">
+                프로젝트 메뉴 <Icon name="chevron-down" />
+              </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
               <DropdownMenuLabel>Project</DropdownMenuLabel>
@@ -282,7 +285,9 @@ export function OverlaysDemo({ name }: { name: string }) {
                 즐겨찾기
               </DropdownMenuCheckboxItem>
               <DropdownMenuSub>
-                <DropdownMenuSubTrigger>내보내기 →</DropdownMenuSubTrigger>
+                <DropdownMenuSubTrigger>
+                  내보내기 <Icon name="chevron-right" />
+                </DropdownMenuSubTrigger>
                 <DropdownMenuSubContent>
                   <DropdownMenuItem
                     onSelect={() => setSelection("JSON 내보내기 선택")}

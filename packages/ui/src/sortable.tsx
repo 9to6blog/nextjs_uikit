@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "./icons.js";
 import { useId, type ReactNode } from "react";
 import {
   DndContext,
@@ -46,7 +47,7 @@ function SortableRow({ item }: { item: SortableItemData }) {
         {...listeners}
         aria-label={`${item.label} 순서 변경`}
       >
-        ⠿
+        <Icon name="grip" />
       </button>
       {item.content ?? item.label}
     </li>

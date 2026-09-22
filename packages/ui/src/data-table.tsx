@@ -22,6 +22,8 @@ import {
 } from "./table.js";
 import { Input } from "./input.js";
 import { Button } from "./button.js";
+import { Checkbox } from "./checkbox.js";
+import { Icon } from "./icons.js";
 export type { ColumnDef } from "@tanstack/react-table";
 export type DataTableProps<T> = {
   data: T[];
@@ -49,6 +51,7 @@ export function DataTable<T>({
   const [filter, setFilter] = useState("");
   const [selection, setSelection] = useState<RowSelectionState>({});
   const [visibility, setVisibility] = useState<VisibilityState>({});
+  const [columnsOpen, setColumnsOpen] = useState(false);
   // TanStack's instance is intentionally mutable; it should not be React-Compiler memoized.
   // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
@@ -92,23 +95,30 @@ export function DataTable<T>({
             onChange={(e) => setFilter(e.target.value)}
           />
         )}
-        <details className="n-column-picker">
-          <summary>열 표시</summary>
-          {table
-            .getAllLeafColumns()
-            .filter((col) => col.getCanHide())
-            .map((col) => (
-              <label key={col.id}>
-                <input
-                  type="checkbox"
-                  checked={col.getIsVisible()}
-                  onChange={col.getToggleVisibilityHandler()}
-                />
-                {typeof col.columnDef.header === "string"
-                  ? col.columnDef.header
-                  : col.id}
-              </label>
-            ))}
+        <details
+          className="n-column-picker"
+          onToggle={(event) => setColumnsOpen(event.currentTarget.open)}
+        >
+          <summary>
+            <Icon name="chevron-down" /> 열 표시
+          </summary>
+          {columnsOpen &&
+            table
+              .getAllLeafColumns()
+              .filter((col) => col.getCanHide())
+              .map((col) => (
+                <label key={col.id}>
+                  <Checkbox
+                    checked={col.getIsVisible()}
+                    onCheckedChange={(checked) =>
+                      col.toggleVisibility(checked === true)
+                    }
+                  />
+                  {typeof col.columnDef.header === "string"
+                    ? col.columnDef.header
+                    : col.id}
+                </label>
+              ))}
         </details>
       </div>
       <div className="n-table-scroll">
@@ -118,15 +128,18 @@ export function DataTable<T>({
               <TableRow key={group.id}>
                 {selectable && (
                   <TableHead>
-                    <input
-                      type="checkbox"
+                    <Checkbox
                       aria-label="현재 페이지 전체 선택"
-                      checked={table.getIsAllPageRowsSelected()}
-                      ref={(el) => {
-                        if (el)
-                          el.indeterminate = table.getIsSomePageRowsSelected();
-                      }}
-                      onChange={table.getToggleAllPageRowsSelectedHandler()}
+                      checked={
+                        table.getIsAllPageRowsSelected()
+                          ? true
+                          : table.getIsSomePageRowsSelected()
+                            ? "indeterminate"
+                            : false
+                      }
+                      onCheckedChange={(checked) =>
+                        table.toggleAllPageRowsSelected(checked === true)
+                      }
                     />
                   </TableHead>
                 )}
@@ -151,13 +164,15 @@ export function DataTable<T>({
                           header.column.columnDef.header,
                           header.getContext(),
                         )}
-                        <span aria-hidden="true">
-                          {header.column.getIsSorted() === "asc"
-                            ? "↑"
-                            : header.column.getIsSorted() === "desc"
-                              ? "↓"
-                              : "↕"}
-                        </span>
+                        <Icon
+                          name={
+                            header.column.getIsSorted() === "asc"
+                              ? "arrow-up"
+                              : header.column.getIsSorted() === "desc"
+                                ? "arrow-down"
+                                : "arrow-up-down"
+                          }
+                        />
                       </button>
                     ) : (
                       flexRender(
@@ -176,11 +191,12 @@ export function DataTable<T>({
                 <TableRow key={row.id} data-selected={row.getIsSelected()}>
                   {selectable && (
                     <TableCell>
-                      <input
-                        type="checkbox"
+                      <Checkbox
                         aria-label={`${row.index + 1}행 선택`}
                         checked={row.getIsSelected()}
-                        onChange={row.getToggleSelectedHandler()}
+                        onCheckedChange={(checked) =>
+                          row.toggleSelected(checked === true)
+                        }
                       />
                     </TableCell>
                   )}

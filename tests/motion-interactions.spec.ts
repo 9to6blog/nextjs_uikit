@@ -242,18 +242,18 @@ test("pinning reorders persistent rows without losing keyboard focus", async ({
   page,
 }) => {
   await gotoReady(page, "/components/pinned-list/");
-  const pin = page.locator('[data-pin-id="token"] button');
+  const pin = page.locator('[data-pin-id="notes"] button');
   await pin.focus();
   await page.keyboard.press("Enter");
   await expect(pin).toBeFocused();
   await expect(pin).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator(".n-pin-row").nth(2)).toHaveAttribute(
     "data-pin-id",
-    "token",
+    "notes",
   );
   await page.keyboard.press("Enter");
   await expect(
-    page.getByRole("button", { name: "Token Lock 고정", exact: true }),
+    page.getByRole("button", { name: "인터뷰 노트 고정", exact: true }),
   ).toHaveAttribute("aria-pressed", "false");
   await expect(pin).toBeFocused();
 });
@@ -265,6 +265,9 @@ test("todo completion draws and erases its strike", async ({ page }) => {
   await expect(check).toBeChecked();
   await settleAnimations(page);
   const strike = page.locator(".n-todo-row > span > svg path").first();
+  expect(
+    await strike.evaluate((el) => (el as SVGPathElement).getBBox().height),
+  ).toBe(0);
   expect(
     await strike.evaluate((el) => getComputedStyle(el).strokeDashoffset),
   ).toBe("0px");

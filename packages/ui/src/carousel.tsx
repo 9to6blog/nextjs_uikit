@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "./icons.js";
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Button } from "./button.js";
@@ -72,7 +73,7 @@ export function Carousel({
           disabled={!state.previous}
           onClick={() => api?.scrollPrev(reducedMotion)}
         >
-          ←
+          <Icon name="arrow-left" />
         </Button>
         <span aria-live="polite">
           {slides.length ? state.index + 1 : 0} / {slides.length}
@@ -84,7 +85,7 @@ export function Carousel({
           disabled={!state.next}
           onClick={() => api?.scrollNext(reducedMotion)}
         >
-          →
+          <Icon name="arrow-right" />
         </Button>
       </div>
     </section>

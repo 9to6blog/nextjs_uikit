@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "./icons.js";
 import { useId, useRef, useState } from "react";
 import { Button } from "./button.js";
 export type FileUploadProps = {
@@ -78,7 +79,7 @@ export function FileUpload({
         }}
       >
         <span aria-hidden="true" className="n-upload-symbol">
-          ↑
+          <Icon name="arrow-up" />
         </span>
         <strong>{label}</strong>
         <p id={`${id}-hint`} className="n-description">
@@ -124,7 +125,7 @@ export function FileUpload({
                 onValueChange(value.filter((_, index) => index !== i))
               }
             >
-              ×
+              <Icon name="close" />
             </Button>
           </li>
         ))}

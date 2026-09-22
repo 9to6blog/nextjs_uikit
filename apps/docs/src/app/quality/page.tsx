@@ -1,3 +1,4 @@
+import { Icon } from "@9to6/ui/icons";
 import Link from "next/link";
 import { catalog } from "@/lib/catalog";
 import { Badge } from "@9to6/ui/badge";
@@ -42,7 +43,9 @@ export default function Quality() {
                     <Badge tone="success">Implemented</Badge>
                   </td>
                   <td>
-                    <Link href={`/components/${item.slug}/`}>직접 확인 ↗</Link>
+                    <Link href={`/components/${item.slug}/`}>
+                      직접 확인 <Icon name="arrow-up-right" />
+                    </Link>
                   </td>
                 </tr>
               ))}

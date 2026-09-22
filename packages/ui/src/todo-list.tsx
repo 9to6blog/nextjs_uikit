@@ -43,10 +43,7 @@ export function TodoList({
               viewBox="0 0 200 24"
               preserveAspectRatio="none"
             >
-              <path
-                pathLength="1"
-                d="M1 14Q30 3 69 12T139 9T199 13M198 5Q144 21 92 11T2 18M4 6Q65 20 119 9T196 18"
-              />
+              <path pathLength="1" d="M0 12H200" />
             </svg>
           </span>
         </label>

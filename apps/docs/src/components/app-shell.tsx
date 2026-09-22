@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "@9to6/ui/icons";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -326,7 +327,9 @@ export function AppShell({ children }: { children: ReactNode }) {
                 ))}
               </CommandList>
               <div className="search-footer">
-                <CommandIcon size={13} />↑ ↓ 탐색 <Kbd>↵</Kbd> 이동{" "}
+                <CommandIcon size={13} />
+                <Icon name="arrow-up" />
+                <Icon name="arrow-down" /> 탐색 <Kbd>Enter</Kbd> 이동{" "}
                 <Kbd>esc</Kbd> 닫기
               </div>
             </Command>

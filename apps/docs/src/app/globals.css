@@ -1821,3 +1821,16 @@ input {
     scroll-behavior: auto;
   }
 }
+
+.component-nav[data-n-highlight-root]
+  .nav-group
+  a:is(:hover, [aria-current="page"]) {
+  background: transparent;
+}
+.demo-combobox {
+  max-width: 100%;
+  width: 320px;
+}
+.demo-combobox .n-combobox-trigger {
+  width: 100%;
+}

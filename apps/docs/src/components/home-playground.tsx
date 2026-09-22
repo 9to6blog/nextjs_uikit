@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "@9to6/ui/icons";
 import { useState } from "react";
 import { ArrowUpRight, Plus, Check, SlidersHorizontal } from "lucide-react";
 import { Button } from "@9to6/ui/button";
@@ -138,7 +139,7 @@ export function HomePlayground() {
         <span className="playground-hint">Go on, give it a click.</span>
       </div>
       <div className="floating-note">
-        <span>↗</span> 작은 움직임, 더 나은 경험
+        <Icon name="arrow-up-right" /> 작은 움직임, 더 나은 경험
       </div>
     </div>
   );

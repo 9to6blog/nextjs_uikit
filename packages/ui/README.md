@@ -1,6 +1,8 @@
 # @9to6/ui
 
-Independent UI components for Next.js 16 and React 19.2+. This private preview is distributed as a local tarball or a source registry; it is not published to npm.
+Independent UI components for React 19.2+ and Next.js 16. Distributed as a GitHub Pages tarball, local tarball or source registry; not published to npm.
+
+React/Vite apps without Next.js should use `@9to6/ui/react` or individual component paths. Next.js is an optional peer. The legacy root entry includes the Next.js NavLink; the React entry exposes an ordinary anchor NavLink with an explicit `active` prop.
 
 ```tsx
 import "@9to6/ui/styles.css";

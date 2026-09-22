@@ -2,7 +2,7 @@
 
 ## Dependency boundaries
 
-`packages/ui/src` is the source of truth. TypeScript emits one ESM module and declaration per source file, preserving client directives. Static components do not import interactive dependencies. Next.js-specific adapters are `nav-link` and `submit-button`. Radix provides maintained accessibility and interaction primitives; the library owns presentation, API composition, tokens and motion.
+`packages/ui/src` is the source of truth. TypeScript emits one ESM module and declaration per source file, preserving client directives. Static components do not import interactive dependencies. The Next.js-specific adapter is `nav-link`; `submit-button` uses React DOM form status. The `/react` entry substitutes a framework-neutral NavLink and never imports Next.js. Next.js is an optional peer, while the legacy root entry retains its Next.js adapter. Radix provides maintained accessibility and interaction primitives; the library owns presentation, API composition, tokens and motion.
 
 Advanced engines are used explicitly: TanStack Table v8, Recharts, DayPicker, Embla, cmdk, input-otp, react-resizable-panels, dnd-kit, Vaul and Sonner. The package has these installation dependencies, but individual imports allow the application bundler to exclude unused JavaScript. This is a bundler property to verify, not a promise of zero JavaScript for interactive pages.
 

@@ -1557,9 +1557,22 @@
   font-weight: 600;
   color: var(--n-muted);
 }
+.n-combobox-trigger {
+  width: 264px;
+  max-width: 100%;
+  justify-content: space-between;
+}
+.n-combobox-trigger > .n-button-label {
+  width: 100%;
+  justify-content: space-between;
+}
 .n-combobox-popover {
   padding: 0;
-  width: 260px;
+  width: max(
+    var(--radix-popover-trigger-width),
+    var(--n-combobox-min-width, 240px)
+  );
+  max-width: var(--radix-popover-content-available-width);
 }
 .n-combobox-popover .n-command {
   border: 0;
@@ -1578,6 +1591,11 @@
 }
 .n-calendar .rdp-day_button {
   border-radius: 8px;
+  font-size: 13px;
+}
+.n-calendar .rdp-selected {
+  font-size: inherit;
+  font-weight: 600;
 }
 .n-calendar .rdp-selected .rdp-day_button {
   background: var(--n-accent);
@@ -2525,7 +2543,7 @@
   stroke-dashoffset: 1;
   transition: stroke-dashoffset 1000ms ease-in-out;
 }
-.n-todo-row[data-complete="true"] svg path {
+.n-todo-row[data-complete="true"] > span > svg path {
   stroke-dashoffset: 0;
 }
 .n-shine-card {
@@ -2959,4 +2977,45 @@
   .n-radio-indicator {
     background: Highlight;
   }
+}
+
+/* A single moving surface owns both active and hover presentation. */
+.n-sidebar-content[data-n-highlight-root]
+  .n-sidebar-menu-button:is(:hover, [aria-pressed="true"]),
+.n-tree[data-n-highlight-root]
+  [role="treeitem"]:is(:hover, [aria-selected="true"]) {
+  background: transparent;
+}
+.n-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.n-select-trigger > span:last-child,
+.n-select-item > span:last-child {
+  display: inline-flex;
+  align-items: center;
+}
+.n-column-picker summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+.n-column-picker summary::-webkit-details-marker {
+  display: none;
+}
+.n-column-picker summary > svg {
+  transition: transform 200ms var(--n-ease);
+}
+.n-column-picker[open] summary > svg {
+  transform: rotate(180deg);
+}
+.n-pin-row button[aria-pressed="true"] svg {
+  fill: currentColor;
+  transform: none;
+}
+.n-todo-row > span > svg path {
+  stroke-width: 1.5;
+  transition: stroke-dashoffset 450ms ease-out;
 }

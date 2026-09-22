@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "@9to6/ui/icons";
 import { useState, type CSSProperties } from "react";
 import { Slider } from "@9to6/ui/slider";
 import { Switch } from "@9to6/ui/switch";
@@ -24,7 +25,7 @@ export function MotionStudio() {
           <span className="motion-point point-end">B</span>
         </div>
         <Button variant="outline" onClick={() => setPosition((p) => !p)}>
-          움직임 재생 ↗
+          움직임 재생 <Icon name="arrow-up-right" />
         </Button>
         <Tabs defaultValue="one">
           <TabsList aria-label="모션 탭">

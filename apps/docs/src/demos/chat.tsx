@@ -1,4 +1,5 @@
 "use client";
+import { sitePath } from "@/lib/site-path";
 import { useDemoReady } from "@/lib/use-demo-ready";
 import { useState } from "react";
 import { Attachment } from "@9to6/ui/attachment";
@@ -17,7 +18,7 @@ export function ChatDemo({ name }: { name: string }) {
         <Attachment
           name="NINE UI 시작 가이드"
           size="설치 및 사용 방법"
-          href="/getting-started/"
+          href={sitePath("/getting-started/")}
         />
       );
     case "bubble":

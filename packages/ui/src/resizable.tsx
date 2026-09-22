@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "./icons.js";
 import type { ComponentProps } from "react";
 import { Group, Panel, Separator } from "react-resizable-panels";
 import { cn } from "./utils.js";
@@ -15,7 +16,9 @@ export function ResizableHandle({
 }: ComponentProps<typeof Separator>) {
   return (
     <Separator {...props} className={cn("n-resizable-handle", className)}>
-      <span aria-hidden="true">⋮</span>
+      <span aria-hidden="true">
+        <Icon name="grip" />
+      </span>
     </Separator>
   );
 }

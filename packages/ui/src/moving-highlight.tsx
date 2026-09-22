@@ -16,8 +16,23 @@ export function MovingHighlight({
     if (!root || !indicator) return;
     root.dataset.nHighlightRoot = "";
     let active: HTMLElement | null = null;
+    let hovered: HTMLElement | null = null;
+    let focused: HTMLElement | null = null;
+    const selected = () =>
+      Array.from(root.querySelectorAll<HTMLElement>(selector)).find((item) =>
+        item.matches(
+          '[aria-current="page"], [aria-pressed="true"], [aria-selected="true"], [data-active="true"], [data-state="active"]',
+        ),
+      ) ?? null;
     const measure = () => {
-      if (!active || !root.contains(active)) return;
+      active =
+        [hovered, focused, selected()].find(
+          (item) => item && root.contains(item),
+        ) ?? null;
+      if (!active) {
+        indicator.style.opacity = "0";
+        return;
+      }
       // offset geometry is unaffected by the parent's popup entrance transform.
       let x = 0,
         y = 0,
@@ -43,21 +58,39 @@ export function MovingHighlight({
         !target.hasAttribute("data-disabled") &&
         target.getAttribute("aria-disabled") !== "true"
       ) {
-        active = target;
+        if (event.type === "focusin") focused = target;
+        else hovered = target;
         measure();
       }
     };
-    const leave = () => {
-      indicator.style.opacity = "0";
+    const leave = (event: Event) => {
+      if (event.type === "focusout") focused = null;
+      else hovered = null;
+      measure();
     };
     const resize = new ResizeObserver(measure);
     resize.observe(root);
+    const mutations = new MutationObserver(measure);
+    mutations.observe(root, {
+      subtree: true,
+      childList: true,
+      attributes: true,
+      attributeFilter: [
+        "aria-current",
+        "aria-pressed",
+        "aria-selected",
+        "data-active",
+        "data-state",
+      ],
+    });
+    measure();
     root.addEventListener("pointermove", track);
     root.addEventListener("focusin", track);
     root.addEventListener("pointerleave", leave);
     root.addEventListener("focusout", leave);
     return () => {
       resize.disconnect();
+      mutations.disconnect();
       root.removeEventListener("pointermove", track);
       root.removeEventListener("focusin", track);
       root.removeEventListener("pointerleave", leave);

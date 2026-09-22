@@ -1,4 +1,4 @@
-import { gotoReady } from "./helpers";
+import { gotoReady, settleAnimations } from "./helpers";
 import { test, expect } from "@playwright/test";
 test("dialog traps focus, validates input and restores trigger", async ({
   page,
@@ -128,9 +128,13 @@ test("submit button exposes pending and prevents duplicate submit", async ({
     '[data-demo="submit-button"] button[type="submit"]',
   );
   const before = await button.boundingBox();
+  const layoutWidth = await button.evaluate((el) => getComputedStyle(el).width);
   await button.click();
   await expect(button).toBeDisabled();
   await expect(button).toHaveAttribute("aria-busy", "true");
+  await expect(button).toHaveCSS("width", layoutWidth);
+  // The press scale changes visual bounds without changing the layout width.
+  await settleAnimations(page);
   const during = await button.boundingBox();
   expect(during?.width).toBe(before?.width);
   await expect(

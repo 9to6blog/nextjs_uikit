@@ -1,4 +1,12 @@
 "use client";
+import { sitePath } from "@/lib/site-path";
+import {
+  BookOpen,
+  Palette,
+  Image as ImageIcon,
+  NotebookPen,
+  Layers,
+} from "lucide-react";
 import { useState } from "react";
 import { Copy, Scissors, Clipboard, Star, Pin, Trash2 } from "lucide-react";
 import { useDemoReady } from "@/lib/use-demo-ready";
@@ -79,32 +87,38 @@ export function MotionDemo({ name }: { name: string }) {
     case "pinned-list":
       return (
         <PinnedList
-          defaultValue={["commit", "room"]}
+          label="작업실 자료 고정"
+          defaultValue={["guide", "palette"]}
           items={[
             {
-              id: "commit",
-              title: "Commit Zone",
-              description: "Code updates · Closes 9:00 PM",
+              id: "guide",
+              title: "발행 가이드",
+              description: "글을 공개하기 전 확인할 항목",
+              icon: <BookOpen />,
             },
             {
-              id: "room",
-              title: "404 Room",
-              description: "Fixing errors · Open 24 hours",
+              id: "palette",
+              title: "브랜드 팔레트",
+              description: "색상과 타이포그래피 모음",
+              icon: <Palette />,
             },
             {
-              id: "npm",
-              title: "NPM Stop",
-              description: "Install stuff · Closes 8:00 PM",
+              id: "cover",
+              title: "커버 이미지",
+              description: "다음 글에 사용할 표지 시안",
+              icon: <ImageIcon />,
             },
             {
-              id: "token",
-              title: "Token Lock",
-              description: "Login stuff · Open 24 hours",
+              id: "notes",
+              title: "인터뷰 노트",
+              description: "새로운 관점과 인사이트 기록",
+              icon: <NotebookPen />,
             },
             {
-              id: "regex",
-              title: "Regex Zone",
-              description: "Find words · Closes 9:00 PM",
+              id: "release",
+              title: "업데이트 기록",
+              description: "제품의 개선 사항과 변경 이력",
+              icon: <Layers />,
             },
           ]}
         />
@@ -113,9 +127,9 @@ export function MotionDemo({ name }: { name: string }) {
       return (
         <TodoList
           items={[
-            { id: "assembly", label: "Code in Assembly ▣" },
-            { id: "bug", label: "Present a bug as a feature" },
-            { id: "prod", label: "Push to prod on a Friday ↗" },
+            { id: "outline", label: "새 글의 목차 정리" },
+            { id: "review", label: "초안 검토와 문장 다듬기" },
+            { id: "publish", label: "미리보기 확인 후 발행" },
           ]}
         />
       );
@@ -191,7 +205,7 @@ export function MotionDemo({ name }: { name: string }) {
         <p className="demo-note">
           Read the{" "}
           <PreviewLinkCard
-            href="/getting-started/"
+            href={sitePath("/getting-started/")}
             preview={
               <div className="link-preview-document">
                 <small>NINE UI / Documentation</small>

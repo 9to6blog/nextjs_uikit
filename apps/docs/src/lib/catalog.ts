@@ -295,7 +295,7 @@ export const catalog: ComponentEntry[] = [
     name: "Combobox",
     description: "텍스트로 검색하고 키보드로 선택합니다.",
     group: "forms",
-    api: "options, value, onValueChange, label, disabled, emptyLabel",
+    api: "options, value, onValueChange, label, disabled, emptyLabel, className, style, contentMinWidth",
     usage:
       '<Combobox label="프레임워크" options={[{ value: "next", label: "Next.js" }]} value={value} onValueChange={setValue} />',
     source: "combobox",
@@ -316,7 +316,7 @@ export const catalog: ComponentEntry[] = [
     group: "forms",
     api: "type, value, onValueChange, ToggleGroupItem",
     usage:
-      '<ToggleGroup type="single" aria-label="정렬"><ToggleGroupItem value="left" aria-label="왼쪽">←</ToggleGroupItem></ToggleGroup>',
+      '<ToggleGroup type="single" aria-label="정렬"><ToggleGroupItem value="left" aria-label="왼쪽">왼쪽</ToggleGroupItem></ToggleGroup>',
     source: "toggle-group",
   },
   {

@@ -1,4 +1,5 @@
 "use client";
+import { Icon } from "./icons.js";
 import type { ComponentProps } from "react";
 import { Select as Primitive } from "radix-ui";
 import { useUIAttributes } from "./provider.js";
@@ -14,7 +15,9 @@ export function SelectTrigger({
   return (
     <Primitive.Trigger {...props} className={cn("n-select-trigger", className)}>
       {children}
-      <Primitive.Icon aria-hidden="true">⌄</Primitive.Icon>
+      <Primitive.Icon aria-hidden="true">
+        <Icon name="chevron-down" />
+      </Primitive.Icon>
     </Primitive.Trigger>
   );
 }
@@ -36,11 +39,11 @@ export function SelectContent({
         className={cn("n-select-content", className)}
       >
         <Primitive.ScrollUpButton className="n-select-scroll">
-          ⌃
+          <Icon name="chevron-up" />
         </Primitive.ScrollUpButton>
         <Primitive.Viewport>{children}</Primitive.Viewport>
         <Primitive.ScrollDownButton className="n-select-scroll">
-          ⌄
+          <Icon name="chevron-down" />
         </Primitive.ScrollDownButton>
       </Primitive.Content>
     </Primitive.Portal>
@@ -54,7 +57,9 @@ export function SelectItem({
   return (
     <Primitive.Item {...props} className={cn("n-select-item", className)}>
       <Primitive.ItemText>{children}</Primitive.ItemText>
-      <Primitive.ItemIndicator>✓</Primitive.ItemIndicator>
+      <Primitive.ItemIndicator>
+        <Icon name="check" />
+      </Primitive.ItemIndicator>
     </Primitive.Item>
   );
 }

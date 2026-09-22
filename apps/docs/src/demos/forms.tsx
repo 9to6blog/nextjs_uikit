@@ -236,7 +236,7 @@ export function FormsDemo({ name }: { name: string }) {
       );
     case "combobox":
       return (
-        <div className="demo-stack">
+        <div className="demo-stack demo-combobox">
           <Combobox
             label="프레임워크"
             value={selected}
