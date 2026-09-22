@@ -22,7 +22,9 @@ for (const theme of ["light", "dark"] as const) {
     expect(label.x - icon.x - icon.width).toBeLessThanOrEqual(12);
     expect(shortcut.x).toBeGreaterThan(label.x + 24);
     await item.click();
-    await expect(page.getByRole("status")).toHaveText("편집을 선택했습니다.");
+    await expect(page.locator('.demo-host [role="status"]')).toHaveText(
+      "편집을 선택했습니다.",
+    );
   });
 
   test(`${theme}: command input focuses the containing surface without a clipped rectangle`, async ({
@@ -33,7 +35,7 @@ for (const theme of ["light", "dark"] as const) {
       await page
         .getByRole("button", { name: "다크 테마로 변경", exact: true })
         .click();
-    const input = page.getByRole("combobox", { name: "명령 검색" });
+    const input = page.getByRole("combobox", { name: "빠른 명령" });
     await input.focus();
     await expect(input).toBeFocused();
     await expect(input).toHaveCSS("outline-style", "none");
@@ -47,6 +49,8 @@ for (const theme of ["light", "dark"] as const) {
     await input.fill("설정");
     await page.keyboard.press("ArrowDown");
     await page.keyboard.press("Enter");
-    await expect(page.getByRole("status")).toHaveText("설정 선택");
+    await expect(page.locator('.demo-host [role="status"]')).toHaveText(
+      "설정 선택",
+    );
   });
 }

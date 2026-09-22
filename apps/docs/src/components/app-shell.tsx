@@ -292,7 +292,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           </a>
         </footer>
         <Dialog open={search} onOpenChange={setSearch}>
-          <DialogContent className="search-dialog">
+          <DialogContent variant="command" className="search-dialog">
             <DialogTitle className="n-sr-only">컴포넌트 검색</DialogTitle>
             <DialogDescription className="n-sr-only">
               이름을 검색하고 Enter로 이동하세요.

@@ -491,7 +491,7 @@ export const catalog: ComponentEntry[] = [
     name: "Dropdown Menu",
     description: "하위 메뉴·체크 항목·라디오 선택 메뉴.",
     group: "overlays",
-    api: "DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuSub",
+    api: "DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, MenuItemIcon, MenuItemLabel, MenuItemShortcut, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuSub",
     usage:
       "<DropdownMenu><DropdownMenuTrigger asChild><Button>메뉴</Button></DropdownMenuTrigger><DropdownMenuContent><DropdownMenuItem>편집</DropdownMenuItem></DropdownMenuContent></DropdownMenu>",
     source: "dropdown-menu",
@@ -521,7 +521,7 @@ export const catalog: ComponentEntry[] = [
     name: "Command",
     description: "검색과 키보드 조작을 갖춘 명령 목록.",
     group: "overlays",
-    api: "CommandInput, CommandList, CommandItem, CommandGroup, CommandEmpty, onSelect",
+    api: "CommandInputRow, CommandInputIcon, CommandInput, CommandList, CommandItem, CommandGroup, CommandEmpty, onSelect",
     usage:
       '<Command label="명령"><CommandInput placeholder="검색"/><CommandList><CommandEmpty>결과 없음</CommandEmpty><CommandItem onSelect={openSettings}>설정</CommandItem></CommandList></Command>',
     source: "command",
