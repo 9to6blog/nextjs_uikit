@@ -79,11 +79,31 @@ await writeFile(
 );
 await writeFile(
   join(fixture, "src/main.tsx"),
-  `import {useState} from "react";
-import {createRoot} from "react-dom/client";
-import {UIProvider,Button,Checkbox,Combobox,NavLink,Dialog,DialogTrigger,DialogContent,DialogTitle,DialogDescription} from "@9to6/ui/react";
+  `import { useState } from "react";
+import { createRoot } from "react-dom/client";
+import { UIProvider, Button, Checkbox, Combobox, NavLink, Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, Popover, PopoverTrigger, PopoverContent, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, Sheet, SheetTrigger, SheetContent, SheetTitle, SheetDescription } from "@9to6/ui/react";
 import "@9to6/ui/styles.css";
-function App(){const [checked,setChecked]=useState(false);const [value,setValue]=useState("react");return <UIProvider><main style={{padding:32}}><h1>Standalone React</h1><NavLink href="#main" active>Current route</NavLink><label><Checkbox checked={checked} onCheckedChange={v=>setChecked(v===true)}/> Enable notifications</label><p role="status">{checked?"Enabled":"Disabled"}</p><Combobox label="Framework" value={value} onValueChange={setValue} style={{width:140}} contentMinWidth={240} options={[{value:"react",label:"React"},{value:"vite",label:"Vite"}]}/><Dialog><DialogTrigger asChild><Button>Open React dialog</Button></DialogTrigger><DialogContent><DialogTitle>React dialog</DialogTitle><DialogDescription>No Next.js dependency installed.</DialogDescription></DialogContent></Dialog></main></UIProvider>};createRoot(document.getElementById("root")!).render(<App/>);`,
+function App() {
+  const [checked, setChecked] = useState(false);
+  const [value, setValue] = useState("react");
+  const [source, setSource] = useState<string | null>(null);
+  const [handoff, setHandoff] = useState(false);
+  const transfer = () => { setSource(null); setHandoff(true); };
+  return <UIProvider><main style={{ padding: 32 }}>
+    <h1>Standalone React</h1><NavLink href="#main" active>Current route</NavLink>
+    <label><Checkbox checked={checked} onCheckedChange={v => setChecked(v === true)} /> Enable notifications</label><p role="status">{checked ? "Enabled" : "Disabled"}</p>
+    <Combobox label="Framework" value={value} onValueChange={setValue} style={{width:140}} contentMinWidth={240} options={[{value:"react",label:"React"},{value:"vite",label:"Vite"}]} />
+    <Dialog><DialogTrigger asChild><Button>Open React dialog</Button></DialogTrigger><DialogContent><DialogTitle>React dialog</DialogTitle><DialogDescription>No Next.js dependency installed.</DialogDescription></DialogContent></Dialog>
+    <section aria-label="Immediate overlay handoff">
+      <Popover open={source === "popover"} onOpenChange={open => setSource(open ? "popover" : null)}><PopoverTrigger asChild><Button>Open source popover</Button></PopoverTrigger><PopoverContent aria-label="Source popover"><Button onClick={transfer}>Continue from popover</Button></PopoverContent></Popover>
+      <DropdownMenu modal={false} open={source === "menu"} onOpenChange={open => setSource(open ? "menu" : null)}><DropdownMenuTrigger asChild><Button>Open source menu</Button></DropdownMenuTrigger><DropdownMenuContent><DropdownMenuItem onSelect={transfer}>Continue from menu</DropdownMenuItem></DropdownMenuContent></DropdownMenu>
+      <Sheet open={source === "sheet"} onOpenChange={open => setSource(open ? "sheet" : null)}><SheetTrigger asChild><Button>Open source sheet</Button></SheetTrigger><SheetContent><SheetTitle>Source sheet</SheetTitle><SheetDescription>Transfer without waiting for exit.</SheetDescription><Button onClick={transfer}>Continue from sheet</Button></SheetContent></Sheet>
+      <Dialog open={source === "dialog"} onOpenChange={open => setSource(open ? "dialog" : null)}><DialogTrigger asChild><Button>Open source dialog</Button></DialogTrigger><DialogContent><DialogTitle>Source dialog</DialogTitle><DialogDescription>Transfer without waiting for exit.</DialogDescription><Button onClick={transfer}>Continue from dialog</Button></DialogContent></Dialog>
+      <Dialog open={handoff} onOpenChange={setHandoff}><DialogTrigger asChild><Button>Open handoff dialog</Button></DialogTrigger><DialogContent><DialogTitle>Handoff dialog</DialogTitle><DialogDescription>The first Escape must reach this active layer.</DialogDescription></DialogContent></Dialog>
+    </section>
+  </main></UIProvider>;
+}
+createRoot(document.getElementById("root")!).render(<App/>);`,
 );
 console.log("Installing a React + Vite consumer outside the workspace...");
 await run(
@@ -163,6 +183,52 @@ try {
   await expect(
     page.getByRole("button", { name: "Open React dialog" }),
   ).toBeFocused();
+  const overlayHandoffs = [];
+  for (const source of ["popover", "menu", "sheet", "dialog"]) {
+    await page
+      .getByRole("button", { name: `Open source ${source}`, exact: true })
+      .click();
+    const sourceSurface = page.locator(
+      source === "popover"
+        ? ".n-popover"
+        : source === "menu"
+          ? ".n-dropdown-menu-content"
+          : source === "sheet"
+            ? ".n-sheet"
+            : ".n-dialog-content",
+    );
+    await expect(sourceSurface).toHaveAttribute("data-state", "open");
+    await expect(sourceSurface).not.toHaveCSS("animation-name", "none");
+    await page
+      .getByRole(source === "menu" ? "menuitem" : "button", {
+        name: `Continue from ${source}`,
+        exact: true,
+      })
+      .click();
+    // Intentionally no exit-animation wait: a closed layer must not consume
+    // the first Escape intended for the dialog opened by that same action.
+    const target = page.getByRole("dialog", {
+      name: "Handoff dialog",
+      exact: true,
+    });
+    await expect(target).toBeVisible();
+    assert.equal(
+      await page
+        .locator(
+          '[data-state="closed"][role="dialog"], [data-state="closed"][role="menu"]',
+        )
+        .count(),
+      0,
+      "Closed layers must unmount before the next keyboard action",
+    );
+    await page.keyboard.press("Escape");
+    await expect(target).not.toBeVisible();
+    await expect(
+      page.getByRole("button", { name: "Open handoff dialog", exact: true }),
+    ).toBeFocused();
+    await expect(page.locator("body")).not.toHaveCSS("pointer-events", "none");
+    overlayHandoffs.push(source);
+  }
   assert.deepEqual(errors, []);
   const evidence = {
     date: new Date().toISOString(),
@@ -175,6 +241,7 @@ try {
     checkbox: true,
     combobox: true,
     dialog: true,
+    overlayHandoffs,
     activeLink: true,
     browserErrors: errors,
   };

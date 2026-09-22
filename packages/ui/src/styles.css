@@ -848,9 +848,6 @@
   backdrop-filter: blur(4px);
   animation: n-fade var(--n-duration-normal) var(--n-ease);
 }
-.n-dialog-overlay[data-state="closed"] {
-  animation: n-fade-out var(--n-duration-fast) var(--n-ease-exit);
-}
 .n-dialog-content {
   display: grid;
   gap: 16px;
@@ -868,9 +865,6 @@
   border-radius: 20px;
   box-shadow: var(--n-shadow);
   animation: n-dialog-in var(--n-duration-normal) var(--n-ease);
-}
-.n-dialog-content[data-state="closed"] {
-  animation: n-dialog-out var(--n-duration-fast) var(--n-ease-exit);
 }
 .n-dialog-content[data-variant="command"] {
   padding: 0;
@@ -963,17 +957,6 @@
 .n-hover-card-content {
   padding: 16px;
   width: 320px;
-}
-.n-popover[data-state="closed"],
-.n-dropdown-menu-content[data-state="closed"],
-.n-context-menu-content[data-state="closed"],
-.n-hover-card-content[data-state="closed"] {
-  animation: n-fade-out var(--n-duration-fast) var(--n-ease-exit);
-}
-/* A menubar hands focus directly to its next menu. Unmount its old surface
-   immediately, including when a user reverses direction during the entrance. */
-.n-menubar-content[data-state="closed"] {
-  animation: none;
 }
 .n-tooltip {
   z-index: 120;
@@ -1608,9 +1591,6 @@
 .n-sheet[data-side="bottom"] {
   inset: auto 0 0;
   max-height: 85dvh;
-}
-.n-sheet[data-state="closed"] {
-  animation: n-fade-out var(--n-duration-fast) var(--n-ease-exit);
 }
 .n-drawer {
   position: fixed;
@@ -2319,7 +2299,6 @@
   transform-origin: var(--radix-popper-transform-origin, center);
   animation: n-popup-in var(--n-duration-panel) var(--n-spring-panel);
 }
-.n-popover[data-state="closed"],
 .n-hover-card-content[data-state="closed"],
 .n-tooltip[data-state="closed"] {
   animation: n-popup-out var(--n-duration-panel) var(--n-spring-panel);
@@ -2332,9 +2311,21 @@
 .n-dropdown-menu-sub-content {
   animation: n-menu-in 200ms ease-in-out;
 }
+/* Radix Presence retains DismissableLayer and FocusScope during CSS exits.
+   A closed interactive layer must leave immediately, or it can consume Escape
+   from a new dialog and restore stale body pointer locks. Keep entrance motion. */
+.n-popover[data-state="closed"],
 .n-dropdown-menu-content[data-state="closed"],
-.n-dropdown-menu-sub-content[data-state="closed"] {
-  animation: n-menu-out 200ms ease-in-out;
+.n-dropdown-menu-sub-content[data-state="closed"],
+.n-context-menu-content[data-state="closed"],
+.n-context-menu-sub-content[data-state="closed"],
+.n-menubar-content[data-state="closed"],
+.n-menubar-sub-content[data-state="closed"],
+.n-select-content[data-state="closed"],
+.n-dialog-content[data-state="closed"],
+.n-dialog-overlay[data-state="closed"],
+.n-sheet[data-state="closed"] {
+  animation: none;
   pointer-events: none;
 }
 .n-tabs-list {
