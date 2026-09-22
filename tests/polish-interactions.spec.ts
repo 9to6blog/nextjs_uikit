@@ -78,6 +78,10 @@ test("select icons are SVG and the combobox example aligns its trigger and popup
   const trigger = page.getByRole("button", { name: "프레임워크", exact: true });
   await trigger.click();
   await settleAnimations(page);
+  const search = page.locator(".n-combobox-popover .n-command-input");
+  await expect(search).toBeFocused();
+  await expect(search).toHaveCSS("outline-style", "none");
+  await expect(search).toHaveCSS("border-bottom-width", "1px");
   const button = (await trigger.boundingBox())!;
   const arrow = (await trigger.locator("svg").boundingBox())!;
   expect(button.x + button.width - arrow.x - arrow.width).toBeLessThan(20);

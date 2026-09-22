@@ -14,9 +14,9 @@ export default function Quality() {
       <section className="doc-section">
         <h2>{catalog.length}개 컴포넌트 카탈로그</h2>
         <p>
-          2026-09-22에 확인한 Shadcn 공식 목록 64개와 파일 업로드·트리·드래그
-          정렬·Next.js 전용 링크·제출 버튼 5개를 구현 대상으로 삼았습니다.
-          컴포넌트의 존재와 모든 기능 조합의 검증은 서로 다른 기준입니다.
+          기본 요소, 폼, 탐색, 오버레이, 데이터 표현과 모션 패턴까지{" "}
+          {catalog.length}개 컴포넌트를 제공합니다. 컴포넌트의 존재와 모든 기능
+          조합의 검증은 서로 다른 기준입니다.
         </p>
         <p>
           자동화 검증은 저장소의 tests와 실행 결과를 기준으로 합니다. 실제
@@ -60,10 +60,7 @@ export default function Quality() {
             타입 선언, 개별 import 경로, 정적 CSS, 소스 registry, 정적 문서
             사이트.
           </li>
-          <li>
-            Shadcn과 같은 조합 방식. API가 Shadcn의 모든 버전과 일대일로
-            호환되지는 않습니다.
-          </li>
+          <li>컴포넌트를 조합해 사용하는 자체 API와 디자인 토큰, 모션 규칙.</li>
           <li>
             일반 테이블의 검색·정렬·페이지·열 표시·행 선택. 서버 데이터 그리드와
             가상화는 별도 확장 범위입니다.

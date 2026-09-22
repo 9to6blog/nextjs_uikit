@@ -76,18 +76,12 @@ export default function GettingStarted() {
         />
       </section>
       <section className="doc-section">
-        <h2>Shadcn registry로 소스 가져오기</h2>
+        <h2>컴포넌트 소스 확인</h2>
         <p>
-          공개 문서 사이트의 /r 경로에서 생성된 registry를 제공합니다. CSS를
-          추가한 뒤 레이아웃에서 가져오세요. 설치 전 CLI가 표시하는 변경 파일을
-          확인할 수 있습니다.
+          각 컴포넌트 문서에서 구현 소스를 확인할 수 있습니다. 설치한 패키지의
+          src 폴더에도 원본 TypeScript와 CSS를 제공합니다. 수정이 필요하면
+          소스와 관련 의존성을 프로젝트에 함께 가져오세요.
         </p>
-        <CodeBlock
-          label="terminal"
-          code={
-            "npx shadcn@latest add https://9to6blog.github.io/nextjs_uikit/r/button.json\n\n# 생성된 스타일을 앱에서 한 번 import\n# 실제 설치 경로는 프로젝트의 components.json aliases를 따릅니다."
-          }
-        />
       </section>
       <section className="doc-section">
         <h2>로컬 빌드, 정적 호스팅</h2>

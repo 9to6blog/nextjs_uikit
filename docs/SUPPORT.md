@@ -1,6 +1,6 @@
 # Support contract — v0.1
 
-The catalog baseline is all 64 names shown in the Shadcn documentation on 2026-09-22, plus 15 independent additions, for 79 documented components. The additions include File Upload, Tree, Sortable, Nav Link, Submit Button and the ten motion patterns documented in [REFERENCE-DESIGN.md](REFERENCE-DESIGN.md). This is a finite inventory, not compatibility with every existing or future UI library.
+The catalog contains 79 documented components spanning primitives, forms, navigation, overlays, data presentation and motion patterns. These include File Upload, Tree, Sortable, Nav Link, Submit Button and the ten motion patterns documented in [REFERENCE-DESIGN.md](REFERENCE-DESIGN.md). This is a finite inventory; each component's documented API defines its supported behavior.
 
 ## Implemented
 
@@ -18,7 +18,7 @@ The catalog baseline is all 64 names shown in the Shadcn documentation on 2026-0
 
 ## Explicit limits
 
-- The composition style is familiar to Shadcn users, but this is not a drop-in replacement for every Shadcn variant, slot, recipe, or version.
+- Components expose NINE UI's own composition APIs, variants, tokens and motion settings.
 - Data Table is not an enterprise virtualized data grid. Server pagination, cell editing, grouping, aggregation, pinning and virtualization require further composition or an additional API.
 - Tree does not yet provide multiselection, checkbox cascading, virtualized rows, lazy loading or tree drag-and-drop. Sortable handles one vertical list, not nested/cross-container transfers.
 - Combobox is single-select. Multi-select tokens, async remote querying and virtualized results are not part of this component API.

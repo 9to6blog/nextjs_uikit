@@ -99,6 +99,10 @@ assert.equal(
   "Next.js must not be installed",
 );
 const output = await run(["run", "build"], fixture);
+for (const name of ["shadcn", "@shadcn/ui"])
+  await assert.rejects(stat(join(fixture, "node_modules", name)), {
+    code: "ENOENT",
+  });
 await writeFile(join(artifacts, "react-build.log"), output);
 console.log("React types and production build passed; Next.js is absent.");
 const root = join(fixture, "dist");
@@ -170,6 +174,7 @@ try {
     react: "19.3.0",
     vite: "8.3.0",
     nextInstalled: false,
+    shadcnInstalled: false,
     types: true,
     build: true,
     checkbox: true,

@@ -1526,6 +1526,12 @@
   padding: 16px;
   font-size: 14px;
 }
+.n-command-input:focus-visible {
+  outline: none;
+  outline-offset: 0;
+  border-bottom-color: var(--n-border-strong);
+  background: var(--n-raised);
+}
 .n-command-list {
   max-height: 290px;
   overflow-y: auto;
@@ -2965,6 +2971,10 @@
   }
 }
 @media (forced-colors: active) {
+  .n-command-input:focus-visible {
+    outline: 1px solid Highlight;
+    outline-offset: -2px;
+  }
   .n-button,
   .n-switch,
   .n-checkbox,
