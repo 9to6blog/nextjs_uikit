@@ -155,6 +155,15 @@ export function ChartView({
   );
   const tooltip = (
     <ChartTooltip
+      cursor={
+        circular
+          ? false
+          : {
+              fill: "color-mix(in srgb, var(--n-accent) 7%, transparent)",
+              stroke: "color-mix(in srgb, var(--n-accent) 28%, transparent)",
+              strokeWidth: 1,
+            }
+      }
       content={tooltipContent}
       contentStyle={{ color: "var(--n-text)" }}
     />

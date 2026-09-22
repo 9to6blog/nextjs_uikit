@@ -162,11 +162,8 @@ export function Carousel({
       onMouseLeave={() => setHovered(false)}
       onFocusCapture={() => setStopped(true)}
       onKeyDown={(event) => {
-        if (
-          (event.target as HTMLElement).closest(
-            "input,textarea,select,[contenteditable=true]",
-          )
-        )
+        const target = event.target as HTMLElement;
+        if (target.isContentEditable || target.closest("input,textarea,select"))
           return;
         const prev = orientation === "vertical" ? "ArrowUp" : "ArrowLeft";
         const next = orientation === "vertical" ? "ArrowDown" : "ArrowRight";
